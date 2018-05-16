@@ -1,0 +1,369 @@
+
+
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" data-useragent="Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)">
+
+<!-- Mirrored from 118.193.213.195/bash_perl_python/17/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 16 May 2018 07:24:15 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta name="google-site-verification" content="qms_3-ElBGujHuD2zwSZLcW8jmlJ7WG5W3JoK67ArzY" />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Help in Bash, Perl, Python </title>
+<meta name="description" content="Bash, Perl and Python comparison."/>
+<meta name="keywords" content="Bash,Perl,Python"/>
+<meta name="author" content="Enmao Liu"/>
+<meta name="copyright" content="Enmao Liu@shanghai"/>
+<link rel="stylesheet" type="text/css" href="../../static/downloads/foundation.css"/>
+<link rel="stylesheet" type="text/css" href="../../static/downloads/pygmts_def.css"/>
+<link rel="stylesheet" type="text/css" href="../../static/downloads/app.css"/>
+<script src="../../static/downloads/modernizr.js"></script>
+</head>
+<body>
+<!--
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- test -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5197746177913810"
+     data-ad-slot="1965669484"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script -->
+<div class="row">
+ <!--a href="http://core.weloveservers.net/aff.php?aff=923" rel="nofollow"><img src="https://core.weloveservers.net/uploads/vps-970X90.jpg" width="970" height="90" border="0"></a-->
+</div>
+    <div class="row">
+       <!--div class="large-12 columns"-->
+         <div class="nav-bar right">
+           <ul class="button-group">
+             <li><a href="https://www.facebook.com/liuenmao" class="button">Facebook</a></li>
+             <li><a href="https://www.youtube.com/user/neutrino0717" class="button">Youtube</a></li>
+             <li><a href="https://twitter.com/neutrino0717" class="button">Twitter</a></li>
+             <li><a href="https://www.linkedin.com/pub/evan-liu/51/5a6/748" class="button">Linkedin</a></li>
+            </ul>
+          </div>
+          <h1>Coding <small>Bash vs. Perl vs. Python (by Evan Liu) </small></h1>
+          <hr/>
+        <!--/div-->
+      </div>
+
+      <div class="row">
+        <div class="large-11 columns" role="content">
+ 
+         <h3><a name="Help">Topics about  help  </a></h3>
+         <ul>
+
+         <li>
+         <a href="#how to use help">how to use help</a> 
+         </li>
+
+         <li>
+         <a href="#get the module path">get the module path</a> 
+         </li>
+
+         <li>
+         <a href="#get all functions of a module">get all functions of a module</a> 
+         </li>
+
+         </ul>
+
+          <article>
+		  <h4><a name="how to use help" href="#Help">Help: how to use help </a></h4>
+		  <pre class="xdesc">In perl, use the below three commands to get helps on inner varaibles,inner functions, and keywords
+perldoc -v PerlVar
+perldoc -f PerlFunc
+perldoc -q FAQKeywords</pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>17</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#todo</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#todo
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#run in linux shell</span>
+</div></li><li><div class="line"><span class="c1">#1. perldoc -v PerlVar</span>
+</div></li><li><div class="line"><span class="n">perldoc</span> <span class="o">-</span><span class="n">T</span> <span class="o">-</span><span class="n">v</span> <span class="s">&#39;$_&#39;</span> <span class="o">|</span><span class="n">sed</span> <span class="o">-</span><span class="n">n</span> <span class="s">&#39;/$_ =~/p&#39;</span> <span class="o">|</span><span class="n">sed</span> <span class="s">&#39;s/^[[:space:]]*//&#39;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2. perldoc -f PerlFunc</span>
+</div></li><li><div class="line"><span class="n">perldoc</span> <span class="o">-</span><span class="n">T</span> <span class="o">-</span><span class="n">f</span> <span class="nb">split</span> <span class="o">|</span> <span class="n">egrep</span> <span class="s">&#39;split\(&#39;</span> <span class="o">|</span><span class="n">sed</span> <span class="s">&#39;s/^[[:space:]]*//&#39;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#3. perldoc -q FAQKeywords</span>
+</div></li><li><div class="line"><span class="n">perldoc</span> <span class="o">-</span><span class="n">T</span> <span class="o">-</span><span class="sx">q debug </span><span class="o">|</span> <span class="n">egrep</span> <span class="s">&#39;Dumper&#39;</span> <span class="o">|</span><span class="n">sed</span> <span class="s">&#39;s/^[[:space:]]*//&#39;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#run in linux shell
+</div></li><li><div class="line">#1. perldoc -v PerlVar
+</div></li><li><div class="line">$_ =~ /^Subject:/
+</div></li><li><div class="line">$_ =~ tr/a-z/A-Z/
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2. perldoc -f PerlFunc
+</div></li><li><div class="line">print join(&#39;:&#39;, split(&#39;b&#39;, &#39;abc&#39;)), &quot;\n&quot;;
+</div></li><li><div class="line">print join(&#39;:&#39;, split(&#39;&#39;, &#39;abc&#39;)), &quot;\n&quot;;
+</div></li><li><div class="line">print join(&#39;:&#39;, split(//, &#39;abc&#39;, 1)), &quot;\n&quot;;
+</div></li><li><div class="line">print join(&#39;:&#39;, split(//, &#39;abc&#39;, 2)), &quot;\n&quot;;
+</div></li><li><div class="line">print join(&#39;:&#39;, split(//, &#39;abc&#39;, 3)), &quot;\n&quot;;
+</div></li><li><div class="line">print join(&#39;:&#39;, split(//, &#39;abc&#39;, 4)), &quot;\n&quot;;
+</div></li><li><div class="line">print join(&#39;:&#39;, split(&#39;,&#39;, &#39;a,b,c,,,&#39;)), &quot;\n&quot;;
+</div></li><li><div class="line">print join(&#39;:&#39;, split(&#39;,&#39;, &#39;a,b,c,,,&#39;, -1)), &quot;\n&quot;;
+</div></li><li><div class="line">($login, $passwd) = split(/:/);
+</div></li><li><div class="line">print join(&#39;:&#39;, split(/ /, &#39; abc&#39;)), &quot;\n&quot;;
+</div></li><li><div class="line">print join(&#39;:&#39;, split(//, &#39; abc&#39;));
+</div></li><li><div class="line">print join(&#39;:&#39;, split(//, &#39; abc&#39;, -1)), &quot;\n&quot;;
+</div></li><li><div class="line">split(/-|,/, &quot;1-10,20&quot;, 3)
+</div></li><li><div class="line">split(/(-|,)/, &quot;1-10,20&quot;, 3)
+</div></li><li><div class="line">split(/-|(,)/, &quot;1-10,20&quot;, 3)
+</div></li><li><div class="line">split(/(-)|,/, &quot;1-10,20&quot;, 3)
+</div></li><li><div class="line">split(/(-)|(,)/, &quot;1-10,20&quot;, 3)
+</div></li><li><div class="line">
+</div></li><li><div class="line">#3. perldoc -q FAQKeywords
+</div></li><li><div class="line">The Data::Dumper module can pretty-print Perl data structures:
+</div></li><li><div class="line">use Data::Dumper qw( Dumper );
+</div></li><li><div class="line">print STDERR &quot;The hash is &quot; . Dumper( \%hash ) . &quot;\n&quot;;
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#run in linux shell</span>
+</div></li><li><div class="line"><span class="c">#1. list all modules</span>
+</div></li><li><div class="line"><span class="n">echo</span> <span class="s">&quot;pydoc modules&quot;</span>
+</div></li><li><div class="line"><span class="n">echo</span> <span class="s">&quot;python -c </span><span class="se">\&quot;</span><span class="s">help(&#39;modules&#39;)</span><span class="se">\&quot;</span><span class="s">&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2. list installed packages</span>
+</div></li><li><div class="line"><span class="n">echo</span> <span class="s">&quot;pip list&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#3. help about &#39;sys&#39; module</span>
+</div></li><li><div class="line"><span class="n">echo</span> <span class="s">&quot;pydoc sys&quot;</span>
+</div></li><li><div class="line"><span class="n">echo</span> <span class="s">&quot;python -c </span><span class="se">\&quot;</span><span class="s">help(&#39;sys&#39;)</span><span class="se">\&quot;</span><span class="s">&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#run in linux shell
+</div></li><li><div class="line">#1. list all modules
+</div></li><li><div class="line">pydoc modules
+</div></li><li><div class="line">python -c &quot;help(&#39;modules&#39;)&quot;
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2. list installed packages
+</div></li><li><div class="line">pip list
+</div></li><li><div class="line">
+</div></li><li><div class="line">#3. help about &#39;sys&#39; module
+</div></li><li><div class="line">pydoc sys
+</div></li><li><div class="line">python -c &quot;help(&#39;sys&#39;)&quot;
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="get the module path" href="#Help">Help: get the module path </a></h4>
+		  <pre class="xdesc"> </pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.1. print the path of a module
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>17</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#  todo</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#  todo
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#  todo</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#  todo
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="kn">import</span> <span class="nn">os</span><span class="p">;</span> <span class="n">os</span><span class="o">.</span><span class="n">__file__</span>
+</div></li><li><div class="line"><span class="kn">import</span> <span class="nn">re</span><span class="p">;</span> <span class="k">print</span> <span class="n">re</span><span class="o">.</span><span class="n">__file__</span>
+</div></li><li><div class="line"><span class="kn">import</span> <span class="nn">logging</span><span class="p">;</span> <span class="n">logging</span><span class="o">.</span><span class="n">__file__</span>
+</div></li><li><div class="line"><span class="kn">import</span> <span class="nn">bpython</span><span class="p">;</span> <span class="k">print</span> <span class="n">bpython</span><span class="o">.</span><span class="n">__file__</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">/usr/lib/python2.7/re.pyc
+</div></li><li><div class="line">/usr/lib/python2.7/dist-packages/bpython/__init__.pyc
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="get all functions of a module" href="#Help">Help: get all functions of a module </a></h4>
+		  <pre class="xdesc"></pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>17</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#todo</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#todo
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#todo</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#todo
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="kn">import</span> <span class="nn">re</span>
+</div></li><li><div class="line"><span class="kn">import</span> <span class="nn">inspect</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="nb">dir</span><span class="p">(</span><span class="n">re</span><span class="p">)</span>
+</div></li><li><div class="line"><span class="c">#or use inspect, which is better</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getmembers</span><span class="p">(</span><span class="n">re</span><span class="p">,</span> <span class="n">inspect</span><span class="o">.</span><span class="n">isfunction</span><span class="p">)</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">[&#39;DEBUG&#39;, &#39;DOTALL&#39;, &#39;I&#39;, &#39;IGNORECASE&#39;, &#39;L&#39;, &#39;LOCALE&#39;, &#39;M&#39;, &#39;MULTILINE&#39;, &#39;S&#39;, &#39;Scanner&#39;, &#39;T&#39;, &#39;TEMPLATE&#39;, &#39;U&#39;, &#39;UNICODE&#39;, &#39;VERBOSE&#39;, &#39;X&#39;, &#39;_MAXCACHE&#39;, &#39;__all__&#39;, &#39;__builtins__&#39;, &#39;__doc__&#39;, &#39;__file__&#39;, &#39;__name__&#39;, &#39;__package__&#39;, &#39;__version__&#39;, &#39;_alphanum&#39;, &#39;_cache&#39;, &#39;_cache_repl&#39;, &#39;_compile&#39;, &#39;_compile_repl&#39;, &#39;_expand&#39;, &#39;_pattern_type&#39;, &#39;_pickle&#39;, &#39;_subx&#39;, &#39;compile&#39;, &#39;copy_reg&#39;, &#39;error&#39;, &#39;escape&#39;, &#39;findall&#39;, &#39;finditer&#39;, &#39;match&#39;, &#39;purge&#39;, &#39;search&#39;, &#39;split&#39;, &#39;sre_compile&#39;, &#39;sre_parse&#39;, &#39;sub&#39;, &#39;subn&#39;, &#39;sys&#39;, &#39;template&#39;]
+</div></li><li><div class="line">#or use inspect, which is better 
+</div></li><li><div class="line">[(&#39;_compile&#39;, &lt;function _compile at 0x7f5e2eced1b8&gt;), (&#39;_compile_repl&#39;, &lt;function _compile_repl at 0x7f5e2eced230&gt;), (&#39;_expand&#39;, &lt;function _expand at 0x7f5e2eced2a8&gt;), (&#39;_pickle&#39;, &lt;function _pickle at 0x7f5e2eced398&gt;), (&#39;_subx&#39;, &lt;function _subx at 0x7f5e2eced320&gt;), (&#39;compile&#39;, &lt;function compile at 0x7f5e2ecf2f50&gt;), (&#39;escape&#39;, &lt;function escape at 0x7f5e2eced140&gt;), (&#39;findall&#39;, &lt;function findall at 0x7f5e2ecf2e60&gt;), (&#39;finditer&#39;, &lt;function finditer at 0x7f5e2ecf2ed8&gt;), (&#39;match&#39;, &lt;function match at 0x7f5e2ecf2c08&gt;), (&#39;purge&#39;, &lt;function purge at 0x7f5e2eced050&gt;), (&#39;search&#39;, &lt;function search at 0x7f5e2ecf2c80&gt;), (&#39;split&#39;, &lt;function split at 0x7f5e2ecf2de8&gt;), (&#39;sub&#39;, &lt;function sub at 0x7f5e2ecf2cf8&gt;), (&#39;subn&#39;, &lt;function subn at 0x7f5e2ecf2d70&gt;), (&#39;template&#39;, &lt;function template at 0x7f5e2eced0c8&gt;)]
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+
+        </div>
+     
+        <aside class="large-1 columns">
+          <h5>Categories</h5>
+          
+          <ul class="side-nav">
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../1/index.html">Regex</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../2/index.html">String</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../3/index.html">Array</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../4/index.html">Set</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../5/index.html">Map</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../6/index.html">Variables</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../7/index.html">Special variables</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../8/index.html">Function</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../9/index.html">Command line</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../10/index.html">Flow control</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../11/index.html">Input</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../12/index.html">Path</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../13/index.html">Logging</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../14/index.html">Threading</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../15/index.html">Html</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../16/index.html">Miscellaneous</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  class="selected"  ><a href="index.html">Help</a></li>
+            
+          </ul>
+          
+     
+        </aside>
+         
+      </div>
+
+      <footer class="row">
+        <div class="large-12 columns">
+          <hr/>
+          <div class="row">
+            <div class="large-6 columns">
+              <p>© Evan Liu.   (liuenmao@hotmail.com)</p>
+            </div>
+            <div class="large-6 columns">
+            </div>
+          </div>
+        </div>
+      </footer>
+</body>    
+
+<!-- Mirrored from 118.193.213.195/bash_perl_python/17/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 16 May 2018 07:24:15 GMT -->
+</html>

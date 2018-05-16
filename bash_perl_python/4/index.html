@@ -1,0 +1,758 @@
+
+
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" data-useragent="Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)">
+
+<!-- Mirrored from 118.193.213.195/bash_perl_python/4/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 16 May 2018 07:24:14 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta name="google-site-verification" content="qms_3-ElBGujHuD2zwSZLcW8jmlJ7WG5W3JoK67ArzY" />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Set in Bash, Perl, Python </title>
+<meta name="description" content="Bash, Perl and Python comparison."/>
+<meta name="keywords" content="Bash,Perl,Python"/>
+<meta name="author" content="Enmao Liu"/>
+<meta name="copyright" content="Enmao Liu@shanghai"/>
+<link rel="stylesheet" type="text/css" href="../../static/downloads/foundation.css"/>
+<link rel="stylesheet" type="text/css" href="../../static/downloads/pygmts_def.css"/>
+<link rel="stylesheet" type="text/css" href="../../static/downloads/app.css"/>
+<script src="../../static/downloads/modernizr.js"></script>
+</head>
+<body>
+<!--
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- test -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5197746177913810"
+     data-ad-slot="1965669484"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script -->
+<div class="row">
+ <!--a href="http://core.weloveservers.net/aff.php?aff=923" rel="nofollow"><img src="https://core.weloveservers.net/uploads/vps-970X90.jpg" width="970" height="90" border="0"></a-->
+</div>
+    <div class="row">
+       <!--div class="large-12 columns"-->
+         <div class="nav-bar right">
+           <ul class="button-group">
+             <li><a href="https://www.facebook.com/liuenmao" class="button">Facebook</a></li>
+             <li><a href="https://www.youtube.com/user/neutrino0717" class="button">Youtube</a></li>
+             <li><a href="https://twitter.com/neutrino0717" class="button">Twitter</a></li>
+             <li><a href="https://www.linkedin.com/pub/evan-liu/51/5a6/748" class="button">Linkedin</a></li>
+            </ul>
+          </div>
+          <h1>Coding <small>Bash vs. Perl vs. Python (by Evan Liu) </small></h1>
+          <hr/>
+        <!--/div-->
+      </div>
+
+      <div class="row">
+        <div class="large-11 columns" role="content">
+ 
+         <h3><a name="Set">Topics about  set  </a></h3>
+         <ul>
+
+         <li>
+         <a href="#Check membership of a value in a set">Check membership of a value in a set</a> 
+         </li>
+
+         <li>
+         <a href="#Add or remove a member in set">Add or remove a member in set</a> 
+         </li>
+
+         <li>
+         <a href="#Copy a set">Copy a set</a> 
+         </li>
+
+         <li>
+         <a href="#Get intersection of two sets">Get intersection of two sets</a> 
+         </li>
+
+         <li>
+         <a href="#Get difference of two sets">Get difference of two sets</a> 
+         </li>
+
+         <li>
+         <a href="#Get union of two sets">Get union of two sets</a> 
+         </li>
+
+         </ul>
+
+          <article>
+		  <h4><a name="Check membership of a value in a set" href="#Set">Set: Check membership of a value in a set </a></h4>
+		  <pre class="xdesc">In Bash, set data structure is not support , however in bash 4, associative array can be used to simulate set
+
+In Perl, there is no native data type for set too, we can use hash with dummy value or some cpan modules such as Set::Scalar instead.
+
+In Python, set is supported well. </pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.Create a set from elements with duplicates
+2.Print the set
+3.Check the membership of &#39;0&#39;
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>4</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create a set from elements with duplicates</span>
+</div></li><li><div class="line"><span class="nv">arr</span><span class="o">=(</span>0 2 4 6 8 2 4 6<span class="o">)</span>
+</div></li><li><div class="line"><span class="nb">declare</span> -A set1
+</div></li><li><div class="line"><span class="k">for </span>i in <span class="s2">&quot;${arr[@]}&quot;</span>; <span class="k">do </span>set1<span class="o">[</span><span class="nv">$i</span><span class="o">]=</span>1; <span class="k">done</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Print the set</span>
+</div></li><li><div class="line"><span class="c">#  use &#39;declare -p&#39; to print</span>
+</div></li><li><div class="line"><span class="nb">declare</span> -p set1
+</div></li><li><div class="line"><span class="c">#  or use for loop</span>
+</div></li><li><div class="line"><span class="k">for </span>i in <span class="s2">&quot;${!set1[@]}&quot;</span>; <span class="k">do </span><span class="nb">echo</span> -n <span class="s2">&quot;$i &quot;</span>; <span class="k">done</span>; <span class="nb">echo</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#3.Check the membership of &#39;0&#39;</span>
+</div></li><li><div class="line"><span class="o">[</span> -n <span class="s2">&quot;${set1[0]}&quot;</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">&quot;found 0 in set&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a set from elements with duplicates
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Print the set
+</div></li><li><div class="line">#  use &#39;declare -p&#39; to print
+</div></li><li><div class="line">declare -A set1=&#39;([0]=&quot;1&quot; [2]=&quot;1&quot; [4]=&quot;1&quot; [6]=&quot;1&quot; [8]=&quot;1&quot; )&#39;
+</div></li><li><div class="line">#  or use for loop
+</div></li><li><div class="line">0 2 4 6 8 
+</div></li><li><div class="line">
+</div></li><li><div class="line">#3.Check the membership of &#39;0&#39;
+</div></li><li><div class="line">found 0 in set
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="k">use</span> <span class="n">feature</span> <span class="s">&quot;:5.10&quot;</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="c1">#1.Create a set from elements with duplicates</span>
+</div></li><li><div class="line"><span class="nv">@lst</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">);</span>
+</div></li><li><div class="line"><span class="nv">%set1</span> <span class="o">=</span> <span class="nb">map</span> <span class="p">{</span> <span class="nv">$_</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">}</span> <span class="nv">@lst</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.Print the set</span>
+</div></li><li><div class="line"><span class="n">say</span> <span class="nb">keys</span> <span class="nv">%set1</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#3.Check the membership of &#39;0&#39;</span>
+</div></li><li><div class="line"><span class="nv">$set1</span><span class="p">{</span><span class="mi">0</span><span class="p">}</span> <span class="ow">and</span> <span class="n">say</span> <span class="s">&quot;found 0 in set&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a set from elements with duplicates
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Print the set
+</div></li><li><div class="line">60284
+</div></li><li><div class="line">
+</div></li><li><div class="line">#3.Check the membership of &#39;0&#39;
+</div></li><li><div class="line">found 0 in set
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create a set from elements with duplicates</span>
+</div></li><li><div class="line"><span class="n">set1</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Print the set</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">set1</span>
+</div></li><li><div class="line"><span class="c">#  or use curly braces to define</span>
+</div></li><li><div class="line"><span class="n">set2</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">}</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">set2</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#3.Check the membership of &#39;0&#39;</span>
+</div></li><li><div class="line"><span class="k">if</span> <span class="mi">0</span> <span class="ow">in</span> <span class="n">set1</span><span class="p">:</span> <span class="k">print</span> <span class="s">&quot;found 0 in set&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a set from elements with duplicates 
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Print the set 
+</div></li><li><div class="line">set([0, 8, 2, 4, 6])
+</div></li><li><div class="line">#  or use curly braces to define 
+</div></li><li><div class="line">set([8, 0, 2, 4, 6])
+</div></li><li><div class="line">
+</div></li><li><div class="line">#3.Check the membership of &#39;0&#39; 
+</div></li><li><div class="line">found 0 in set
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="Add or remove a member in set" href="#Set">Set: Add or remove a member in set </a></h4>
+		  <pre class="xdesc"></pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.Create a set
+2.Add a new element &#39;10&#39;
+3.delete the new element &#39;10&#39;
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>4</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create a set</span>
+</div></li><li><div class="line"><span class="nb">declare</span> -A <span class="nv">set1</span><span class="o">=</span><span class="s1">&#39;([0]=&quot;1&quot; [2]=&quot;1&quot; [4]=&quot;1&quot; [6]=&quot;1&quot; [8]=&quot;1&quot; )&#39;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Add a new element &#39;10&#39;</span>
+</div></li><li><div class="line">set1<span class="o">[</span>10<span class="o">]=</span><span class="s2">&quot;1&quot;</span>
+</div></li><li><div class="line"><span class="nb">declare</span> -p set1
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#3.delete the new element &#39;10&#39;</span>
+</div></li><li><div class="line"><span class="nb">unset </span>set1<span class="o">[</span>10<span class="o">]</span>
+</div></li><li><div class="line"><span class="nb">declare</span> -p set1
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a set
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Add a new element &#39;10&#39;
+</div></li><li><div class="line">declare -A set1=&#39;([10]=&quot;1&quot; [0]=&quot;1&quot; [2]=&quot;1&quot; [4]=&quot;1&quot; [6]=&quot;1&quot; [8]=&quot;1&quot; )&#39;
+</div></li><li><div class="line">
+</div></li><li><div class="line">#3.delete the new element &#39;10&#39;
+</div></li><li><div class="line">declare -A set1=&#39;([0]=&quot;1&quot; [2]=&quot;1&quot; [4]=&quot;1&quot; [6]=&quot;1&quot; [8]=&quot;1&quot; )&#39;
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#1.Create a set</span>
+</div></li><li><div class="line"><span class="nv">%set1</span> <span class="o">=</span> <span class="nb">map</span> <span class="p">{</span> <span class="nv">$_</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">}(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">);</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.Add a new element &#39;10&#39;</span>
+</div></li><li><div class="line"><span class="nv">$set1</span><span class="p">{</span><span class="mi">10</span><span class="p">}</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;$_ &quot;</span> <span class="k">foreach</span><span class="p">(</span><span class="nb">keys</span> <span class="nv">%set1</span><span class="p">);</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#3.delete the new element &#39;10&#39;</span>
+</div></li><li><div class="line"><span class="nb">delete</span> <span class="nv">$set1</span><span class="p">{</span><span class="mi">10</span><span class="p">};</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;$_ &quot;</span> <span class="k">foreach</span><span class="p">(</span><span class="nb">keys</span> <span class="nv">%set1</span><span class="p">);</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a set
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Add a new element &#39;10&#39;
+</div></li><li><div class="line">8 10 6 4 2 0 #3.delete the new element &#39;10&#39;
+</div></li><li><div class="line">8 6 4 2 0
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create a set</span>
+</div></li><li><div class="line"><span class="n">set1</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">])</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Add a new element &#39;10&#39;</span>
+</div></li><li><div class="line"><span class="n">set1</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">set1</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#3.delete the new element &#39;10&#39;</span>
+</div></li><li><div class="line"><span class="n">set1</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">set1</span>
+</div></li><li><div class="line"><span class="c">#  or use discard(), which will not throw error if membership not found</span>
+</div></li><li><div class="line"><span class="n">set1</span><span class="o">.</span><span class="n">discard</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
+</div></li><li><div class="line"><span class="n">set1</span><span class="o">.</span><span class="n">discard</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">set1</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a set 
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Add a new element &#39;10&#39; 
+</div></li><li><div class="line">set([0, 2, 4, 6, 8, 10])
+</div></li><li><div class="line">
+</div></li><li><div class="line">#3.delete the new element &#39;10&#39; 
+</div></li><li><div class="line">set([0, 2, 4, 6, 8])
+</div></li><li><div class="line">#  or use discard(), which will not throw error if membership not found 
+</div></li><li><div class="line">set([0, 2, 4, 6])
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="Copy a set" href="#Set">Set: Copy a set </a></h4>
+		  <pre class="xdesc">In Bash4
+Copying associative arrays is not directly possible</pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.Create a set named set1
+2.Copy set1 to set2
+3.Empty set1 then print it
+4.print set2
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>4</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create a set named set1</span>
+</div></li><li><div class="line"><span class="nb">declare</span> -A <span class="nv">set1</span><span class="o">=</span><span class="s1">&#39;([0]=&quot;1&quot; [2]=&quot;1&quot; [4]=&quot;1&quot; [6]=&quot;1&quot; [8]=&quot;1&quot; )&#39;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Copy set1 to set2</span>
+</div></li><li><div class="line"><span class="nv">tmpstr</span><span class="o">=</span><span class="k">$(</span><span class="nb">declare</span> -p set1<span class="k">)</span>
+</div></li><li><div class="line"><span class="nb">eval</span> <span class="s2">&quot;declare -A set2=&quot;</span><span class="k">${</span><span class="nv">tmpstr</span><span class="p">#*=</span><span class="k">}</span>
+</div></li><li><div class="line"><span class="nb">declare</span> -p set2
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#3.Empty set1 then print it</span>
+</div></li><li><div class="line"><span class="nb">unset </span>set1
+</div></li><li><div class="line"><span class="nb">declare</span> -p set1 2&gt;/dev/null
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#4.print set2</span>
+</div></li><li><div class="line"><span class="nb">declare</span> -p set2
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a set named set1
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Copy set1 to set2
+</div></li><li><div class="line">declare -A set2=&#39;([0]=&quot;1&quot; [2]=&quot;1&quot; [4]=&quot;1&quot; [6]=&quot;1&quot; [8]=&quot;1&quot; )&#39;
+</div></li><li><div class="line">
+</div></li><li><div class="line">#3.Empty set1 then print it
+</div></li><li><div class="line">
+</div></li><li><div class="line">#4.print set2
+</div></li><li><div class="line">declare -A set2=&#39;([0]=&quot;1&quot; [2]=&quot;1&quot; [4]=&quot;1&quot; [6]=&quot;1&quot; [8]=&quot;1&quot; )&#39;
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#1.Create a set named set1</span>
+</div></li><li><div class="line"><span class="nv">%set1</span> <span class="o">=</span> <span class="nb">map</span> <span class="p">{</span> <span class="nv">$_</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">}(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">);</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.Copy set1 to set2</span>
+</div></li><li><div class="line"><span class="nv">%set2</span> <span class="o">=</span> <span class="nv">%set1</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#3.Empty set1 then print it</span>
+</div></li><li><div class="line"><span class="nb">map</span> <span class="p">{</span> <span class="nb">delete</span> <span class="nv">$set1</span><span class="p">{</span><span class="nv">$_</span><span class="p">}</span> <span class="p">}</span> <span class="nb">keys</span> <span class="nv">%set1</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;$_ &quot;</span> <span class="k">foreach</span><span class="p">(</span><span class="nb">keys</span> <span class="nv">%set1</span><span class="p">);</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#4.print set2</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;$_ &quot;</span> <span class="k">foreach</span><span class="p">(</span><span class="nb">keys</span> <span class="nv">%set2</span><span class="p">);</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a set named set1
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Copy set1 to set2
+</div></li><li><div class="line">
+</div></li><li><div class="line">#3.Empty set1 then print it
+</div></li><li><div class="line">
+</div></li><li><div class="line">#4.print set2
+</div></li><li><div class="line">6 0 2 8 4
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create a set named set1</span>
+</div></li><li><div class="line"><span class="n">set1</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">])</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Copy set1 to set2</span>
+</div></li><li><div class="line"><span class="c">#  set2 is only a pointer to set1</span>
+</div></li><li><div class="line"><span class="n">set2</span> <span class="o">=</span> <span class="n">set1</span>
+</div></li><li><div class="line"><span class="c">#  do a shallow copy to set3</span>
+</div></li><li><div class="line"><span class="n">set3</span> <span class="o">=</span> <span class="n">set1</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#3.Empty set1 then print it</span>
+</div></li><li><div class="line"><span class="n">set1</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">set1</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#4.print set2</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">set2</span>
+</div></li><li><div class="line"><span class="c">#  print set3</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">set3</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a set named set1 
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Copy set1 to set2 
+</div></li><li><div class="line">#  set2 is only a pointer to set1 
+</div></li><li><div class="line">#  do a shallow copy to set3 
+</div></li><li><div class="line">
+</div></li><li><div class="line">#3.Empty set1 then print it 
+</div></li><li><div class="line">set([])
+</div></li><li><div class="line">
+</div></li><li><div class="line">#4.print set2 
+</div></li><li><div class="line">set([])
+</div></li><li><div class="line">#  print set3 
+</div></li><li><div class="line">set([0, 8, 2, 4, 6])
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="Get intersection of two sets" href="#Set">Set: Get intersection of two sets </a></h4>
+		  <pre class="xdesc"></pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.Create two sets
+2.Get intersection of the two sets
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>4</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create two sets</span>
+</div></li><li><div class="line"><span class="nb">declare</span> -A <span class="nv">set1</span><span class="o">=</span><span class="s1">&#39;([0]=&quot;1&quot; [2]=&quot;1&quot; [4]=&quot;1&quot; [6]=&quot;1&quot; [8]=&quot;1&quot; )&#39;</span>
+</div></li><li><div class="line"><span class="nb">declare</span> -A <span class="nv">set2</span><span class="o">=</span><span class="s1">&#39;([0]=&quot;1&quot; [3]=&quot;1&quot; [6]=&quot;1&quot; [9]=&quot;1&quot; )&#39;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Get intersection of the two sets</span>
+</div></li><li><div class="line"><span class="nv">oldIFS</span><span class="o">=</span><span class="nv">$IFS</span> <span class="nv">IFS</span><span class="o">=</span><span class="s1">$&#39;\n\t&#39;</span>
+</div></li><li><div class="line"><span class="nv">arri</span><span class="o">=(</span><span class="k">$(</span>comm -12  &lt;<span class="o">(</span><span class="nb">echo</span> <span class="s2">&quot;${!set1[*]}&quot;</span>|sort<span class="k">)</span> &lt;<span class="o">(</span><span class="nb">echo</span> <span class="s2">&quot;${!set2[*]}&quot;</span>|sort<span class="o">)))</span>
+</div></li><li><div class="line"><span class="nv">IFS</span><span class="o">=</span><span class="nv">$oldIFS</span>
+</div></li><li><div class="line"><span class="nb">declare</span> -A seti
+</div></li><li><div class="line"><span class="k">for </span>i in <span class="s2">&quot;${arri[@]}&quot;</span>; <span class="k">do </span>seti<span class="o">[</span><span class="nv">$i</span><span class="o">]=</span>1; <span class="k">done</span>
+</div></li><li><div class="line"><span class="nb">declare</span> -p seti
+</div></li><li><div class="line">
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create two sets
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Get intersection of the two sets
+</div></li><li><div class="line">declare -A seti=&#39;([0]=&quot;1&quot; [6]=&quot;1&quot; )&#39;
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#1.Create two sets</span>
+</div></li><li><div class="line"><span class="nv">%set1</span> <span class="o">=</span> <span class="nb">map</span> <span class="p">{</span> <span class="nv">$_</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">}(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">);</span>
+</div></li><li><div class="line"><span class="nv">%set2</span> <span class="o">=</span> <span class="nb">map</span> <span class="p">{</span> <span class="nv">$_</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">}(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">);</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.Get intersection of the two sets</span>
+</div></li><li><div class="line"><span class="c1">#  for each $_ in %set1, lookup it in $set2, if found,it&#39;s eligable</span>
+</div></li><li><div class="line"><span class="nv">%seti</span> <span class="o">=</span> <span class="nb">map</span> <span class="p">{</span> <span class="nv">$_</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">}</span> <span class="nb">grep</span> <span class="p">{</span> <span class="nv">$set2</span><span class="p">{</span><span class="nv">$_</span><span class="p">}</span> <span class="p">}</span> <span class="nb">keys</span> <span class="nv">%set1</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;$_ &quot;</span> <span class="k">foreach</span><span class="p">(</span><span class="nb">keys</span> <span class="nv">%seti</span><span class="p">);</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create two sets
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Get intersection of the two sets
+</div></li><li><div class="line">#  for each  in %set1, lookup it in , if found,it&#39;s eligable
+</div></li><li><div class="line">6 0
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create two sets</span>
+</div></li><li><div class="line"><span class="n">set1</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">])</span>
+</div></li><li><div class="line"><span class="n">set2</span> <span class="o">=</span> <span class="nb">set</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Get intersection of the two sets</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">set1</span> <span class="o">&amp;</span> <span class="n">set2</span>
+</div></li><li><div class="line"><span class="c">#  or use intersection() function</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">set1</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">set2</span><span class="p">)</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create two sets 
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Get intersection of the two sets 
+</div></li><li><div class="line">set([0, 6])
+</div></li><li><div class="line">#  or use intersection() function 
+</div></li><li><div class="line">set([0, 6])
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="Get difference of two sets" href="#Set">Set: Get difference of two sets </a></h4>
+		  <pre class="xdesc"></pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.Create two sets
+2.Get difference of the two sets
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>4</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create two sets</span>
+</div></li><li><div class="line"><span class="nb">declare</span> -A <span class="nv">set1</span><span class="o">=</span><span class="s1">&#39;([0]=&quot;1&quot; [2]=&quot;1&quot; [4]=&quot;1&quot; [6]=&quot;1&quot; [8]=&quot;1&quot; )&#39;</span>
+</div></li><li><div class="line"><span class="nb">declare</span> -A <span class="nv">set2</span><span class="o">=</span><span class="s1">&#39;([0]=&quot;1&quot; [3]=&quot;1&quot; [6]=&quot;1&quot; [9]=&quot;1&quot; )&#39;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Get difference of the two sets</span>
+</div></li><li><div class="line"><span class="nv">oldIFS</span><span class="o">=</span><span class="nv">$IFS</span> <span class="nv">IFS</span><span class="o">=</span><span class="s1">$&#39;\n\t&#39;</span>
+</div></li><li><div class="line"><span class="nv">arrd</span><span class="o">=(</span><span class="k">$(</span>comm -23  &lt;<span class="o">(</span><span class="nb">echo</span> <span class="s2">&quot;${!set1[*]}&quot;</span>|sort<span class="k">)</span> &lt;<span class="o">(</span><span class="nb">echo</span> <span class="s2">&quot;${!set2[*]}&quot;</span>|sort<span class="o">)))</span>
+</div></li><li><div class="line"><span class="nv">IFS</span><span class="o">=</span><span class="nv">$oldIFS</span>
+</div></li><li><div class="line"><span class="nb">declare</span> -A setd
+</div></li><li><div class="line"><span class="k">for </span>i in <span class="s2">&quot;${arrd[@]}&quot;</span>; <span class="k">do </span>setd<span class="o">[</span><span class="nv">$i</span><span class="o">]=</span>1; <span class="k">done</span>
+</div></li><li><div class="line"><span class="nb">declare</span> -p setd
+</div></li><li><div class="line">
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create two sets
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Get difference of the two sets
+</div></li><li><div class="line">declare -A setd=&#39;([2]=&quot;1&quot; [4]=&quot;1&quot; [8]=&quot;1&quot; )&#39;
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#1.Create two sets</span>
+</div></li><li><div class="line"><span class="nv">%set1</span> <span class="o">=</span> <span class="nb">map</span> <span class="p">{</span> <span class="nv">$_</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">}(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">);</span>
+</div></li><li><div class="line"><span class="nv">%set2</span> <span class="o">=</span> <span class="nb">map</span> <span class="p">{</span> <span class="nv">$_</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">}(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">);</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.Get difference of the two sets</span>
+</div></li><li><div class="line"><span class="c1">#  for each $_ in %set1, lookup it in $set2, if not found,it&#39;s eligable</span>
+</div></li><li><div class="line"><span class="nv">%setd</span> <span class="o">=</span> <span class="nb">map</span> <span class="p">{</span> <span class="nv">$_</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">}</span> <span class="nb">grep</span> <span class="p">{</span> <span class="ow">not</span> <span class="nv">$set2</span><span class="p">{</span><span class="nv">$_</span><span class="p">}</span> <span class="p">}</span> <span class="nb">keys</span> <span class="nv">%set1</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;$_ &quot;</span> <span class="k">foreach</span><span class="p">(</span><span class="nb">keys</span> <span class="nv">%setd</span><span class="p">);</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create two sets
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Get difference of the two sets
+</div></li><li><div class="line">#  for each  in %set1, lookup it in , if not found,it&#39;s eligable
+</div></li><li><div class="line">2 8 4
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create two sets</span>
+</div></li><li><div class="line"><span class="n">set1</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">])</span>
+</div></li><li><div class="line"><span class="n">set2</span> <span class="o">=</span> <span class="nb">set</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Get difference of the two sets</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">set1</span> <span class="o">-</span> <span class="n">set2</span>
+</div></li><li><div class="line"><span class="c">#  or use difference() function</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">set1</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">set2</span><span class="p">)</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create two sets 
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Get difference of the two sets 
+</div></li><li><div class="line">set([8, 2, 4])
+</div></li><li><div class="line">#  or use difference() function 
+</div></li><li><div class="line">set([8, 2, 4])
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="Get union of two sets" href="#Set">Set: Get union of two sets </a></h4>
+		  <pre class="xdesc"></pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.Create two sets
+2.Get union of the two sets
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>4</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create two sets</span>
+</div></li><li><div class="line"><span class="nb">declare</span> -A <span class="nv">set1</span><span class="o">=</span><span class="s1">&#39;([0]=&quot;1&quot; [2]=&quot;1&quot; [4]=&quot;1&quot; [6]=&quot;1&quot; [8]=&quot;1&quot; )&#39;</span>
+</div></li><li><div class="line"><span class="nb">declare</span> -A <span class="nv">set2</span><span class="o">=</span><span class="s1">&#39;([0]=&quot;1&quot; [3]=&quot;1&quot; [6]=&quot;1&quot; [9]=&quot;1&quot; )&#39;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Get union of the two sets</span>
+</div></li><li><div class="line"><span class="nv">oldIFS</span><span class="o">=</span><span class="nv">$IFS</span> <span class="nv">IFS</span><span class="o">=</span><span class="s1">$&#39;\n\t&#39;</span>
+</div></li><li><div class="line"><span class="nv">arru</span><span class="o">=(</span><span class="k">$(</span>comm  &lt;<span class="o">(</span><span class="nb">echo</span> <span class="s2">&quot;${!set1[*]}&quot;</span>|sort<span class="k">)</span> &lt;<span class="o">(</span><span class="nb">echo</span> <span class="s2">&quot;${!set2[*]}&quot;</span>|sort<span class="o">)))</span>
+</div></li><li><div class="line"><span class="nv">IFS</span><span class="o">=</span><span class="nv">$oldIFS</span>
+</div></li><li><div class="line"><span class="nb">declare</span> -A setu
+</div></li><li><div class="line"><span class="k">for </span>i in <span class="s2">&quot;${arru[@]}&quot;</span>; <span class="k">do </span>setu<span class="o">[</span><span class="nv">$i</span><span class="o">]=</span>1; <span class="k">done</span>
+</div></li><li><div class="line"><span class="nb">declare</span> -p setu
+</div></li><li><div class="line">
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create two sets
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Get union of the two sets
+</div></li><li><div class="line">declare -A setu=&#39;([0]=&quot;1&quot; [2]=&quot;1&quot; [3]=&quot;1&quot; [4]=&quot;1&quot; [6]=&quot;1&quot; [8]=&quot;1&quot; [9]=&quot;1&quot; )&#39;
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#1.Create two sets</span>
+</div></li><li><div class="line"><span class="nv">%set1</span> <span class="o">=</span> <span class="nb">map</span> <span class="p">{</span> <span class="nv">$_</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">}(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">);</span>
+</div></li><li><div class="line"><span class="nv">%set2</span> <span class="o">=</span> <span class="nb">map</span> <span class="p">{</span> <span class="nv">$_</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">}(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">);</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.Get union of the two sets</span>
+</div></li><li><div class="line"><span class="c1">#  merge the two array from keys of set1 and set2</span>
+</div></li><li><div class="line"><span class="nv">%setu</span> <span class="o">=</span> <span class="nb">map</span> <span class="p">{</span> <span class="nv">$_</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">}</span> <span class="nb">keys</span> <span class="nv">%set1</span><span class="p">,</span> <span class="nb">keys</span> <span class="nv">%set2</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;$_ &quot;</span> <span class="k">foreach</span><span class="p">(</span><span class="nb">keys</span> <span class="nv">%setu</span><span class="p">);</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create two sets
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Get union of the two sets
+</div></li><li><div class="line">#  merge the two array from keys of set1 and set2
+</div></li><li><div class="line">0 2 8 6 4 3 9
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create two sets</span>
+</div></li><li><div class="line"><span class="n">set1</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">])</span>
+</div></li><li><div class="line"><span class="n">set2</span> <span class="o">=</span> <span class="nb">set</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Get union of the two sets</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">set1</span> <span class="o">|</span> <span class="n">set2</span>
+</div></li><li><div class="line"><span class="c">#  or use union() function</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">set1</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">set2</span><span class="p">)</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create two sets 
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Get union of the two sets 
+</div></li><li><div class="line">set([0, 2, 3, 4, 6, 8, 9])
+</div></li><li><div class="line">#  or use union() function 
+</div></li><li><div class="line">set([0, 2, 3, 4, 6, 8, 9])
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+
+        </div>
+     
+        <aside class="large-1 columns">
+          <h5>Categories</h5>
+          
+          <ul class="side-nav">
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../1/index.html">Regex</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../2/index.html">String</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../3/index.html">Array</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  class="selected"  ><a href="index.html">Set</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../5/index.html">Map</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../6/index.html">Variables</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../7/index.html">Special variables</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../8/index.html">Function</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../9/index.html">Command line</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../10/index.html">Flow control</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../11/index.html">Input</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../12/index.html">Path</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../13/index.html">Logging</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../14/index.html">Threading</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../15/index.html">Html</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../16/index.html">Miscellaneous</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../17/index.html">Help</a></li>
+            
+          </ul>
+          
+     
+        </aside>
+         
+      </div>
+
+      <footer class="row">
+        <div class="large-12 columns">
+          <hr/>
+          <div class="row">
+            <div class="large-6 columns">
+              <p>© Evan Liu.   (liuenmao@hotmail.com)</p>
+            </div>
+            <div class="large-6 columns">
+            </div>
+          </div>
+        </div>
+      </footer>
+</body>    
+
+<!-- Mirrored from 118.193.213.195/bash_perl_python/4/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 16 May 2018 07:24:14 GMT -->
+</html>

@@ -1,0 +1,579 @@
+
+
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" data-useragent="Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)">
+
+<!-- Mirrored from 118.193.213.195/bash_perl_python/12/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 16 May 2018 07:24:14 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta name="google-site-verification" content="qms_3-ElBGujHuD2zwSZLcW8jmlJ7WG5W3JoK67ArzY" />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Path in Bash, Perl, Python </title>
+<meta name="description" content="Bash, Perl and Python comparison."/>
+<meta name="keywords" content="Bash,Perl,Python"/>
+<meta name="author" content="Enmao Liu"/>
+<meta name="copyright" content="Enmao Liu@shanghai"/>
+<link rel="stylesheet" type="text/css" href="../../static/downloads/foundation.css"/>
+<link rel="stylesheet" type="text/css" href="../../static/downloads/pygmts_def.css"/>
+<link rel="stylesheet" type="text/css" href="../../static/downloads/app.css"/>
+<script src="../../static/downloads/modernizr.js"></script>
+</head>
+<body>
+<!--
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- test -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5197746177913810"
+     data-ad-slot="1965669484"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script -->
+<div class="row">
+ <!--a href="http://core.weloveservers.net/aff.php?aff=923" rel="nofollow"><img src="https://core.weloveservers.net/uploads/vps-970X90.jpg" width="970" height="90" border="0"></a-->
+</div>
+    <div class="row">
+       <!--div class="large-12 columns"-->
+         <div class="nav-bar right">
+           <ul class="button-group">
+             <li><a href="https://www.facebook.com/liuenmao" class="button">Facebook</a></li>
+             <li><a href="https://www.youtube.com/user/neutrino0717" class="button">Youtube</a></li>
+             <li><a href="https://twitter.com/neutrino0717" class="button">Twitter</a></li>
+             <li><a href="https://www.linkedin.com/pub/evan-liu/51/5a6/748" class="button">Linkedin</a></li>
+            </ul>
+          </div>
+          <h1>Coding <small>Bash vs. Perl vs. Python (by Evan Liu) </small></h1>
+          <hr/>
+        <!--/div-->
+      </div>
+
+      <div class="row">
+        <div class="large-11 columns" role="content">
+ 
+         <h3><a name="Path">Topics about  path  </a></h3>
+         <ul>
+
+         <li>
+         <a href="#get the dirname of a full path">get the dirname of a full path</a> 
+         </li>
+
+         <li>
+         <a href="#get the basename of a full path">get the basename of a full path</a> 
+         </li>
+
+         <li>
+         <a href="#get the path of current script">get the path of current script</a> 
+         </li>
+
+         <li>
+         <a href="#get the current working dir">get the current working dir</a> 
+         </li>
+
+         <li>
+         <a href="#how to change working dir">how to change working dir</a> 
+         </li>
+
+         </ul>
+
+          <article>
+		  <h4><a name="get the dirname of a full path" href="#Path">Path: get the dirname of a full path </a></h4>
+		  <pre class="xdesc"></pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.1. define a variable with value of a file&#39;s full path
+2.2. print the directory of the file
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>12</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.1. define a variable with value of a file&#39;s full path</span>
+</div></li><li><div class="line"><span class="nv">myfile</span><span class="o">=</span><span class="s2">&quot;/home/remote/5th Jun/bash perl python.txt&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.2. print the directory of the file</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="s2">&quot;`dirname &quot;</span><span class="nv">$myfile</span><span class="s2">&quot;`&quot;</span>
+</div></li><li><div class="line"><span class="c">#  another way</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="s2">&quot;${myfile%/*}&quot;</span>
+</div></li><li><div class="line"><span class="c">#  the 3rd way, use regular expression</span>
+</div></li><li><div class="line">sed <span class="s2">&quot;s/\(.*\)\/.*/\1/&quot;</span> <span class="o">&lt;&lt;&lt;</span><span class="s2">&quot;$myfile&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.1. define a variable with value of a file&#39;s full path
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.2. print the directory of the file
+</div></li><li><div class="line">/home/remote/5th Jun
+</div></li><li><div class="line">#  another way
+</div></li><li><div class="line">/home/remote/5th Jun
+</div></li><li><div class="line">#  the 3rd way, use regular expression
+</div></li><li><div class="line">/home/remote/5th Jun
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="k">use</span> <span class="n">feature</span> <span class="s">&quot;:5.10&quot;</span> <span class="p">;</span>
+</div></li><li><div class="line"><span class="k">use</span> <span class="n">Cwd</span> <span class="sx">qw(abs_path cwd)</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="k">use</span> <span class="nn">File::</span><span class="n">Basename</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="c1">#1.1. define a variable with value of a file&#39;s full path</span>
+</div></li><li><div class="line"><span class="nv">$mypath</span><span class="o">=</span><span class="s">&quot;/home/remote/5th Jun/bash perl python.txt&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.2. print the directory of the file</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">dirname</span><span class="p">(</span><span class="nv">$mypath</span><span class="p">)</span><span class="o">.</span><span class="s">&quot;\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="c1">#  another way, use regex</span>
+</div></li><li><div class="line"><span class="nv">$mypath</span> <span class="o">=~</span> <span class="sr">s/(.*)\/.*/\1/</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="nv">$mypath</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.1. define a variable with value of a file&#39;s full path
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.2. print the directory of the file
+</div></li><li><div class="line">/home/remote/5th Jun
+</div></li><li><div class="line">#  another way, use regex
+</div></li><li><div class="line">/home/remote/5th Jun
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="kn">import</span> <span class="nn">os</span>
+</div></li><li><div class="line"><span class="c">#1.1. define a variable with value of a file&#39;s full path</span>
+</div></li><li><div class="line"><span class="n">mypath</span><span class="o">=</span><span class="s">&quot;/home/remote/5th Jun/bash perl python.txt&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.2. print the directory of the file</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">mypath</span><span class="p">))</span>
+</div></li><li><div class="line"><span class="c">#  or use os.path.split</span>
+</div></li><li><div class="line"><span class="n">dname</span><span class="p">,</span> <span class="n">fname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">mypath</span><span class="p">)</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">dname</span>
+</div></li><li><div class="line"><span class="c">#  or use regex</span>
+</div></li><li><div class="line"><span class="kn">import</span> <span class="nn">re</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">r&#39;(.*)\/.*&#39;</span><span class="p">,</span> <span class="s">r&#39;\1&#39;</span><span class="p">,</span> <span class="n">mypath</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">M</span><span class="p">)</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.1. define a variable with value of a file&#39;s full path 
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.2. print the directory of the file 
+</div></li><li><div class="line">/home/remote/5th Jun
+</div></li><li><div class="line">#  or use os.path.split 
+</div></li><li><div class="line">/home/remote/5th Jun
+</div></li><li><div class="line">#  or use regex 
+</div></li><li><div class="line">/home/remote/5th Jun
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="get the basename of a full path" href="#Path">Path: get the basename of a full path </a></h4>
+		  <pre class="xdesc"></pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.1. define a variable with value of a file&#39;s full path
+2.2. print the filename of the file
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>12</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.1. define a variable with value of a file&#39;s full path</span>
+</div></li><li><div class="line"><span class="nv">myfile</span><span class="o">=</span><span class="s2">&quot;/home/remote/5th Jun/bash perl python.txt&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.2. print the filename of the file</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="s2">&quot;`basename &quot;</span><span class="nv">$myfile</span><span class="s2">&quot;`&quot;</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="s2">&quot;`basename &quot;</span><span class="nv">$myfile</span><span class="s2">&quot; &quot;</span>.txt<span class="s2">&quot;`&quot;</span>
+</div></li><li><div class="line"><span class="c">#  or</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="s2">&quot;${myfile##*/}&quot;</span>
+</div></li><li><div class="line"><span class="c">#  or use awk</span>
+</div></li><li><div class="line">awk -F/ <span class="s1">&#39;{print $NF}&#39;</span> <span class="o">&lt;&lt;&lt;</span><span class="s2">&quot;$myfile&quot;</span>
+</div></li><li><div class="line"><span class="c">#  or use sed</span>
+</div></li><li><div class="line">sed <span class="s2">&quot;s/.*\///&quot;</span> <span class="o">&lt;&lt;&lt;</span><span class="s2">&quot;$myfile&quot;</span>
+</div></li><li><div class="line">sed <span class="s2">&quot;s/.*\/\(.*\)/\1/&quot;</span> <span class="o">&lt;&lt;&lt;</span><span class="s2">&quot;$myfile&quot;</span>
+</div></li><li><div class="line"><span class="c">#  or use rev and cut</span>
+</div></li><li><div class="line">rev <span class="o">&lt;&lt;&lt;</span><span class="s2">&quot;$myfile&quot;</span> |cut -d<span class="s2">&quot;/&quot;</span> -f 1 |rev
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.1. define a variable with value of a file&#39;s full path
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.2. print the filename of the file
+</div></li><li><div class="line">bash perl python.txt
+</div></li><li><div class="line">bash perl python
+</div></li><li><div class="line">#  or
+</div></li><li><div class="line">bash perl python.txt
+</div></li><li><div class="line">#  or use awk
+</div></li><li><div class="line">bash perl python.txt
+</div></li><li><div class="line">#  or use sed
+</div></li><li><div class="line">bash perl python.txt
+</div></li><li><div class="line">bash perl python.txt
+</div></li><li><div class="line">#  or use rev and cut
+</div></li><li><div class="line">bash perl python.txt
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="k">use</span> <span class="n">feature</span> <span class="s">&quot;:5.10&quot;</span> <span class="p">;</span>
+</div></li><li><div class="line"><span class="k">use</span> <span class="n">Cwd</span> <span class="sx">qw(abs_path cwd)</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="k">use</span> <span class="nn">File::</span><span class="n">Basename</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="c1">#1.1. define a variable with value of a file&#39;s full path</span>
+</div></li><li><div class="line"><span class="nv">$mypath</span><span class="o">=</span><span class="s">&quot;/home/remote/5th Jun/bash perl python.txt&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.2. print the filename of the file</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">basename</span><span class="p">(</span><span class="nv">$mypath</span><span class="p">);</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.1. define a variable with value of a file&#39;s full path
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.2. print the filename of the file
+</div></li><li><div class="line">bash perl python.txt
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="kn">import</span> <span class="nn">os</span>
+</div></li><li><div class="line"><span class="n">mypath</span><span class="o">=</span><span class="s">&quot;/home/remote/5th Jun/bash perl python.txt&quot;</span>
+</div></li><li><div class="line"><span class="c">#1.1. define a variable with value of a file&#39;s full path</span>
+</div></li><li><div class="line"><span class="n">dname</span><span class="p">,</span> <span class="n">fname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">mypath</span><span class="p">)</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">fname</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.2. print the filename of the file</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">mypath</span><span class="p">)</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.1. define a variable with value of a file&#39;s full path 
+</div></li><li><div class="line">bash perl python.txt
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.2. print the filename of the file 
+</div></li><li><div class="line">bash perl python.txt
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="get the path of current script" href="#Path">Path: get the path of current script </a></h4>
+		  <pre class="xdesc">1. create the script file.
+2. run the script file to get it&#39;s path</pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>12</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c"># 1.</span>
+</div></li><li><div class="line">cat &gt;/tmp/test.sh&lt;&lt;<span class="s2">&quot;EOD&quot;</span>
+</div></li><li><div class="line"><span class="c"># the perfect way</span>
+</div></li><li><div class="line"><span class="o">(</span><span class="nb">cd</span> <span class="s2">&quot;$( dirname &quot;</span><span class="k">${</span><span class="nv">BASH_SOURCE</span><span class="p">[0]</span><span class="k">}</span><span class="s2">&quot; )&quot;</span> <span class="o">&amp;&amp;</span> <span class="nb">pwd</span><span class="o">)</span>
+</div></li><li><div class="line"><span class="c"># wrong if you use: source scriptname [arguments]</span>
+</div></li><li><div class="line"><span class="o">(</span><span class="nb">cd</span> <span class="s2">&quot;$( dirname &quot;</span><span class="nv">$0</span><span class="s2">&quot; )&quot;</span> <span class="o">&amp;&amp;</span> <span class="nb">pwd</span><span class="o">)</span>
+</div></li><li><div class="line">EOD
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c"># 2.</span>
+</div></li><li><div class="line">bash /tmp/test.sh
+</div></li><li><div class="line"><span class="nb">source</span> /tmp/test.sh 2&gt;&amp;1
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line"># 1.
+</div></li><li><div class="line">
+</div></li><li><div class="line"># 2.
+</div></li><li><div class="line"># the perfect way
+</div></li><li><div class="line">/tmp
+</div></li><li><div class="line"># wrong if you use: source scriptname [arguments]
+</div></li><li><div class="line">/tmp
+</div></li><li><div class="line"># the perfect way
+</div></li><li><div class="line">/tmp
+</div></li><li><div class="line"># wrong if you use: source scriptname [arguments]
+</div></li><li><div class="line">/home/neutrino0717/bash4u
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1"># 1.</span>
+</div></li><li><div class="line"><span class="n">cat</span> <span class="o">&gt;</span><span class="sr">/tmp/</span><span class="n">test</span><span class="o">.</span><span class="n">pl</span><span class="s">&lt;&lt;&quot;EOF&quot;</span>
+</div></li><li><div class="line"><span class="s">use Cwd &#39;abs_path&#39;;</span>
+</div></li><li><div class="line"><span class="s">print abs_path($0);</span>
+</div></li><li><div class="line"><span class="s">EOF</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#  2.</span>
+</div></li><li><div class="line"><span class="n">perl</span> <span class="sr">/tmp/</span><span class="n">test</span><span class="o">.</span><span class="n">pl</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">/tmp/test.pl
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c"># 1.</span>
+</div></li><li><div class="line"><span class="n">cat</span> <span class="o">&gt;/</span><span class="n">tmp</span><span class="o">/</span><span class="n">test</span><span class="o">.</span><span class="n">py</span><span class="o">&lt;&lt;</span><span class="s">&quot;EOF&quot;</span>
+</div></li><li><div class="line"><span class="kn">import</span> <span class="nn">os</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">__file__</span><span class="p">))</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">__file__</span><span class="p">))</span>
+</div></li><li><div class="line"><span class="n">EOF</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c"># 2.</span>
+</div></li><li><div class="line"><span class="n">python</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">test</span><span class="o">.</span><span class="n">py</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">/tmp
+</div></li><li><div class="line">/tmp
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="get the current working dir" href="#Path">Path: get the current working dir </a></h4>
+		  <pre class="xdesc">In bash:
+A good practice is to use subshell,and thus will not affect the working directory of parent shell.
+alias new_job=&#39;(cd /boot; pwd; echo &quot;in subshell: $$ $BASHPID. working dir: `pwd`&quot;)&#39;</pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>12</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="nb">echo</span> <span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">/home/neutrino0717/bash4u
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#get the currnet working directory</span>
+</div></li><li><div class="line"><span class="k">use</span> <span class="n">Cwd</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">getcwd</span><span class="p">();</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#get the currnet working directory
+</div></li><li><div class="line">/home/neutrino0717/bash4u
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="kn">import</span> <span class="nn">os</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">/home/neutrino0717/bash4u
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="how to change working dir" href="#Path">Path: how to change working dir </a></h4>
+		  <pre class="xdesc">In bash:
+If you are running bash v4 or better, the PID of the subshell is available in $BASHPID.
+
+In python:
+The best way is to use File::chdir and $CWD variable
+Using below maybe problematic in case of exeptions:
+  my $cwd_orig = cwd;
+  chdir &quot;$cwd_new&quot;;
+  #do some work...
+  chdir $cwd_origin;</pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>12</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#start subshell</span>
+</div></li><li><div class="line"><span class="nb">cd</span> /bin
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="s2">&quot;In parshell: $$ $BASHPID. working dir: `pwd`&quot;</span>
+</div></li><li><div class="line"><span class="o">(</span><span class="nb">cd</span> /home; <span class="nb">echo</span> <span class="s2">&quot;in subshell: $$ $BASHPID. working dir: `pwd`&quot;</span><span class="o">)</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="s2">&quot;In parshell: $$ $BASHPID. working dir: `pwd`&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#start subshell
+</div></li><li><div class="line">In parshell: 18964 18964. working dir: /bin
+</div></li><li><div class="line">in subshell: 18964 18966. working dir: /home
+</div></li><li><div class="line">In parshell: 18964 18964. working dir: /bin
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1"># </span>
+</div></li><li><div class="line"><span class="k">use</span> <span class="n">Cwd</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="k">use</span> <span class="nn">File::</span><span class="n">chdir</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="nb">chdir</span> <span class="s">&quot;/media&quot;</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;in main, working dir: &quot;</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span><span class="o">.</span><span class="s">&quot;\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="nv">$CWD</span> <span class="o">=</span> <span class="s">&#39;/bin&#39;</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;in main, working dir: &quot;</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span><span class="o">.</span><span class="s">&quot;\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="p">{</span>
+</div></li><li><div class="line"><span class="nb">local</span> <span class="nv">$CWD</span> <span class="o">=</span> <span class="s">&quot;/home&quot;</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;in {}, working dir: &quot;</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span><span class="o">.</span><span class="s">&quot;\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="p">}</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;back to main, working dir: &quot;</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span><span class="o">.</span><span class="s">&quot;\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line"># 
+</div></li><li><div class="line">in main, working dir: /media
+</div></li><li><div class="line">in main, working dir: /bin
+</div></li><li><div class="line">in {}, working dir: /home
+</div></li><li><div class="line">back to main, working dir: /bin
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#todo</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#todo
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+
+        </div>
+     
+        <aside class="large-1 columns">
+          <h5>Categories</h5>
+          
+          <ul class="side-nav">
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../1/index.html">Regex</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../2/index.html">String</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../3/index.html">Array</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../4/index.html">Set</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../5/index.html">Map</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../6/index.html">Variables</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../7/index.html">Special variables</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../8/index.html">Function</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../9/index.html">Command line</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../10/index.html">Flow control</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../11/index.html">Input</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  class="selected"  ><a href="index.html">Path</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../13/index.html">Logging</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../14/index.html">Threading</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../15/index.html">Html</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../16/index.html">Miscellaneous</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../17/index.html">Help</a></li>
+            
+          </ul>
+          
+     
+        </aside>
+         
+      </div>
+
+      <footer class="row">
+        <div class="large-12 columns">
+          <hr/>
+          <div class="row">
+            <div class="large-6 columns">
+              <p>© Evan Liu.   (liuenmao@hotmail.com)</p>
+            </div>
+            <div class="large-6 columns">
+            </div>
+          </div>
+        </div>
+      </footer>
+</body>    
+
+<!-- Mirrored from 118.193.213.195/bash_perl_python/12/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 16 May 2018 07:24:14 GMT -->
+</html>

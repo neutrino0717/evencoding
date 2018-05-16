@@ -1,0 +1,111 @@
+.side-nav li.selected a { color: #008000; }
+
+html {
+  min-width: 640px;
+  #font-family: "Times New Roman", Times, serif;
+}
+ol {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+.side-nav li {
+  white-space: nowrap;
+}
+
+.line{
+    font-size: 0.75em;
+}
+.large-11{
+	#background:#B7DEE8;
+	background:#DCE6F1
+}
+
+.large-1{
+	#background:#B7DEE8
+	background:#DCE6F1
+}
+	
+pre {
+    white-space: pre-wrap;       /* CSS 3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+    #font-family: "Times New Roman", Times, serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Roboto",Corbel,Avenir,"Lucida Grande","Lucida Sans",sans-serif;
+}
+
+table {
+    max-width: 100%;
+	width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+} 
+
+p {
+    font-family: "Roboto",Corbel,Avenir,"Lucida Grande","Lucida Sans",sans-serif;
+}
+
+td.class_name
+{
+    #max-width: 15px;
+    #word-wrap: break-word;
+}
+
+.xdesc{
+  #font-family: Arial, Helvetica, sans-serif;
+  font-family: "Times New Roman", Times, serif;
+}
+.xcontent{
+        width:200px; 
+        max-width:200px;
+        min-width:200px; 
+        word-wrap: break-word;
+        #padding-top:1px;
+	#padding-right:1px;
+	#padding-left:1px;
+	padding: 5px;
+	mso-ignore:padding;
+	color:black;
+	font-size:0.75em;
+	text-decoration:none;
+	mso-number-format:"\@";
+	text-align:left;
+	vertical-align:top;
+	border:1.0pt solid white;
+	#background:#000000;
+        background:#D9D9D9;
+        #background:#CBCAFE;
+        #background:#C6ECC6;
+        #background:#69F;
+        #background:#C6E0B4;
+	mso-pattern:black none;
+	white-space:normal;}
+	
+.xtitle{
+	#padding-top:1px;
+	#padding-right:1px;
+	#padding-left:1px;
+	padding: 5px;
+	mso-ignore:padding;
+	color:black;
+	font-size:.0.85em;
+	text-decoration:none;
+	mso-number-format:"\@";
+	text-align:left;
+	vertical-align:top;
+	border:1.0pt solid white;
+	#background:#000000;
+	background:#D9D9D9;
+	#background:#CBCAFE;
+	#background:#C6ECC6;
+	#background:#69F;
+	#background:#C6E0B4;
+	mso-pattern:black none;
+	white-space:normal;}
+	

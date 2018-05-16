@@ -1,0 +1,1123 @@
+
+
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" data-useragent="Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)">
+
+<!-- Mirrored from 118.193.213.195/bash_perl_python/2/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 16 May 2018 07:24:12 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta name="google-site-verification" content="qms_3-ElBGujHuD2zwSZLcW8jmlJ7WG5W3JoK67ArzY" />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>String in Bash, Perl, Python </title>
+<meta name="description" content="Bash, Perl and Python comparison."/>
+<meta name="keywords" content="Bash,Perl,Python"/>
+<meta name="author" content="Enmao Liu"/>
+<meta name="copyright" content="Enmao Liu@shanghai"/>
+<link rel="stylesheet" type="text/css" href="../../static/downloads/foundation.css"/>
+<link rel="stylesheet" type="text/css" href="../../static/downloads/pygmts_def.css"/>
+<link rel="stylesheet" type="text/css" href="../../static/downloads/app.css"/>
+<script src="../../static/downloads/modernizr.js"></script>
+</head>
+<body>
+<!--
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- test -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5197746177913810"
+     data-ad-slot="1965669484"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script -->
+<div class="row">
+ <!--a href="http://core.weloveservers.net/aff.php?aff=923" rel="nofollow"><img src="https://core.weloveservers.net/uploads/vps-970X90.jpg" width="970" height="90" border="0"></a-->
+</div>
+    <div class="row">
+       <!--div class="large-12 columns"-->
+         <div class="nav-bar right">
+           <ul class="button-group">
+             <li><a href="https://www.facebook.com/liuenmao" class="button">Facebook</a></li>
+             <li><a href="https://www.youtube.com/user/neutrino0717" class="button">Youtube</a></li>
+             <li><a href="https://twitter.com/neutrino0717" class="button">Twitter</a></li>
+             <li><a href="https://www.linkedin.com/pub/evan-liu/51/5a6/748" class="button">Linkedin</a></li>
+            </ul>
+          </div>
+          <h1>Coding <small>Bash vs. Perl vs. Python (by Evan Liu) </small></h1>
+          <hr/>
+        <!--/div-->
+      </div>
+
+      <div class="row">
+        <div class="large-11 columns" role="content">
+ 
+         <h3><a name="String">Topics about  string  </a></h3>
+         <ul>
+
+         <li>
+         <a href="#Create multi-line string">Create multi-line string</a> 
+         </li>
+
+         <li>
+         <a href="#Get the length of a string">Get the length of a string</a> 
+         </li>
+
+         <li>
+         <a href="#Get a substring at a given index">Get a substring at a given index</a> 
+         </li>
+
+         <li>
+         <a href="#Get index of a substring">Get index of a substring</a> 
+         </li>
+
+         <li>
+         <a href="#Replace a substring">Replace a substring</a> 
+         </li>
+
+         <li>
+         <a href="#Capitalize a string">Capitalize a string</a> 
+         </li>
+
+         <li>
+         <a href="#Check if a variable is empty">Check if a variable is empty</a> 
+         </li>
+
+         <li>
+         <a href="#Remove leading and tailing whitespaces">Remove leading and tailing whitespaces</a> 
+         </li>
+
+         <li>
+         <a href="#Concatenate two strings">Concatenate two strings</a> 
+         </li>
+
+         <li>
+         <a href="#Split string into array">Split string into array</a> 
+         </li>
+
+         </ul>
+
+          <article>
+		  <h4><a name="Create multi-line string" href="#String">String: Create multi-line string </a></h4>
+		  <pre class="xdesc"></pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.Create a multi-line string
+2.Print the string
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>2</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create a multi-line string</span>
+</div></li><li><div class="line"><span class="nb">read</span> -r -d <span class="s1">&#39;&#39;</span> mstr <span class="s">&lt;&lt;&#39;EOD&#39;</span>
+</div></li><li><div class="line"><span class="s">This is a string with muliple lines</span>
+</div></li><li><div class="line"><span class="s">escaple exmaple: &quot;hello\nworld!&quot;</span>
+</div></li><li><div class="line"><span class="s">Variable examples: $PS1, $SHELL, $USER, $$</span>
+</div></li><li><div class="line"><span class="s">DIR=$(pwd)</span>
+</div></li><li><div class="line"><span class="s">list or array examples: @list</span>
+</div></li><li><div class="line"><span class="s">hash examples: %map</span>
+</div></li><li><div class="line"><span class="s">EOD</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Print the string</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="s2">&quot;\$mstr=$mstr&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a multi-line string
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Print the string
+</div></li><li><div class="line">$mstr=This is a string with muliple lines
+</div></li><li><div class="line">escaple exmaple: &quot;hello\nworld!&quot;
+</div></li><li><div class="line">Variable examples: $PS1, $SHELL, $USER, $$
+</div></li><li><div class="line">DIR=$(pwd)
+</div></li><li><div class="line">list or array examples: @list
+</div></li><li><div class="line">hash examples: %map
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#1.Create a multi-line string</span>
+</div></li><li><div class="line"><span class="k">my</span> <span class="nv">$mstr</span> <span class="o">=</span> <span class="s">&lt;&lt;&#39;EOD&#39;;</span>
+</div></li><li><div class="line"><span class="s">This is a string with muliple lines</span>
+</div></li><li><div class="line"><span class="s">escaple exmaple: &quot;hello\nworld!&quot;</span>
+</div></li><li><div class="line"><span class="s">Variable examples: $PS1, $SHELL, $USER, $$</span>
+</div></li><li><div class="line"><span class="s">DIR=$(pwd)</span>
+</div></li><li><div class="line"><span class="s">list or array examples: @list</span>
+</div></li><li><div class="line"><span class="s">hash examples: %map</span>
+</div></li><li><div class="line"><span class="s">EOD</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.Print the string</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;\$mstr=$mstr\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a multi-line string
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Print the string
+</div></li><li><div class="line">$mstr=This is a string with muliple lines
+</div></li><li><div class="line">escaple exmaple: &quot;hello\nworld!&quot;
+</div></li><li><div class="line">Variable examples: $PS1, $SHELL, $USER, $$
+</div></li><li><div class="line">DIR=$(pwd)
+</div></li><li><div class="line">list or array examples: @list
+</div></li><li><div class="line">hash examples: %map
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create a multi-line string</span>
+</div></li><li><div class="line"><span class="n">mstr</span> <span class="o">=</span> <span class="s">r&#39;&#39;&#39;This is a string with muliple lines</span>
+</div></li><li><div class="line"><span class="s">escaple exmaple: &quot;hello\nworld!&quot;</span>
+</div></li><li><div class="line"><span class="s">Variable examples: $PS1, $SHELL, $USER, $$</span>
+</div></li><li><div class="line"><span class="s">DIR=$(pwd)</span>
+</div></li><li><div class="line"><span class="s">list or array examples: @list</span>
+</div></li><li><div class="line"><span class="s">hash examples: %map&#39;&#39;&#39;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Print the string</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;mstr=</span><span class="si">%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="o">%</span> <span class="n">mstr</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a multi-line string 
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Print the string 
+</div></li><li><div class="line">mstr=This is a string with muliple lines
+</div></li><li><div class="line">escaple exmaple: &quot;hello\nworld!&quot;
+</div></li><li><div class="line">Variable examples: $PS1, $SHELL, $USER, $$
+</div></li><li><div class="line">DIR=$(pwd)
+</div></li><li><div class="line">list or array examples: @list
+</div></li><li><div class="line">hash examples: %map
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="Get the length of a string" href="#String">String: Get the length of a string </a></h4>
+		  <pre class="xdesc"></pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.Assign a string to a variable
+2.Get the length of the string
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>2</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Assign a string to a variable</span>
+</div></li><li><div class="line"><span class="nv">name</span><span class="o">=</span><span class="s2">&quot;Scarborough Fair&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Get the length of the string</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="k">${#</span><span class="nv">name</span><span class="k">}</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Assign a string to a variable
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Get the length of the string
+</div></li><li><div class="line">16
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#1.Assign a string to a variable</span>
+</div></li><li><div class="line"><span class="nv">$name</span><span class="o">=</span><span class="s">&quot;Scarborough Fair&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.Get the length of the string</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="nb">length</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span><span class="o">.</span><span class="s">&quot;\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Assign a string to a variable
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Get the length of the string
+</div></li><li><div class="line">16
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Assign a string to a variable</span>
+</div></li><li><div class="line"><span class="n">name</span><span class="o">=</span><span class="s">&quot;Scarborough Fair&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Get the length of the string</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="nb">len</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Assign a string to a variable 
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Get the length of the string 
+</div></li><li><div class="line">16
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="Get a substring at a given index" href="#String">String: Get a substring at a given index </a></h4>
+		  <pre class="xdesc"></pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.Assign a string to a variable.
+2.Print 5 chars starting from index 6, the output should be &quot;rough&quot;.
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>2</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Assign a string to a variable.</span>
+</div></li><li><div class="line"><span class="nv">name</span><span class="o">=</span><span class="s2">&quot;Scarborough Fair&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Print 5 chars starting from index 6, the output should be &quot;rough&quot;.</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="s2">&quot;substr: ${name:6:5}&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Assign a string to a variable.
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Print 5 chars starting from index 6, the output should be rough.
+</div></li><li><div class="line">substr: rough
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#1.Assign a string to a variable.</span>
+</div></li><li><div class="line"><span class="nv">$name</span><span class="o">=</span><span class="s">&quot;Scarborough Fair&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.Print 5 chars starting from index 6, the output should be &quot;rough&quot;.</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;substr: &quot;</span><span class="o">.</span><span class="nb">substr</span><span class="p">(</span><span class="nv">$name</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="s">&quot;\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Assign a string to a variable.
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Print 5 chars starting from index 6, the output should be &quot;rough&quot;.
+</div></li><li><div class="line">substr: rough
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Assign a string to a variable.</span>
+</div></li><li><div class="line"><span class="n">name</span><span class="o">=</span><span class="s">&quot;Scarborough Fair&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Print 5 chars starting from index 6, the output should be &quot;rough&quot;.</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;slicing:&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">[</span><span class="mi">6</span><span class="p">:</span><span class="mi">11</span><span class="p">]</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Assign a string to a variable. 
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Print 5 chars starting from index 6, the output should be &quot;rough&quot;. 
+</div></li><li><div class="line">slicing: rough
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="Get index of a substring" href="#String">String: Get index of a substring </a></h4>
+		  <pre class="xdesc"></pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.test1
+2.Assign a string to a variable.
+3.Print index of substring &quot;rough&quot;.
+4.Check if substring &quot;rough&quot; exists or not.
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>2</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.test1</span>
+</div></li><li><div class="line"><span class="nv">name</span><span class="o">=</span><span class="s2">&quot;Scarborough Fair&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Assign a string to a variable.</span>
+</div></li><li><div class="line"><span class="nv">x</span><span class="o">=</span><span class="k">${</span><span class="nv">name</span><span class="p">%%rough*</span><span class="k">}</span>
+</div></li><li><div class="line"><span class="nb">echo</span> -n <span class="s2">&quot;The index of &#39;rough&#39; is: &quot;</span>
+</div></li><li><div class="line"><span class="o">[[</span> <span class="nv">$x</span> <span class="o">=</span> <span class="nv">$name</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> -1 <span class="o">||</span> <span class="nb">echo</span> <span class="k">${#</span><span class="nv">x</span><span class="k">}</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#3.Print index of substring &quot;rough&quot;.</span>
+</div></li><li><div class="line"><span class="nv">padding</span><span class="o">=</span><span class="sb">`</span>grep -q rough <span class="o">&lt;&lt;&lt;</span><span class="s2">&quot;$name&quot;</span><span class="o">||</span> <span class="nb">echo </span>not<span class="sb">`</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="s2">&quot;&#39;rough&#39; does $padding exist in string \&quot;$name\&quot;&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.test1
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Assign a string to a variable.
+</div></li><li><div class="line">The index of &#39;rough&#39; is: 6
+</div></li><li><div class="line">
+</div></li><li><div class="line">#3.Print index of substring rough.
+</div></li><li><div class="line">&#39;rough&#39; does  exist in string &quot;Scarborough Fair&quot;
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#1.test1</span>
+</div></li><li><div class="line"><span class="nv">$name</span><span class="o">=</span><span class="s">&quot;Scarborough Fair&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.Assign a string to a variable.</span>
+</div></li><li><div class="line"><span class="nb">printf</span> <span class="s">&quot;The index of &#39;rough&#39;: %d\n&quot;</span><span class="p">,</span> <span class="nb">index</span><span class="p">(</span><span class="nv">$name</span><span class="p">,</span><span class="s">&#39;rough&#39;</span><span class="p">);</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#3.Print index of substring &quot;rough&quot;.</span>
+</div></li><li><div class="line"><span class="nb">printf</span> <span class="s">&quot;&#39;rough&#39; does%s exist in string Scarborough Fair&quot;</span><span class="p">,</span> <span class="p">(</span> <span class="nb">index</span><span class="p">(</span><span class="nv">$name</span><span class="p">,</span><span class="s">&#39;rough&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="p">)?</span> <span class="s">&quot; not&quot;</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.test1
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Assign a string to a variable.
+</div></li><li><div class="line">The index of &#39;rough&#39;: 6
+</div></li><li><div class="line">
+</div></li><li><div class="line">#3.Print index of substring &quot;rough&quot;.
+</div></li><li><div class="line">&#39;rough&#39; does exist in string Scarborough Fair
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.test1</span>
+</div></li><li><div class="line"><span class="n">name</span><span class="o">=</span><span class="s">&quot;Scarborough Fair&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Assign a string to a variable.</span>
+</div></li><li><div class="line"><span class="c">#  get exception if none found with index()</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;The index of &#39;rough&#39;:&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s">&#39;rough&#39;</span><span class="p">)</span> 
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;The index of &#39;rough&#39;:&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&#39;rough&#39;</span><span class="p">)</span> 
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#3.Print index of substring &quot;rough&quot;.</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;&#39;rough&#39; does &quot;</span><span class="o">+</span> <span class="p">(</span><span class="s">&#39;&#39;</span> <span class="k">if</span> <span class="s">&#39;rough&#39;</span> <span class="ow">in</span> <span class="n">name</span> <span class="k">else</span> <span class="s">&#39;not&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;exist in string &quot;</span><span class="o">+</span><span class="n">name</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.test1 
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Assign a string to a variable. 
+</div></li><li><div class="line">#  get exception if none found with index() 
+</div></li><li><div class="line">The index of &#39;rough&#39;: 6
+</div></li><li><div class="line">The index of &#39;rough&#39;: 6
+</div></li><li><div class="line">
+</div></li><li><div class="line">#3.Print index of substring &quot;rough&quot;. 
+</div></li><li><div class="line">&#39;rough&#39; does exist in string Scarborough Fair
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="Replace a substring" href="#String">String: Replace a substring </a></h4>
+		  <pre class="xdesc"></pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.Assign a string to a variable
+2.Replace &#39;Fair&#39; with &#39;fair&#39; for one occurrence
+3.Replace &#39;Fair&#39; with &#39;fair&#39; for all occurrences
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>2</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Assign a string to a variable</span>
+</div></li><li><div class="line"><span class="nv">name</span><span class="o">=</span><span class="s2">&quot;Scarborough Fair Fair&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Replace &#39;Fair&#39; with &#39;fair&#39; for one occurrence</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="k">${</span><span class="nv">name</span><span class="p">/Fair/fair</span><span class="k">}</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#3.Replace &#39;Fair&#39; with &#39;fair&#39; for all occurrences</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="k">${</span><span class="nv">name</span><span class="p">//Fair/fair</span><span class="k">}</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Assign a string to a variable
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Replace &#39;Fair&#39; with &#39;fair&#39; for one occurrence
+</div></li><li><div class="line">Scarborough fair Fair
+</div></li><li><div class="line">
+</div></li><li><div class="line">#3.Replace &#39;Fair&#39; with &#39;fair&#39; for all occurrences
+</div></li><li><div class="line">Scarborough fair fair
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#1.Assign a string to a variable</span>
+</div></li><li><div class="line"><span class="nv">$name</span><span class="o">=</span><span class="s">&quot;Scarborough Fair Fair&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.Replace &#39;Fair&#39; with &#39;fair&#39; for one occurrence</span>
+</div></li><li><div class="line"><span class="nv">$name</span> <span class="o">=~</span> <span class="sr">s/Fair/fair/</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="nb">printf</span> <span class="nv">$name</span><span class="o">.</span><span class="s">&quot;\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#3.Replace &#39;Fair&#39; with &#39;fair&#39; for all occurrences</span>
+</div></li><li><div class="line"><span class="nv">$name</span><span class="o">=</span><span class="s">&quot;Scarborough Fair Fair&quot;</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="nv">$name</span> <span class="o">=~</span> <span class="sr">s/Fair/fair/g</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="nb">printf</span> <span class="nv">$name</span><span class="o">.</span><span class="s">&quot;\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Assign a string to a variable
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Replace &#39;Fair&#39; with &#39;fair&#39; for one occurrence
+</div></li><li><div class="line">Scarborough fair Fair
+</div></li><li><div class="line">
+</div></li><li><div class="line">#3.Replace &#39;Fair&#39; with &#39;fair&#39; for all occurrences
+</div></li><li><div class="line">Scarborough fair fair
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Assign a string to a variable</span>
+</div></li><li><div class="line"><span class="n">name</span><span class="o">=</span><span class="s">&quot;Scarborough Fair Fair&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Replace &#39;Fair&#39; with &#39;fair&#39; for one occurrence</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;Fair&#39;</span><span class="p">,</span><span class="s">&#39;fair&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#3.Replace &#39;Fair&#39; with &#39;fair&#39; for all occurrences</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;Fair&#39;</span><span class="p">,</span><span class="s">&#39;fair&#39;</span><span class="p">)</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Assign a string to a variable 
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Replace &#39;Fair&#39; with &#39;fair&#39; for one occurrence 
+</div></li><li><div class="line">Scarborough fair Fair
+</div></li><li><div class="line">
+</div></li><li><div class="line">#3.Replace &#39;Fair&#39; with &#39;fair&#39; for all occurrences 
+</div></li><li><div class="line">Scarborough fair fair
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="Capitalize a string" href="#String">String: Capitalize a string </a></h4>
+		  <pre class="xdesc"></pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.Assign a string to a variable
+2.Change the string to Upper case 
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>2</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Assign a string to a variable</span>
+</div></li><li><div class="line"><span class="nv">name</span><span class="o">=</span><span class="s2">&quot;Scarborough Fair&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Change the string to Upper case </span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="nv">$name</span> | tr <span class="s1">&#39;[:lower:]&#39;</span> <span class="s1">&#39;[:upper:]&#39;</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="nv">$name</span> | tr <span class="s1">&#39;[:upper:]&#39;</span> <span class="s1">&#39;[:lower:]&#39;</span>
+</div></li><li><div class="line"><span class="c">#  in awk</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="nv">$name</span> | awk <span class="s1">&#39;{print toupper($0)}&#39;</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="nv">$name</span> | awk <span class="s1">&#39;{print tolower($0)}&#39;</span>
+</div></li><li><div class="line"><span class="c">#  in bash 4.0</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="k">${</span><span class="nv">name</span><span class="p">^^</span><span class="k">}</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="k">${</span><span class="nv">name</span><span class="p">,,</span><span class="k">}</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="k">${</span><span class="nv">name</span><span class="p">^</span><span class="k">}</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Assign a string to a variable
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Change the string to Upper case 
+</div></li><li><div class="line">SCARBOROUGH FAIR
+</div></li><li><div class="line">scarborough fair
+</div></li><li><div class="line">#  in awk
+</div></li><li><div class="line">SCARBOROUGH FAIR
+</div></li><li><div class="line">scarborough fair
+</div></li><li><div class="line">#  in bash 4.0
+</div></li><li><div class="line">SCARBOROUGH FAIR
+</div></li><li><div class="line">scarborough fair
+</div></li><li><div class="line">Scarborough Fair
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#1.Assign a string to a variable</span>
+</div></li><li><div class="line"><span class="nv">$name</span><span class="o">=</span><span class="s">&quot;Scarborough Fair&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.Change the string to Upper case </span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="nb">uc</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span><span class="o">.</span><span class="s">&quot;\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="nb">lc</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span><span class="o">.</span><span class="s">&quot;\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="nb">ucfirst</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span><span class="o">.</span><span class="s">&quot;\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="nb">lcfirst</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span><span class="o">.</span><span class="s">&quot;\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Assign a string to a variable
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Change the string to Upper case 
+</div></li><li><div class="line">SCARBOROUGH FAIR
+</div></li><li><div class="line">scarborough fair
+</div></li><li><div class="line">Scarborough Fair
+</div></li><li><div class="line">scarborough Fair
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Assign a string to a variable</span>
+</div></li><li><div class="line"><span class="n">name</span><span class="o">=</span><span class="s">&quot;Scarborough Fair&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Change the string to Upper case </span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">name</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">name</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">name</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Assign a string to a variable 
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Change the string to Upper case  
+</div></li><li><div class="line">SCARBOROUGH FAIR
+</div></li><li><div class="line">scarborough fair
+</div></li><li><div class="line">Scarborough fair
+</div></li><li><div class="line">Scarborough Fair
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="Check if a variable is empty" href="#String">String: Check if a variable is empty </a></h4>
+		  <pre class="xdesc">In perl
+Values are considered false if it equals &#39;&#39;, (), [], {}, 0, 0L, 0.0, 0j, False, None</pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.Define a function to check if the input is an empty string
+2.Call the function with different arguments
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>2</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Define a function to check if the input is an empty string</span>
+</div></li><li><div class="line">func1<span class="o">(){</span>
+</div></li><li><div class="line"><span class="nv">s</span><span class="o">=</span><span class="nv">$1</span>
+</div></li><li><div class="line"><span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;$s&quot;</span> <span class="o">]</span>; <span class="k">then </span><span class="nv">e1</span><span class="o">=</span><span class="s2">&quot; not&quot;</span>; <span class="k">fi</span>
+</div></li><li><div class="line"><span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;$s&quot;</span> !<span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="o">]</span>; <span class="k">then </span><span class="nv">e2</span><span class="o">=</span><span class="s2">&quot; not&quot;</span>; <span class="k">fi</span>
+</div></li><li><div class="line"><span class="k">if</span> <span class="o">[</span> -n <span class="s2">&quot;$s&quot;</span> <span class="o">]</span>; <span class="k">then </span><span class="nv">e3</span><span class="o">=</span><span class="s2">&quot; not&quot;</span>; <span class="k">fi</span>
+</div></li><li><div class="line"><span class="k">if</span> <span class="o">[</span> ! -z <span class="s2">&quot;$s&quot;</span> <span class="o">]</span>; <span class="k">then </span><span class="nv">e4</span><span class="o">=</span><span class="s2">&quot; not&quot;</span>; <span class="k">fi</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="s2">&quot;\$1 is$e1 empty&quot;</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="s2">&quot;\$1 is$e2 empty&quot;</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="s2">&quot;\$1 is$e3 empty&quot;</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="s2">&quot;\$1 is$e4 empty&quot;</span>
+</div></li><li><div class="line"><span class="o">}</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Call the function with different arguments</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Call the function with different arguments</span>
+</div></li><li><div class="line">func1
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Call the function with different arguments</span>
+</div></li><li><div class="line">func1 <span class="s2">&quot;&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Call the function with different arguments</span>
+</div></li><li><div class="line">func1 <span class="s2">&quot; &quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Define a function to check if the input is an empty string
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Call the function with different arguments
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Call the function with different arguments
+</div></li><li><div class="line">$1 is empty
+</div></li><li><div class="line">$1 is empty
+</div></li><li><div class="line">$1 is empty
+</div></li><li><div class="line">$1 is empty
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Call the function with different arguments
+</div></li><li><div class="line">$1 is empty
+</div></li><li><div class="line">$1 is empty
+</div></li><li><div class="line">$1 is empty
+</div></li><li><div class="line">$1 is empty
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Call the function with different arguments
+</div></li><li><div class="line">$1 is not empty
+</div></li><li><div class="line">$1 is not empty
+</div></li><li><div class="line">$1 is not empty
+</div></li><li><div class="line">$1 is not empty
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#1.Define a function to check if the input is an empty string</span>
+</div></li><li><div class="line"><span class="k">sub </span><span class="nf">func1</span><span class="p">{</span>
+</div></li><li><div class="line"><span class="nv">$e1</span><span class="o">=</span><span class="nv">$e2</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="c1">#1 is true</span>
+</div></li><li><div class="line"><span class="k">if</span><span class="p">(</span><span class="ow">not</span> <span class="nb">defined</span> <span class="nv">$_</span><span class="p">[</span><span class="mi">0</span><span class="p">]){</span> <span class="nv">$e1</span><span class="o">=</span><span class="mi">0</span> <span class="p">}</span>
+</div></li><li><div class="line"><span class="k">if</span><span class="p">(</span> <span class="nv">$_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">eq</span> <span class="s">&quot;&quot;</span><span class="p">){</span> <span class="nv">$e2</span><span class="o">=</span><span class="mi">0</span> <span class="p">}</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;argument &quot;</span><span class="o">.</span><span class="p">((</span><span class="nv">$e1</span><span class="p">)?</span> <span class="s">&quot;&quot;</span><span class="p">:</span><span class="s">&quot;not &quot;</span><span class="p">)</span><span class="o">.</span><span class="s">&quot;defined\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;argument &quot;</span><span class="o">.</span><span class="p">((</span><span class="nv">$e2</span><span class="p">)?</span> <span class="s">&quot;not &quot;</span><span class="p">:</span><span class="s">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="s">&quot;empty\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="p">}</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.Call the function with different arguments</span>
+</div></li><li><div class="line"><span class="n">func1</span><span class="p">();</span>
+</div></li><li><div class="line"><span class="c1">#  call with func1(&#39;&#39;)</span>
+</div></li><li><div class="line"><span class="n">func1</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">);</span>
+</div></li><li><div class="line"><span class="c1">#  call with func1(&#39; &#39;)</span>
+</div></li><li><div class="line"><span class="n">func1</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">);</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Define a function to check if the input is an empty string
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Call the function with different arguments
+</div></li><li><div class="line">argument not defined
+</div></li><li><div class="line">argument empty
+</div></li><li><div class="line">#  call with func1(&#39;&#39;)
+</div></li><li><div class="line">argument defined
+</div></li><li><div class="line">argument empty
+</div></li><li><div class="line">#  call with func1(&#39; &#39;)
+</div></li><li><div class="line">argument defined
+</div></li><li><div class="line">argument not empty
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Define a function to check if the input is an empty string</span>
+</div></li><li><div class="line"><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">p1</span><span class="p">):</span>
+</div></li><li><div class="line">  <span class="k">print</span> <span class="s">&quot;It&#39;s &quot;</span><span class="o">+</span><span class="p">(</span><span class="s">&quot;not &quot;</span> <span class="k">if</span> <span class="n">p1</span> <span class="k">else</span> <span class="s">&quot;&quot;</span><span class="p">)</span><span class="o">+</span><span class="s">&quot;empty&quot;</span>
+</div></li><li><div class="line">  <span class="k">print</span> <span class="s">&quot;It&#39;s &quot;</span><span class="o">+</span><span class="p">(</span><span class="s">&quot;&quot;</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">p1</span> <span class="k">else</span> <span class="s">&quot;not &quot;</span><span class="p">)</span><span class="o">+</span><span class="s">&quot;empty&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Call the function with different arguments</span>
+</div></li><li><div class="line"><span class="c">#  ERROR: func() takes exactly 1 argument (0 given)</span>
+</div></li><li><div class="line"><span class="c">#  func() </span>
+</div></li><li><div class="line"><span class="c">#  call with func(&#39;&#39;)</span>
+</div></li><li><div class="line"><span class="n">func</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">)</span>
+</div></li><li><div class="line"><span class="c">#  call with func(&#39; &#39;)</span>
+</div></li><li><div class="line"><span class="n">func</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="p">)</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Define a function to check if the input is an empty string 
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Call the function with different arguments 
+</div></li><li><div class="line">#  ERROR: func() takes exactly 1 argument (0 given) 
+</div></li><li><div class="line">#  func()  
+</div></li><li><div class="line">#  call with func(&#39;&#39;) 
+</div></li><li><div class="line">It&#39;s empty
+</div></li><li><div class="line">It&#39;s empty
+</div></li><li><div class="line">#  call with func(&#39; &#39;) 
+</div></li><li><div class="line">It&#39;s not empty
+</div></li><li><div class="line">It&#39;s not empty
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="Remove leading and tailing whitespaces" href="#String">String: Remove leading and tailing whitespaces </a></h4>
+		  <pre class="xdesc">Note: Ip perl, chomp() function will remove current value of $/ at the end of a string. $/ defaults to a newline.
+</pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.Define a variable with white spaces in value
+2.Remove the whilespaces in the variable
+3.output the result
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>2</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Define a variable with white spaces in value</span>
+</div></li><li><div class="line"><span class="nv">s</span><span class="o">=</span><span class="s2">&quot; \t  how to trim a string  \t&quot;</span>
+</div></li><li><div class="line"><span class="nb">echo</span> -e <span class="s2">&quot;&#39;$s&#39;&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Remove the whilespaces in the variable</span>
+</div></li><li><div class="line"><span class="nv">s2</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> -e <span class="s2">&quot;$s&quot;</span> |sed <span class="s2">&quot;s/^[[:space:]]*\|[[:space:]]*$//g&quot;</span><span class="sb">`</span>
+</div></li><li><div class="line"><span class="nv">s3</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> -e <span class="s2">&quot;$s&quot;</span> |sed -e <span class="s1">&#39;s/^[[:space:]]*//g&#39;</span> -e <span class="s1">&#39;s/[[:space:]]*$//g&#39;</span><span class="sb">`</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#3.output the result</span>
+</div></li><li><div class="line"><span class="nb">echo</span> -e <span class="s2">&quot;&#39;$s2&#39;&quot;</span>
+</div></li><li><div class="line"><span class="nb">echo</span> -e <span class="s2">&quot;&#39;$s3&#39;&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Define a variable with white spaces in value
+</div></li><li><div class="line">&#39; 	  how to trim a string  	&#39;
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Remove the whilespaces in the variable
+</div></li><li><div class="line">
+</div></li><li><div class="line">#3.output the result
+</div></li><li><div class="line">&#39;how to trim a string&#39;
+</div></li><li><div class="line">&#39;how to trim a string&#39;
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#1.Define a variable with white spaces in value</span>
+</div></li><li><div class="line"><span class="nv">$_</span><span class="o">=</span><span class="s">&quot; \t  how to trim a string  \t&quot;</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;&#39;&quot;</span><span class="o">.</span><span class="nv">$_</span><span class="o">.</span><span class="s">&quot;&#39;\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.Remove the whilespaces in the variable</span>
+</div></li><li><div class="line"><span class="sr">s/^[[:space:]]*|[[:space:]]*$//g</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#3.output the result</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;&#39;&quot;</span><span class="o">.</span><span class="nv">$_</span><span class="o">.</span><span class="s">&quot;&#39;&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Define a variable with white spaces in value
+</div></li><li><div class="line">&#39; 	  how to trim a string  	&#39;
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Remove the whilespaces in the variable
+</div></li><li><div class="line">
+</div></li><li><div class="line">#3.output the result
+</div></li><li><div class="line">&#39;how to trim a string&#39;
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Define a variable with white spaces in value</span>
+</div></li><li><div class="line"><span class="n">s</span><span class="o">=</span><span class="s">&quot; </span><span class="se">\t</span><span class="s">  how to trim a string  </span><span class="se">\t</span><span class="s">&quot;</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;&#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span> <span class="o">%</span><span class="n">s</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Remove the whilespaces in the variable</span>
+</div></li><li><div class="line"><span class="n">s2</span><span class="o">=</span><span class="n">s</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+</div></li><li><div class="line"><span class="kn">import</span> <span class="nn">re</span>
+</div></li><li><div class="line"><span class="n">s3</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">r&#39;^\s*|\s*$&#39;</span><span class="p">,</span><span class="s">r&#39;&#39;</span><span class="p">,</span><span class="n">s</span><span class="p">)</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#3.output the result</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;&#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span> <span class="o">%</span> <span class="n">s2</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;&#39;</span><span class="si">%s</span><span class="s">&#39;&quot;</span> <span class="o">%</span> <span class="n">s3</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Define a variable with white spaces in value 
+</div></li><li><div class="line">&#39; 	  how to trim a string  	&#39;
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Remove the whilespaces in the variable 
+</div></li><li><div class="line">
+</div></li><li><div class="line">#3.output the result 
+</div></li><li><div class="line">&#39;how to trim a string&#39;
+</div></li><li><div class="line">&#39;how to trim a string&#39;
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="Concatenate two strings" href="#String">String: Concatenate two strings </a></h4>
+		  <pre class="xdesc"></pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.Assign a string to a variable.
+2.Catenate two strings and print the result.
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>2</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Assign a string to a variable.</span>
+</div></li><li><div class="line"><span class="nv">name</span><span class="o">=</span><span class="s2">&quot;Scarborough Fair&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Catenate two strings and print the result.</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="s2">&quot;hello, $name&quot;</span>
+</div></li><li><div class="line"><span class="nb">printf</span> <span class="s2">&quot;hello, %s\n&quot;</span> <span class="s2">&quot;$name&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Assign a string to a variable.
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Catenate two strings and print the result.
+</div></li><li><div class="line">hello, Scarborough Fair
+</div></li><li><div class="line">hello, Scarborough Fair
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#1.Assign a string to a variable.</span>
+</div></li><li><div class="line"><span class="nv">$name</span><span class="o">=</span><span class="s">&quot;Scarborough Fair&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.Catenate two strings and print the result.</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;hello, $name\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="c1">#  using dot operator</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;hello, &quot;</span><span class="o">.</span><span class="nv">$name</span><span class="o">.</span><span class="s">&quot;\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="c1">#  using join function</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="nb">join</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">,</span><span class="s">&quot;hello&quot;</span><span class="p">,</span><span class="nv">$name</span><span class="p">);</span>
+</div></li><li><div class="line"><span class="nb">printf</span> <span class="s">&quot;hello, %s\n&quot;</span><span class="p">,</span> <span class="s">&quot;$name&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Assign a string to a variable.
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Catenate two strings and print the result.
+</div></li><li><div class="line">hello, Scarborough Fair
+</div></li><li><div class="line">#  using dot operator
+</div></li><li><div class="line">hello, Scarborough Fair
+</div></li><li><div class="line">#  using join function
+</div></li><li><div class="line">hello Scarborough Fairhello, Scarborough Fair
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Assign a string to a variable.</span>
+</div></li><li><div class="line"><span class="n">name</span><span class="o">=</span><span class="s">&quot;Scarborough Fair&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Catenate two strings and print the result.</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;hello, &quot;</span><span class="o">+</span><span class="n">name</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;hello,&quot;</span><span class="p">,</span> <span class="n">name</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;hello, </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Assign a string to a variable. 
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Catenate two strings and print the result. 
+</div></li><li><div class="line">hello, Scarborough Fair
+</div></li><li><div class="line">hello, Scarborough Fair
+</div></li><li><div class="line">hello, Scarborough Fair
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="Split string into array" href="#String">String: Split string into array </a></h4>
+		  <pre class="xdesc"></pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.Define a variable with string value
+2.Get and output the array
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>2</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Define a variable with string value</span>
+</div></li><li><div class="line"><span class="nv">str</span><span class="o">=</span><span class="s2">&quot;bing.com|google.com|baidu.com|yahoo.com&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Get and output the array</span>
+</div></li><li><div class="line"><span class="nv">IFS</span><span class="o">=</span><span class="s1">&#39;|&#39;</span> <span class="nv">sites</span><span class="o">=(</span><span class="sb">`</span><span class="nb">echo</span> <span class="nv">$str</span><span class="sb">`</span><span class="o">)</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="s2">&quot;${sites[@]}&quot;</span>
+</div></li><li><div class="line"><span class="nb">unset </span>IFS
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Define a variable with string value
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Get and output the array
+</div></li><li><div class="line">bing.com google.com baidu.com yahoo.com
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#1.Define a variable with string value</span>
+</div></li><li><div class="line"><span class="nv">$str</span><span class="o">=</span><span class="s">&quot;bing.com|google.com|baidu.com|yahoo.com&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.Get and output the array</span>
+</div></li><li><div class="line"><span class="nv">@sites</span><span class="o">=</span><span class="nb">split</span><span class="p">(</span><span class="sr">/\|/</span><span class="p">,</span><span class="nv">$str</span><span class="p">);</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;@sites&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Define a variable with string value
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Get and output the array
+</div></li><li><div class="line">bing.com google.com baidu.com yahoo.com
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Define a variable with string value</span>
+</div></li><li><div class="line"><span class="nb">str</span><span class="o">=</span><span class="s">&quot;bing.com|google.com|baidu.com|yahoo.com&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Get and output the array</span>
+</div></li><li><div class="line"><span class="n">sites</span><span class="o">=</span><span class="nb">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;|&#39;</span><span class="p">)</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">sites</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Define a variable with string value 
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Get and output the array 
+</div></li><li><div class="line">[&#39;bing.com&#39;, &#39;google.com&#39;, &#39;baidu.com&#39;, &#39;yahoo.com&#39;]
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+
+        </div>
+     
+        <aside class="large-1 columns">
+          <h5>Categories</h5>
+          
+          <ul class="side-nav">
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../1/index.html">Regex</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  class="selected"  ><a href="index.html">String</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../3/index.html">Array</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../4/index.html">Set</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../5/index.html">Map</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../6/index.html">Variables</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../7/index.html">Special variables</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../8/index.html">Function</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../9/index.html">Command line</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../10/index.html">Flow control</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../11/index.html">Input</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../12/index.html">Path</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../13/index.html">Logging</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../14/index.html">Threading</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../15/index.html">Html</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../16/index.html">Miscellaneous</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../17/index.html">Help</a></li>
+            
+          </ul>
+          
+     
+        </aside>
+         
+      </div>
+
+      <footer class="row">
+        <div class="large-12 columns">
+          <hr/>
+          <div class="row">
+            <div class="large-6 columns">
+              <p>© Evan Liu.   (liuenmao@hotmail.com)</p>
+            </div>
+            <div class="large-6 columns">
+            </div>
+          </div>
+        </div>
+      </footer>
+</body>    
+
+<!-- Mirrored from 118.193.213.195/bash_perl_python/2/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 16 May 2018 07:24:12 GMT -->
+</html>

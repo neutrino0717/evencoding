@@ -1,0 +1,682 @@
+
+
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" data-useragent="Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)">
+
+<!-- Mirrored from 118.193.213.195/bash_perl_python/5/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 16 May 2018 07:24:14 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta name="google-site-verification" content="qms_3-ElBGujHuD2zwSZLcW8jmlJ7WG5W3JoK67ArzY" />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Map in Bash, Perl, Python </title>
+<meta name="description" content="Bash, Perl and Python comparison."/>
+<meta name="keywords" content="Bash,Perl,Python"/>
+<meta name="author" content="Enmao Liu"/>
+<meta name="copyright" content="Enmao Liu@shanghai"/>
+<link rel="stylesheet" type="text/css" href="../../static/downloads/foundation.css"/>
+<link rel="stylesheet" type="text/css" href="../../static/downloads/pygmts_def.css"/>
+<link rel="stylesheet" type="text/css" href="../../static/downloads/app.css"/>
+<script src="../../static/downloads/modernizr.js"></script>
+</head>
+<body>
+<!--
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- test -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5197746177913810"
+     data-ad-slot="1965669484"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script -->
+<div class="row">
+ <!--a href="http://core.weloveservers.net/aff.php?aff=923" rel="nofollow"><img src="https://core.weloveservers.net/uploads/vps-970X90.jpg" width="970" height="90" border="0"></a-->
+</div>
+    <div class="row">
+       <!--div class="large-12 columns"-->
+         <div class="nav-bar right">
+           <ul class="button-group">
+             <li><a href="https://www.facebook.com/liuenmao" class="button">Facebook</a></li>
+             <li><a href="https://www.youtube.com/user/neutrino0717" class="button">Youtube</a></li>
+             <li><a href="https://twitter.com/neutrino0717" class="button">Twitter</a></li>
+             <li><a href="https://www.linkedin.com/pub/evan-liu/51/5a6/748" class="button">Linkedin</a></li>
+            </ul>
+          </div>
+          <h1>Coding <small>Bash vs. Perl vs. Python (by Evan Liu) </small></h1>
+          <hr/>
+        <!--/div-->
+      </div>
+
+      <div class="row">
+        <div class="large-11 columns" role="content">
+ 
+         <h3><a name="Map">Topics about  map  </a></h3>
+         <ul>
+
+         <li>
+         <a href="#Get key-value pairs from map">Get key-value pairs from map</a> 
+         </li>
+
+         <li>
+         <a href="#Get keys and values from map">Get keys and values from map</a> 
+         </li>
+
+         <li>
+         <a href="#Look up in a map">Look up in a map</a> 
+         </li>
+
+         <li>
+         <a href="#Iterate over a map">Iterate over a map</a> 
+         </li>
+
+         <li>
+         <a href="#Delete an element in a map">Delete an element in a map</a> 
+         </li>
+
+         <li>
+         <a href="#Clear all elements in a map">Clear all elements in a map</a> 
+         </li>
+
+         </ul>
+
+          <article>
+		  <h4><a name="Get key-value pairs from map" href="#Map">Map: Get key-value pairs from map </a></h4>
+		  <pre class="xdesc"></pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.Create a map
+2.Print all the item in the map
+3.Print all the keys and values
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>5</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create a map</span>
+</div></li><li><div class="line"><span class="c">#  use associative array as map in Bash 4</span>
+</div></li><li><div class="line"><span class="nb">declare</span> -A ages
+</div></li><li><div class="line"><span class="nv">ages</span><span class="o">=([</span>dad<span class="o">]=</span>42 <span class="o">[</span>mom<span class="o">]=</span>40 <span class="o">[</span>me<span class="o">]=</span>7<span class="o">)</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Print all the item in the map</span>
+</div></li><li><div class="line"><span class="nb">declare</span> -p ages
+</div></li><li><div class="line">
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a map
+</div></li><li><div class="line">#  use associative array as map in Bash 4
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Print all the item in the map
+</div></li><li><div class="line">declare -A ages=&#39;([mom]=&quot;40&quot; [dad]=&quot;42&quot; [me]=&quot;7&quot; )&#39;
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#1.Create a map</span>
+</div></li><li><div class="line"><span class="nv">%ages1</span><span class="o">=</span><span class="p">(</span><span class="n">dad</span><span class="o">=&gt;</span><span class="mi">42</span><span class="p">,</span><span class="n">mom</span><span class="o">=&gt;</span><span class="mi">40</span><span class="p">,</span><span class="n">me</span><span class="o">=&gt;</span><span class="mi">7</span><span class="p">);</span>
+</div></li><li><div class="line"><span class="c1">#  or use array to define</span>
+</div></li><li><div class="line"><span class="nv">%ages2</span><span class="o">=</span><span class="p">(</span><span class="s">&quot;dad&quot;</span><span class="p">,</span><span class="mi">42</span><span class="p">,</span><span class="s">&quot;mom&quot;</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="s">&quot;me&quot;</span><span class="p">,</span><span class="mi">7</span><span class="p">);</span>
+</div></li><li><div class="line"><span class="c1">#  or use qw()</span>
+</div></li><li><div class="line"><span class="nv">%ages3</span><span class="o">=</span><span class="sx">qw(dad 42 mom 48 me 7)</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.Print all the item in the map</span>
+</div></li><li><div class="line"><span class="c1">#  use [] to get the reference to array</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;@{[%ages1]}\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="c1">#  or use () to change to array</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="nb">join</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">,</span> <span class="p">(</span><span class="nv">%ages2</span><span class="p">))</span><span class="o">.</span><span class="s">&quot;\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="c1">#  or</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="nb">join</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">,</span><span class="nv">%ages3</span><span class="p">)</span><span class="o">.</span><span class="s">&quot;\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a map
+</div></li><li><div class="line">#  or use array to define
+</div></li><li><div class="line">#  or use qw()
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Print all the item in the map
+</div></li><li><div class="line">#  use [] to get the reference to array
+</div></li><li><div class="line">mom 40 me 7 dad 42
+</div></li><li><div class="line">#  or use () to change to array
+</div></li><li><div class="line">dad 42 me 7 mom 40
+</div></li><li><div class="line">#  or
+</div></li><li><div class="line">dad 42 me 7 mom 48
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create a map</span>
+</div></li><li><div class="line"><span class="c">#  use dictionary as map</span>
+</div></li><li><div class="line"><span class="n">ages</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;dad&#39;</span><span class="p">:</span><span class="mi">42</span><span class="p">,</span><span class="s">&#39;mom&#39;</span><span class="p">:</span><span class="mi">48</span><span class="p">,</span><span class="s">&#39;me&#39;</span><span class="p">:</span><span class="mi">7</span><span class="p">}</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Print all the item in the map</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">ages</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">ages</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a map 
+</div></li><li><div class="line">#  use dictionary as map 
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Print all the item in the map 
+</div></li><li><div class="line">{&#39;dad&#39;: 42, &#39;me&#39;: 7, &#39;mom&#39;: 48}
+</div></li><li><div class="line">[(&#39;dad&#39;, 42), (&#39;me&#39;, 7), (&#39;mom&#39;, 48)]
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="Get keys and values from map" href="#Map">Map: Get keys and values from map </a></h4>
+		  <pre class="xdesc"></pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.Create a map
+2.Print all the keys and values in the map
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>5</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create a map</span>
+</div></li><li><div class="line"><span class="nb">declare</span> -A <span class="nv">ages</span><span class="o">=([</span>dad<span class="o">]=</span>42 <span class="o">[</span>mom<span class="o">]=</span>40 <span class="o">[</span>me<span class="o">]=</span>7<span class="o">)</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Print all the keys and values in the map</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="k">${</span><span class="p">!ages[@]</span><span class="k">}</span> 
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="k">${</span><span class="nv">ages</span><span class="p">[@]</span><span class="k">}</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a map
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Print all the keys and values in the map
+</div></li><li><div class="line">mom dad me
+</div></li><li><div class="line">40 42 7
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#1.Create a map</span>
+</div></li><li><div class="line"><span class="nv">%ages</span><span class="o">=</span><span class="p">(</span><span class="n">dad</span><span class="o">=&gt;</span><span class="mi">42</span><span class="p">,</span><span class="n">mom</span><span class="o">=&gt;</span><span class="mi">40</span><span class="p">,</span><span class="n">me</span><span class="o">=&gt;</span><span class="mi">7</span><span class="p">);</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.Print all the keys and values in the map</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="nb">join</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">,</span> <span class="nb">keys</span> <span class="nv">%ages</span><span class="p">)</span><span class="o">.</span><span class="s">&quot;\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="nb">join</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">,</span> <span class="nb">values</span> <span class="nv">%ages</span><span class="p">)</span><span class="o">.</span><span class="s">&quot;\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a map
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Print all the keys and values in the map
+</div></li><li><div class="line">mom me dad
+</div></li><li><div class="line">40 7 42
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create a map</span>
+</div></li><li><div class="line"><span class="n">ages</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;dad&#39;</span><span class="p">:</span><span class="mi">42</span><span class="p">,</span><span class="s">&#39;mom&#39;</span><span class="p">:</span><span class="mi">48</span><span class="p">,</span><span class="s">&#39;me&#39;</span><span class="p">:</span><span class="mi">7</span><span class="p">}</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Print all the keys and values in the map</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">ages</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">ages</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a map 
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Print all the keys and values in the map 
+</div></li><li><div class="line">[&#39;dad&#39;, &#39;me&#39;, &#39;mom&#39;]
+</div></li><li><div class="line">[42, 7, 48]
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="Look up in a map" href="#Map">Map: Look up in a map </a></h4>
+		  <pre class="xdesc"></pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.Create a map
+2.Lookup a key in the map
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>5</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create a map</span>
+</div></li><li><div class="line"><span class="nb">declare</span> -A <span class="nv">ages</span><span class="o">=([</span>dad<span class="o">]=</span>42 <span class="o">[</span>mom<span class="o">]=</span>40 <span class="o">[</span>me<span class="o">]=</span>7<span class="o">)</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Lookup a key in the map</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="k">${</span><span class="nv">ages</span><span class="p">[me]</span><span class="k">}</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a map
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Lookup a key in the map
+</div></li><li><div class="line">7
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#1.Create a map</span>
+</div></li><li><div class="line"><span class="nv">%ages</span><span class="o">=</span><span class="p">(</span><span class="n">dad</span><span class="o">=&gt;</span><span class="mi">42</span><span class="p">,</span><span class="n">mom</span><span class="o">=&gt;</span><span class="mi">40</span><span class="p">,</span><span class="n">me</span><span class="o">=&gt;</span><span class="mi">7</span><span class="p">);</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.Lookup a key in the map</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="nv">$ages</span><span class="p">{</span><span class="s">&quot;me&quot;</span><span class="p">};</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a map
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Lookup a key in the map
+</div></li><li><div class="line">7
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create a map</span>
+</div></li><li><div class="line"><span class="n">ages</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;dad&#39;</span><span class="p">:</span><span class="mi">42</span><span class="p">,</span><span class="s">&#39;mom&#39;</span><span class="p">:</span><span class="mi">48</span><span class="p">,</span><span class="s">&#39;me&#39;</span><span class="p">:</span><span class="mi">7</span><span class="p">}</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Lookup a key in the map</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">ages</span><span class="p">[</span><span class="s">&#39;me&#39;</span><span class="p">]</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a map 
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Lookup a key in the map 
+</div></li><li><div class="line">7
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="Iterate over a map" href="#Map">Map: Iterate over a map </a></h4>
+		  <pre class="xdesc"></pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.Create a map
+2.Iterate over the map
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>5</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create a map</span>
+</div></li><li><div class="line"><span class="nb">declare</span> -A <span class="nv">ages</span><span class="o">=([</span>dad<span class="o">]=</span>42 <span class="o">[</span>mom<span class="o">]=</span>40 <span class="o">[</span>me<span class="o">]=</span>7<span class="o">)</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Iterate over the map</span>
+</div></li><li><div class="line"><span class="k">for </span>key in <span class="k">${</span><span class="p">!ages[@]</span><span class="k">}</span>; <span class="k">do </span>
+</div></li><li><div class="line"><span class="k">  </span><span class="nb">echo</span> <span class="s2">&quot;$key ${ages[$key]}&quot;</span>
+</div></li><li><div class="line"><span class="k">done</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a map
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Iterate over the map
+</div></li><li><div class="line">mom 40
+</div></li><li><div class="line">dad 42
+</div></li><li><div class="line">me 7
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#1.Create a map</span>
+</div></li><li><div class="line"><span class="nv">%ages</span><span class="o">=</span><span class="p">(</span><span class="n">dad</span><span class="o">=&gt;</span><span class="mi">42</span><span class="p">,</span><span class="n">mom</span><span class="o">=&gt;</span><span class="mi">40</span><span class="p">,</span><span class="n">me</span><span class="o">=&gt;</span><span class="mi">7</span><span class="p">);</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.Iterate over the map</span>
+</div></li><li><div class="line"><span class="c1">#  use foreach</span>
+</div></li><li><div class="line"><span class="k">foreach</span> <span class="nv">$key</span> <span class="p">(</span><span class="nb">keys</span> <span class="nv">%ages</span><span class="p">){</span><span class="k">print</span> <span class="s">&quot;$key $ages{$key}\n&quot;</span><span class="p">}</span>
+</div></li><li><div class="line"><span class="c1">#  or use while</span>
+</div></li><li><div class="line"><span class="k">while</span> <span class="p">((</span><span class="nv">$key</span><span class="p">,</span><span class="nv">$value</span><span class="p">)</span><span class="o">=</span><span class="nb">each</span><span class="p">(</span><span class="nv">%ages</span><span class="p">)){</span><span class="k">print</span> <span class="s">&quot;$key $value\n&quot;</span><span class="p">}</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a map
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Iterate over the map
+</div></li><li><div class="line">#  use foreach
+</div></li><li><div class="line">me 7
+</div></li><li><div class="line">dad 42
+</div></li><li><div class="line">mom 40
+</div></li><li><div class="line">#  or use while
+</div></li><li><div class="line">me 7
+</div></li><li><div class="line">dad 42
+</div></li><li><div class="line">mom 40
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create a map</span>
+</div></li><li><div class="line"><span class="n">ages</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;dad&#39;</span><span class="p">:</span><span class="mi">42</span><span class="p">,</span><span class="s">&#39;mom&#39;</span><span class="p">:</span><span class="mi">48</span><span class="p">,</span><span class="s">&#39;me&#39;</span><span class="p">:</span><span class="mi">7</span><span class="p">}</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Iterate over the map</span>
+</div></li><li><div class="line"><span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">ages</span><span class="p">:</span>
+</div></li><li><div class="line">    <span class="k">print</span> <span class="n">key</span><span class="p">,</span> <span class="n">ages</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+</div></li><li><div class="line"><span class="c">#  or</span>
+</div></li><li><div class="line"><span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">ages</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+</div></li><li><div class="line">    <span class="k">print</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a map 
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Iterate over the map 
+</div></li><li><div class="line">dad 42
+</div></li><li><div class="line">me 7
+</div></li><li><div class="line">mom 48
+</div></li><li><div class="line">#  or 
+</div></li><li><div class="line">dad 42
+</div></li><li><div class="line">me 7
+</div></li><li><div class="line">mom 48
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="Delete an element in a map" href="#Map">Map: Delete an element in a map </a></h4>
+		  <pre class="xdesc"></pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.Create a map
+2.Remove the element  with the key of &#39;me&#39;
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>5</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create a map</span>
+</div></li><li><div class="line"><span class="nb">declare</span> -A <span class="nv">ages</span><span class="o">=([</span>dad<span class="o">]=</span>42 <span class="o">[</span>mom<span class="o">]=</span>40 <span class="o">[</span>me<span class="o">]=</span>7<span class="o">)</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Remove the element  with the key of &#39;me&#39;</span>
+</div></li><li><div class="line"><span class="nb">unset </span>ages<span class="o">[</span>me<span class="o">]</span>
+</div></li><li><div class="line"><span class="nb">declare</span> -p ages
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a map
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Remove the element  with the key of &#39;me&#39;
+</div></li><li><div class="line">declare -A ages=&#39;([mom]=&quot;40&quot; [dad]=&quot;42&quot; )&#39;
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#1.Create a map</span>
+</div></li><li><div class="line"><span class="nv">%ages</span><span class="o">=</span><span class="p">(</span><span class="n">dad</span><span class="o">=&gt;</span><span class="mi">42</span><span class="p">,</span><span class="n">mom</span><span class="o">=&gt;</span><span class="mi">40</span><span class="p">,</span><span class="n">me</span><span class="o">=&gt;</span><span class="mi">7</span><span class="p">);</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.Remove the element  with the key of &#39;me&#39;</span>
+</div></li><li><div class="line"><span class="nb">delete</span> <span class="nv">$ages</span><span class="p">{</span><span class="n">me</span><span class="p">};</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="nb">join</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="p">,</span> <span class="nv">%ages</span><span class="p">);</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a map
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Remove the element  with the key of &#39;me&#39;
+</div></li><li><div class="line">mom 40 dad 42
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create a map</span>
+</div></li><li><div class="line"><span class="n">ages</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;dad&#39;</span><span class="p">:</span><span class="mi">42</span><span class="p">,</span><span class="s">&#39;mom&#39;</span><span class="p">:</span><span class="mi">48</span><span class="p">,</span><span class="s">&#39;me&#39;</span><span class="p">:</span><span class="mi">7</span><span class="p">}</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Remove the element  with the key of &#39;me&#39;</span>
+</div></li><li><div class="line"><span class="k">del</span> <span class="n">ages</span><span class="p">[</span><span class="s">&#39;me&#39;</span><span class="p">]</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">ages</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a map 
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Remove the element  with the key of &#39;me&#39; 
+</div></li><li><div class="line">[(&#39;dad&#39;, 42), (&#39;mom&#39;, 48)]
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="Clear all elements in a map" href="#Map">Map: Clear all elements in a map </a></h4>
+		  <pre class="xdesc"></pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.Create a map
+2.Clear the map
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>5</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create a map</span>
+</div></li><li><div class="line"><span class="nb">declare</span> -A <span class="nv">ages</span><span class="o">=([</span>dad<span class="o">]=</span>42 <span class="o">[</span>mom<span class="o">]=</span>40 <span class="o">[</span>me<span class="o">]=</span>7<span class="o">)</span>
+</div></li><li><div class="line"><span class="nb">declare</span> -p ages
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Clear the map</span>
+</div></li><li><div class="line"><span class="nv">ages</span><span class="o">=()</span>
+</div></li><li><div class="line"><span class="o">[[</span> <span class="s2">&quot;${ages[@]}&quot;</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="nb">declare</span> -p ages <span class="o">||</span> <span class="nb">echo</span> <span class="s2">&quot;ages not defined or empty&quot;</span>
+</div></li><li><div class="line"><span class="c">#  or use unset</span>
+</div></li><li><div class="line"><span class="nb">declare</span> -A <span class="nv">ages</span><span class="o">=([</span>dad<span class="o">]=</span>42 <span class="o">[</span>mom<span class="o">]=</span>40 <span class="o">[</span>me<span class="o">]=</span>7<span class="o">)</span>
+</div></li><li><div class="line"><span class="nb">unset </span>ages
+</div></li><li><div class="line"><span class="o">[[</span> <span class="s2">&quot;${ages[@]}&quot;</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="nb">declare</span> -p ages <span class="o">||</span> <span class="nb">echo</span> <span class="s2">&quot;ages not defined or empty&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a map
+</div></li><li><div class="line">declare -A ages=&#39;([mom]=&quot;40&quot; [dad]=&quot;42&quot; [me]=&quot;7&quot; )&#39;
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Clear the map
+</div></li><li><div class="line">ages not defined or empty
+</div></li><li><div class="line">#  or use unset
+</div></li><li><div class="line">ages not defined or empty
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#1.Create a map</span>
+</div></li><li><div class="line"><span class="nv">%ages</span><span class="o">=</span><span class="p">(</span><span class="n">dad</span><span class="o">=&gt;</span><span class="mi">42</span><span class="p">,</span><span class="n">mom</span><span class="o">=&gt;</span><span class="mi">40</span><span class="p">,</span><span class="n">me</span><span class="o">=&gt;</span><span class="mi">7</span><span class="p">);</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="nb">join</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="p">,</span> <span class="nv">%ages</span><span class="p">)</span><span class="o">.</span><span class="s">&quot;\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.Clear the map</span>
+</div></li><li><div class="line"><span class="nv">%ages</span><span class="o">=</span><span class="p">();</span>
+</div></li><li><div class="line"><span class="c1">#  do not use defined(%ages1), which is only for scalar</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="nv">%ages</span><span class="p">?</span> <span class="nv">%ages:</span> <span class="s">&quot;ages not defined or empty\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="c1">#  or use undef</span>
+</div></li><li><div class="line"><span class="nb">undef</span> <span class="nv">%ages</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="nv">%ages</span><span class="p">?</span> <span class="nv">%ages:</span> <span class="s">&quot;ages not defined or empty\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a map
+</div></li><li><div class="line">mom 40 dad 42 me 7
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Clear the map
+</div></li><li><div class="line">#  do not use defined(%ages1), which is only for scalar
+</div></li><li><div class="line">ages not defined or empty
+</div></li><li><div class="line">#  or use undef
+</div></li><li><div class="line">ages not defined or empty
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create a map</span>
+</div></li><li><div class="line"><span class="n">ages</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;dad&#39;</span><span class="p">:</span><span class="mi">42</span><span class="p">,</span><span class="s">&#39;mom&#39;</span><span class="p">:</span><span class="mi">48</span><span class="p">,</span><span class="s">&#39;me&#39;</span><span class="p">:</span><span class="mi">7</span><span class="p">}</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">ages</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Clear the map</span>
+</div></li><li><div class="line"><span class="n">ages</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">ages</span> <span class="k">if</span> <span class="s">&#39;ages&#39;</span> <span class="ow">in</span> <span class="nb">locals</span><span class="p">()</span> <span class="k">else</span> <span class="s">&quot;ages not defined&quot;</span>
+</div></li><li><div class="line"><span class="c">#  or use del</span>
+</div></li><li><div class="line"><span class="k">del</span> <span class="n">ages</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">ages</span> <span class="k">if</span> <span class="s">&#39;ages&#39;</span> <span class="ow">in</span> <span class="nb">locals</span><span class="p">()</span> <span class="k">else</span> <span class="s">&quot;ages not defined&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a map 
+</div></li><li><div class="line">{&#39;dad&#39;: 42, &#39;me&#39;: 7, &#39;mom&#39;: 48}
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Clear the map 
+</div></li><li><div class="line">{}
+</div></li><li><div class="line">#  or use del 
+</div></li><li><div class="line">ages not defined
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+
+        </div>
+     
+        <aside class="large-1 columns">
+          <h5>Categories</h5>
+          
+          <ul class="side-nav">
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../1/index.html">Regex</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../2/index.html">String</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../3/index.html">Array</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../4/index.html">Set</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  class="selected"  ><a href="index.html">Map</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../6/index.html">Variables</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../7/index.html">Special variables</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../8/index.html">Function</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../9/index.html">Command line</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../10/index.html">Flow control</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../11/index.html">Input</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../12/index.html">Path</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../13/index.html">Logging</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../14/index.html">Threading</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../15/index.html">Html</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../16/index.html">Miscellaneous</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../17/index.html">Help</a></li>
+            
+          </ul>
+          
+     
+        </aside>
+         
+      </div>
+
+      <footer class="row">
+        <div class="large-12 columns">
+          <hr/>
+          <div class="row">
+            <div class="large-6 columns">
+              <p>© Evan Liu.   (liuenmao@hotmail.com)</p>
+            </div>
+            <div class="large-6 columns">
+            </div>
+          </div>
+        </div>
+      </footer>
+</body>    
+
+<!-- Mirrored from 118.193.213.195/bash_perl_python/5/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 16 May 2018 07:24:14 GMT -->
+</html>

@@ -1,0 +1,304 @@
+
+
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" data-useragent="Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)">
+
+<!-- Mirrored from 118.193.213.195/bash_perl_python/6/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 16 May 2018 07:24:14 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta name="google-site-verification" content="qms_3-ElBGujHuD2zwSZLcW8jmlJ7WG5W3JoK67ArzY" />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Variables in Bash, Perl, Python </title>
+<meta name="description" content="Bash, Perl and Python comparison."/>
+<meta name="keywords" content="Bash,Perl,Python"/>
+<meta name="author" content="Enmao Liu"/>
+<meta name="copyright" content="Enmao Liu@shanghai"/>
+<link rel="stylesheet" type="text/css" href="../../static/downloads/foundation.css"/>
+<link rel="stylesheet" type="text/css" href="../../static/downloads/pygmts_def.css"/>
+<link rel="stylesheet" type="text/css" href="../../static/downloads/app.css"/>
+<script src="../../static/downloads/modernizr.js"></script>
+</head>
+<body>
+<!--
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- test -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5197746177913810"
+     data-ad-slot="1965669484"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script -->
+<div class="row">
+ <!--a href="http://core.weloveservers.net/aff.php?aff=923" rel="nofollow"><img src="https://core.weloveservers.net/uploads/vps-970X90.jpg" width="970" height="90" border="0"></a-->
+</div>
+    <div class="row">
+       <!--div class="large-12 columns"-->
+         <div class="nav-bar right">
+           <ul class="button-group">
+             <li><a href="https://www.facebook.com/liuenmao" class="button">Facebook</a></li>
+             <li><a href="https://www.youtube.com/user/neutrino0717" class="button">Youtube</a></li>
+             <li><a href="https://twitter.com/neutrino0717" class="button">Twitter</a></li>
+             <li><a href="https://www.linkedin.com/pub/evan-liu/51/5a6/748" class="button">Linkedin</a></li>
+            </ul>
+          </div>
+          <h1>Coding <small>Bash vs. Perl vs. Python (by Evan Liu) </small></h1>
+          <hr/>
+        <!--/div-->
+      </div>
+
+      <div class="row">
+        <div class="large-11 columns" role="content">
+ 
+         <h3><a name="Variables">Topics about  variables  </a></h3>
+         <ul>
+
+         <li>
+         <a href="#String, array, map summary">String, array, map summary</a> 
+         </li>
+
+         </ul>
+
+          <article>
+		  <h4><a name="String, array, map summary" href="#Variables">Variables: String, array, map summary </a></h4>
+		  <pre class="xdesc">Bash variables are untyped, they can be assigned with many types of data. 
+1. When assigning values to bash variables, make sure the variables are naked. 
+2. However when bash variables are referenced, a &#39;$&#39; in front is needed. 
+
+Perl variables are typed in comparison, and alway need a prefix($, @ or %) no matter whether they are referenced or assigned with values. perl have three basic types:
+1. Scalar type, starting with $ such as $myscalar, represents a number or a string of text.
+2. Arrays type, starting with @ sign as @myarray, are ordered list of scalar.
+3. Hashes type, starting with % sign as %mymap, are unordered list of key value pair.
+
+Python variables don&#39;t use any prefix in front, no &#39;$,&#39;, no &#39;@&#39; or anything else, they are alway naked. python&#39;s main built-in data types are: 
+1. Numbers type: including int, long, float, complex.
+2. Iterables type
+3. Sequence: strings, unicode, lists, tuples.
+4. Set: set, frozenset.
+5. Mapping(dict)
+
+</pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.Define three variables for string, array and map respectively.
+2.Print the string variable
+3.Print the array variable
+4.Print the map variable
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>6</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Define three variables for string, array and map respectively.</span>
+</div></li><li><div class="line"><span class="nv">str1</span><span class="o">=</span><span class="s2">&quot;abc&quot;</span>;
+</div></li><li><div class="line"><span class="nv">arr1</span><span class="o">=(</span><span class="s2">&quot;a&quot;</span> <span class="s2">&quot;b&quot;</span> <span class="s2">&quot;c&quot;</span><span class="o">)</span>;
+</div></li><li><div class="line"><span class="nb">declare</span> -A <span class="nv">ass1</span><span class="o">=([</span>a<span class="o">]=</span>1 <span class="o">[</span>b<span class="o">]=</span>2 <span class="o">[</span>c<span class="o">]=</span>3<span class="o">)</span>;
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Print the string variable</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="s2">&quot;$str1&quot;</span>;
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#3.Print the array variable</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="s2">&quot;${arr1[0]}&quot;</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="s2">&quot;${arr1[@]}&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#4.Print the map variable</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="s2">&quot;${ass1[a]}&quot;</span>
+</div></li><li><div class="line"><span class="nb">declare</span> -p ass1
+</div></li><li><div class="line"><span class="k">for </span>key in <span class="k">${</span><span class="p">!ass1[@]</span><span class="k">}</span>; <span class="k">do </span>
+</div></li><li><div class="line"><span class="k">  </span><span class="nb">echo</span> -n <span class="s2">&quot;$key ${ass1[$key]} &quot;</span>
+</div></li><li><div class="line"><span class="k">done</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Define three variables for string, array and map respectively.
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Print the string variable
+</div></li><li><div class="line">abc
+</div></li><li><div class="line">
+</div></li><li><div class="line">#3.Print the array variable
+</div></li><li><div class="line">a
+</div></li><li><div class="line">a b c
+</div></li><li><div class="line">
+</div></li><li><div class="line">#4.Print the map variable
+</div></li><li><div class="line">1
+</div></li><li><div class="line">declare -A ass1=&#39;([a]=&quot;1&quot; [b]=&quot;2&quot; [c]=&quot;3&quot; )&#39;
+</div></li><li><div class="line">a 1 b 2 c 3
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#1.Define three variables for string, array and map respectively.</span>
+</div></li><li><div class="line"><span class="nv">$scalar1</span><span class="o">=</span><span class="s">&quot;abc&quot;</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="nv">@arr1</span><span class="o">=</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="s">&quot;c&quot;</span><span class="p">);</span>
+</div></li><li><div class="line"><span class="nv">%hash1</span><span class="o">=</span><span class="p">(</span><span class="n">a</span><span class="o">=&gt;</span><span class="mi">1</span><span class="p">,</span><span class="n">b</span><span class="o">=&gt;</span><span class="mi">2</span><span class="p">,</span><span class="n">c</span><span class="o">=&gt;</span><span class="mi">3</span><span class="p">);</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.Print the string variable</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;$scalar1\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#3.Print the array variable</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;@arr1[0]\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;@arr1\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#4.Print the map variable</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;$hash1{a}\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;@{[%hash1]}\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="k">while</span> <span class="p">((</span><span class="nv">$key</span><span class="p">,</span><span class="nv">$value</span><span class="p">)</span><span class="o">=</span><span class="nb">each</span> <span class="nv">%hash1</span><span class="p">)</span> <span class="p">{</span>
+</div></li><li><div class="line">    <span class="k">print</span> <span class="s">&quot;$key $value\n&quot;</span>
+</div></li><li><div class="line"><span class="p">}</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Define three variables for string, array and map respectively.
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Print the string variable
+</div></li><li><div class="line">abc
+</div></li><li><div class="line">
+</div></li><li><div class="line">#3.Print the array variable
+</div></li><li><div class="line">a
+</div></li><li><div class="line">a b c
+</div></li><li><div class="line">
+</div></li><li><div class="line">#4.Print the map variable
+</div></li><li><div class="line">1
+</div></li><li><div class="line">c 3 a 1 b 2
+</div></li><li><div class="line">c 3
+</div></li><li><div class="line">a 1
+</div></li><li><div class="line">b 2
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Define three variables for string, array and map respectively.</span>
+</div></li><li><div class="line"><span class="n">str1</span><span class="o">=</span><span class="s">&quot;abc&quot;</span>
+</div></li><li><div class="line"><span class="n">list1</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="s">&quot;c&quot;</span><span class="p">]</span>
+</div></li><li><div class="line"><span class="n">dict1</span><span class="o">=</span><span class="p">{</span><span class="s">&quot;a&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="s">&quot;b&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="s">&quot;c&quot;</span><span class="p">:</span><span class="mi">3</span><span class="p">}</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Print the string variable</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">str1</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#3.Print the array variable</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">list1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">list1</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#4.Print the map variable</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">dict1</span><span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">]</span> 
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">dict1</span>
+</div></li><li><div class="line"><span class="k">for</span> <span class="n">key</span><span class="p">,</span><span class="n">value</span> <span class="ow">in</span> <span class="n">dict1</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+</div></li><li><div class="line">    <span class="k">print</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Define three variables for string, array and map respectively. 
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Print the string variable 
+</div></li><li><div class="line">abc
+</div></li><li><div class="line">
+</div></li><li><div class="line">#3.Print the array variable 
+</div></li><li><div class="line">a
+</div></li><li><div class="line">[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]
+</div></li><li><div class="line">
+</div></li><li><div class="line">#4.Print the map variable 
+</div></li><li><div class="line">1
+</div></li><li><div class="line">{&#39;a&#39;: 1, &#39;c&#39;: 3, &#39;b&#39;: 2}
+</div></li><li><div class="line">a 1
+</div></li><li><div class="line">c 3
+</div></li><li><div class="line">b 2
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+
+        </div>
+     
+        <aside class="large-1 columns">
+          <h5>Categories</h5>
+          
+          <ul class="side-nav">
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../1/index.html">Regex</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../2/index.html">String</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../3/index.html">Array</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../4/index.html">Set</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../5/index.html">Map</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  class="selected"  ><a href="index.html">Variables</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../7/index.html">Special variables</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../8/index.html">Function</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../9/index.html">Command line</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../10/index.html">Flow control</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../11/index.html">Input</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../12/index.html">Path</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../13/index.html">Logging</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../14/index.html">Threading</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../15/index.html">Html</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../16/index.html">Miscellaneous</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../17/index.html">Help</a></li>
+            
+          </ul>
+          
+     
+        </aside>
+         
+      </div>
+
+      <footer class="row">
+        <div class="large-12 columns">
+          <hr/>
+          <div class="row">
+            <div class="large-6 columns">
+              <p>© Evan Liu.   (liuenmao@hotmail.com)</p>
+            </div>
+            <div class="large-6 columns">
+            </div>
+          </div>
+        </div>
+      </footer>
+</body>    
+
+<!-- Mirrored from 118.193.213.195/bash_perl_python/6/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 16 May 2018 07:24:14 GMT -->
+</html>

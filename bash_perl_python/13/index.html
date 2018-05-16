@@ -1,0 +1,441 @@
+
+
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" data-useragent="Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)">
+
+<!-- Mirrored from 118.193.213.195/bash_perl_python/13/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 16 May 2018 07:24:14 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta name="google-site-verification" content="qms_3-ElBGujHuD2zwSZLcW8jmlJ7WG5W3JoK67ArzY" />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Logging in Bash, Perl, Python </title>
+<meta name="description" content="Bash, Perl and Python comparison."/>
+<meta name="keywords" content="Bash,Perl,Python"/>
+<meta name="author" content="Enmao Liu"/>
+<meta name="copyright" content="Enmao Liu@shanghai"/>
+<link rel="stylesheet" type="text/css" href="../../static/downloads/foundation.css"/>
+<link rel="stylesheet" type="text/css" href="../../static/downloads/pygmts_def.css"/>
+<link rel="stylesheet" type="text/css" href="../../static/downloads/app.css"/>
+<script src="../../static/downloads/modernizr.js"></script>
+</head>
+<body>
+<!--
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- test -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5197746177913810"
+     data-ad-slot="1965669484"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script -->
+<div class="row">
+ <!--a href="http://core.weloveservers.net/aff.php?aff=923" rel="nofollow"><img src="https://core.weloveservers.net/uploads/vps-970X90.jpg" width="970" height="90" border="0"></a-->
+</div>
+    <div class="row">
+       <!--div class="large-12 columns"-->
+         <div class="nav-bar right">
+           <ul class="button-group">
+             <li><a href="https://www.facebook.com/liuenmao" class="button">Facebook</a></li>
+             <li><a href="https://www.youtube.com/user/neutrino0717" class="button">Youtube</a></li>
+             <li><a href="https://twitter.com/neutrino0717" class="button">Twitter</a></li>
+             <li><a href="https://www.linkedin.com/pub/evan-liu/51/5a6/748" class="button">Linkedin</a></li>
+            </ul>
+          </div>
+          <h1>Coding <small>Bash vs. Perl vs. Python (by Evan Liu) </small></h1>
+          <hr/>
+        <!--/div-->
+      </div>
+
+      <div class="row">
+        <div class="large-11 columns" role="content">
+ 
+         <h3><a name="Logging">Topics about  logging  </a></h3>
+         <ul>
+
+         <li>
+         <a href="#logging to console">logging to console</a> 
+         </li>
+
+         <li>
+         <a href="#logging to a logfile with a FileHandler">logging to a logfile with a FileHandler</a> 
+         </li>
+
+         <li>
+         <a href="#logging to a logfile with a formated FileHandler">logging to a logfile with a formated FileHandler</a> 
+         </li>
+
+         <li>
+         <a href="#logging to syslog">logging to syslog</a> 
+         </li>
+
+         </ul>
+
+          <article>
+		  <h4><a name="logging to console" href="#Logging">Logging: logging to console </a></h4>
+		  <pre class="xdesc"></pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>13</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#-s output message to standard error as well</span>
+</div></li><li><div class="line">logger -s <span class="s2">&quot;the distance of nearby stars:  &quot;</span> 2&gt;&amp;1
+</div></li><li><div class="line">logger -s <span class="s2">&quot;&gt;&gt; Sun 0 Sirius8.6&quot;</span> 2&gt;&amp;1
+</div></li><li><div class="line">
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#-s output message to standard error as well
+</div></li><li><div class="line">neutrino0717: the distance of nearby stars:  
+</div></li><li><div class="line">neutrino0717: &gt;&gt; Sun 0 Sirius8.6
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#get_logger() is equivalent to get_logger(__PACKAGE__).</span>
+</div></li><li><div class="line"><span class="c1">#get_logger(&#39;&#39;) will obtain the root logger</span>
+</div></li><li><div class="line"><span class="k">use</span> <span class="nn">Log::</span><span class="n">Log4perl</span> <span class="sx">qw(:easy)</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="nn">Log::</span><span class="n">Log4perl</span><span class="o">-&gt;</span><span class="n">easy_init</span><span class="p">(</span><span class="nv">$INFO</span><span class="p">);</span>  <span class="c1"># Set priority of root logger to INFO</span>
+</div></li><li><div class="line"><span class="k">my</span> <span class="nv">$logger</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">();</span>
+</div></li><li><div class="line"><span class="nv">%lightyear</span><span class="o">=</span><span class="p">(</span><span class="n">Sun</span><span class="o">=&gt;</span><span class="mi">0</span><span class="p">,</span><span class="n">Sirius</span><span class="o">=&gt;</span><span class="mf">8.6</span><span class="p">);</span>
+</div></li><li><div class="line"><span class="nv">$logger</span><span class="o">-&gt;</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;the distance of nearby stars: &quot;</span><span class="p">);</span>
+</div></li><li><div class="line"><span class="nv">$logger</span><span class="o">-&gt;</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;--&gt; $s&quot;</span><span class="p">,</span> <span class="nb">join</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="p">,</span><span class="nv">%lightyear</span><span class="p">));</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#get_logger() is equivalent to get_logger(__PACKAGE__).
+</div></li><li><div class="line">#get_logger(&#39;&#39;) will obtain the root logger
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="kn">import</span> <span class="nn">sys</span>
+</div></li><li><div class="line"><span class="kn">import</span> <span class="nn">logging</span>
+</div></li><li><div class="line"><span class="c">#set the logging output level to debug</span>
+</div></li><li><div class="line"><span class="c">#by default, sys.stderr will be used.</span>
+</div></li><li><div class="line"><span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span><span class="n">stream</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">)</span>
+</div></li><li><div class="line"><span class="c">#hierarchical,getLogger() will return root logger</span>
+</div></li><li><div class="line"><span class="n">logger</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+</div></li><li><div class="line"><span class="n">lightyear</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;Sun&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="s">&#39;Sirius&#39;</span><span class="p">:</span><span class="mf">8.6</span><span class="p">}</span>
+</div></li><li><div class="line"><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&#39;the distance of nearby stars: &#39;</span><span class="p">)</span>
+</div></li><li><div class="line"><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&#39;--&gt; </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">lightyear</span><span class="p">)</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#set the logging output level to debug 
+</div></li><li><div class="line">#by default, sys.stderr will be used. 
+</div></li><li><div class="line">#hierarchical,getLogger() will return root logger 
+</div></li><li><div class="line">INFO:__main__:the distance of nearby stars:
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="logging to a logfile with a FileHandler" href="#Logging">Logging: logging to a logfile with a FileHandler </a></h4>
+		  <pre class="xdesc"></pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>13</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="nv">logfile</span><span class="o">=</span><span class="s2">&quot;/tmp/stars.log&quot;</span>
+</div></li><li><div class="line">logger -s <span class="s2">&quot;the distance of nearby stars:  &quot;</span> 2&gt;<span class="nv">$logfile</span>
+</div></li><li><div class="line">logger -s <span class="s2">&quot;&gt;&gt; Sun 0 Sirius 8.6&quot;</span> 2&gt;&gt;<span class="nv">$logfile</span>
+</div></li><li><div class="line">cat <span class="nv">$logfile</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">neutrino0717: the distance of nearby stars:  
+</div></li><li><div class="line">neutrino0717: &gt;&gt; Sun 0 Sirius 8.6
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="k">use</span> <span class="nn">Log::</span><span class="n">Log4perl</span> <span class="sx">qw(:easy)</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="nn">Log::</span><span class="n">Log4perl</span><span class="o">-&gt;</span><span class="n">easy_init</span><span class="p">({</span>
+</div></li><li><div class="line">        <span class="n">level</span><span class="o">=&gt;</span><span class="nv">$DEBUG</span><span class="p">,</span>
+</div></li><li><div class="line">        <span class="n">file</span><span class="o">=&gt;</span><span class="s">&quot;&gt;/tmp/stars.log&quot;</span><span class="p">});</span> 
+</div></li><li><div class="line"><span class="k">my</span> <span class="nv">$logger</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">(</span><span class="n">__PACKAGE__</span><span class="p">);</span>
+</div></li><li><div class="line"><span class="nv">%lightyear</span><span class="o">=</span><span class="p">(</span><span class="n">Sun</span><span class="o">=&gt;</span><span class="mi">0</span><span class="p">,</span><span class="n">Sirius</span><span class="o">=&gt;</span><span class="mf">8.6</span><span class="p">);</span>
+</div></li><li><div class="line"><span class="nv">$logger</span><span class="o">-&gt;</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;the distance of nearby stars: &quot;</span><span class="p">);</span>
+</div></li><li><div class="line"><span class="nv">$logger</span><span class="o">-&gt;</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;--&gt; $s&quot;</span><span class="p">,</span> <span class="nb">join</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="p">,</span><span class="nv">%lightyear</span><span class="p">));</span>
+</div></li><li><div class="line"><span class="nb">open</span> <span class="n">FH</span><span class="p">,</span><span class="s">&quot;&lt;&quot;</span><span class="p">,</span><span class="s">&quot;/tmp/stars.log&quot;</span><span class="p">;</span> 
+</div></li><li><div class="line"><span class="k">print</span>  <span class="k">while</span><span class="p">(</span><span class="sr">&lt;FH&gt;</span><span class="p">);</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">2017/03/22 14:08:33 the distance of nearby stars: 
+</div></li><li><div class="line">2017/03/22 14:08:33 --&gt; Sun 0 Sirius 8.6
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="kn">import</span> <span class="nn">logging</span>
+</div></li><li><div class="line"><span class="c">#set the logging output level to debug</span>
+</div></li><li><div class="line"><span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+</div></li><li><div class="line"><span class="n">logger</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+</div></li><li><div class="line"><span class="c">#create a filehandle with logging level debug</span>
+</div></li><li><div class="line"><span class="n">handler</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">FileHandler</span><span class="p">(</span><span class="s">&#39;/tmp/stars.log&#39;</span><span class="p">,</span><span class="s">&#39;w&#39;</span><span class="p">)</span> <span class="c">#&lt;--</span>
+</div></li><li><div class="line"><span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">handler</span><span class="p">)</span>  <span class="c">#&lt;--</span>
+</div></li><li><div class="line"><span class="n">lightyear</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;Sun&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="s">&#39;Sirius&#39;</span><span class="p">:</span><span class="mf">8.6</span><span class="p">}</span>
+</div></li><li><div class="line"><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&#39;the distance of nearby stars: &#39;</span><span class="p">)</span>
+</div></li><li><div class="line"><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&#39;--&gt; </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">lightyear</span><span class="p">)</span>
+</div></li><li><div class="line"><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;/tmp/stars.log&#39;</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span> <span class="k">print</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#set the logging output level to debug 
+</div></li><li><div class="line">#create a filehandle with logging level debug 
+</div></li><li><div class="line">the distance of nearby stars: 
+</div></li><li><div class="line">--&gt; {&#39;Sun&#39;: 0, &#39;Sirius&#39;: 8.6}
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="logging to a logfile with a formated FileHandler" href="#Logging">Logging: logging to a logfile with a formated FileHandler </a></h4>
+		  <pre class="xdesc"></pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>13</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="nb">shopt</span> -s expand_aliases
+</div></li><li><div class="line"><span class="c">#-t tag, -i pid</span>
+</div></li><li><div class="line"><span class="nb">alias </span><span class="nv">logfmd</span><span class="o">=</span><span class="s1">&#39;logger -t $0 -i&#39;</span>
+</div></li><li><div class="line"><span class="nv">logfile</span><span class="o">=</span><span class="s2">&quot;/tmp/stars.log&quot;</span>
+</div></li><li><div class="line">logfmd -s <span class="s2">&quot;`date &quot;</span>+%Y%m%d %T<span class="s2">&quot;` the distance of nearby stars:  &quot;</span> 2&gt;<span class="nv">$logfile</span>
+</div></li><li><div class="line">logfmd -s <span class="s2">&quot;`date &quot;</span>+%Y%m%d %T<span class="s2">&quot;`&gt;&gt; Sun 0 Sirius 8.6&quot;</span> 2&gt;&gt;<span class="nv">$logfile</span>
+</div></li><li><div class="line">cat <span class="nv">$logfile</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#-t tag, -i pid
+</div></li><li><div class="line">bash[18996]: 20170322 14:08:33 the distance of nearby stars:  
+</div></li><li><div class="line">bash[18998]: 20170322 14:08:33&gt;&gt; Sun 0 Sirius 8.6
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="k">use</span> <span class="nn">Log::</span><span class="n">Log4perl</span> <span class="sx">qw(:easy)</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="nn">Log::</span><span class="n">Log4perl</span><span class="o">-&gt;</span><span class="n">easy_init</span><span class="p">({</span><span class="n">level</span><span class="o">=&gt;</span><span class="nv">$DEBUG</span><span class="p">,</span>
+</div></li><li><div class="line">        <span class="n">file</span><span class="o">=&gt;</span><span class="s">&quot;&gt;/tmp/stars.log&quot;</span><span class="p">,</span>
+</div></li><li><div class="line">        <span class="n">layout</span><span class="o">=&gt;</span><span class="s">&#39;%F{1}-%L-%M: %m%n&#39;</span><span class="p">});</span> 
+</div></li><li><div class="line"><span class="k">my</span> <span class="nv">$logger</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">(</span><span class="n">__PACKAGE__</span><span class="p">);</span>
+</div></li><li><div class="line"><span class="nv">%lightyear</span><span class="o">=</span><span class="p">(</span><span class="n">Sun</span><span class="o">=&gt;</span><span class="mi">0</span><span class="p">,</span><span class="n">Sirius</span><span class="o">=&gt;</span><span class="mf">8.6</span><span class="p">);</span>
+</div></li><li><div class="line"><span class="nv">$logger</span><span class="o">-&gt;</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;the distance of nearby stars: &quot;</span><span class="p">);</span>
+</div></li><li><div class="line"><span class="nv">$logger</span><span class="o">-&gt;</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;--&gt; $s&quot;</span><span class="p">,</span> <span class="nb">join</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="p">,</span><span class="nv">%lightyear</span><span class="p">));</span>
+</div></li><li><div class="line"><span class="nb">open</span> <span class="n">FH</span><span class="p">,</span><span class="s">&quot;&lt;&quot;</span><span class="p">,</span><span class="s">&quot;/tmp/stars.log&quot;</span><span class="p">;</span> 
+</div></li><li><div class="line"><span class="k">print</span>  <span class="k">while</span><span class="p">(</span><span class="sr">&lt;FH&gt;</span><span class="p">);</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">-e-7-main::: the distance of nearby stars: 
+</div></li><li><div class="line">-e-8-main::: --&gt; Sun 0 Sirius 8.6
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="kn">import</span> <span class="nn">logging</span>
+</div></li><li><div class="line"><span class="c">#set the logging output level to debug</span>
+</div></li><li><div class="line"><span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+</div></li><li><div class="line"><span class="c">#create a filehandle with logging level debug</span>
+</div></li><li><div class="line"><span class="n">logger</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+</div></li><li><div class="line"><span class="n">handler</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">FileHandler</span><span class="p">(</span><span class="s">&#39;/tmp/stars.log&#39;</span><span class="p">,</span><span class="s">&#39;w&#39;</span><span class="p">)</span>
+</div></li><li><div class="line"><span class="n">fmt1</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%(asctime)s</span><span class="s"> - </span><span class="si">%(name)s</span><span class="s"> - </span><span class="si">%(levelname)s</span><span class="s"> - </span><span class="si">%(message)s</span><span class="s">&#39;</span><span class="p">)</span>  <span class="c">#&lt;--</span>
+</div></li><li><div class="line"><span class="n">fmt2</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%(asctime)s</span><span class="s"> </span><span class="si">%(levelname)s</span><span class="s"> </span><span class="si">%(threadName)s</span><span class="s">: </span><span class="si">%(message)s</span><span class="s">&#39;</span><span class="p">,</span><span class="s">&#39;%b </span><span class="si">%d</span><span class="s"> %H:%M:%S&#39;</span><span class="p">)</span> <span class="c">#&lt;--</span>
+</div></li><li><div class="line"><span class="n">handler</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">fmt2</span><span class="p">)</span>  <span class="c">#&lt;--</span>
+</div></li><li><div class="line"><span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">handler</span><span class="p">)</span>
+</div></li><li><div class="line"><span class="n">lightyear</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;Sun&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="s">&#39;Sirius&#39;</span><span class="p">:</span><span class="mf">8.6</span><span class="p">}</span>
+</div></li><li><div class="line"><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&#39;the distance of nearby stars: &#39;</span><span class="p">)</span>
+</div></li><li><div class="line"><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&#39;--&gt; </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">lightyear</span><span class="p">)</span>
+</div></li><li><div class="line"><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;/tmp/stars.log&#39;</span><span class="p">,</span><span class="s">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span> <span class="k">print</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#set the logging output level to debug 
+</div></li><li><div class="line">#create a filehandle with logging level debug 
+</div></li><li><div class="line">Mar 22 14:08:34 INFO MainThread: the distance of nearby stars: 
+</div></li><li><div class="line">Mar 22 14:08:34 DEBUG MainThread: --&gt; {&#39;Sun&#39;: 0, &#39;Sirius&#39;: 8.6}
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="logging to syslog" href="#Logging">Logging: logging to syslog </a></h4>
+		  <pre class="xdesc"></pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>13</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line">logger <span class="s2">&quot;message from logger command&quot;</span>
+</div></li><li><div class="line">tail -n 1 /var/log/syslog
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">Mar 22 14:08:33 cloud bash[18998]: 20170322 14:08:33&gt;&gt; Sun 0 Sirius 8.6
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#todo</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#todo
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#todo</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#todo
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+
+        </div>
+     
+        <aside class="large-1 columns">
+          <h5>Categories</h5>
+          
+          <ul class="side-nav">
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../1/index.html">Regex</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../2/index.html">String</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../3/index.html">Array</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../4/index.html">Set</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../5/index.html">Map</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../6/index.html">Variables</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../7/index.html">Special variables</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../8/index.html">Function</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../9/index.html">Command line</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../10/index.html">Flow control</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../11/index.html">Input</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../12/index.html">Path</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  class="selected"  ><a href="index.html">Logging</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../14/index.html">Threading</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../15/index.html">Html</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../16/index.html">Miscellaneous</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../17/index.html">Help</a></li>
+            
+          </ul>
+          
+     
+        </aside>
+         
+      </div>
+
+      <footer class="row">
+        <div class="large-12 columns">
+          <hr/>
+          <div class="row">
+            <div class="large-6 columns">
+              <p>© Evan Liu.   (liuenmao@hotmail.com)</p>
+            </div>
+            <div class="large-6 columns">
+            </div>
+          </div>
+        </div>
+      </footer>
+</body>    
+
+<!-- Mirrored from 118.193.213.195/bash_perl_python/13/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 16 May 2018 07:24:14 GMT -->
+</html>

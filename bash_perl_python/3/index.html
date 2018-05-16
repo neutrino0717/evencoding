@@ -1,0 +1,1397 @@
+
+
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" data-useragent="Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)">
+
+<!-- Mirrored from 118.193.213.195/bash_perl_python/3/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 16 May 2018 07:24:14 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta name="google-site-verification" content="qms_3-ElBGujHuD2zwSZLcW8jmlJ7WG5W3JoK67ArzY" />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Array in Bash, Perl, Python </title>
+<meta name="description" content="Bash, Perl and Python comparison."/>
+<meta name="keywords" content="Bash,Perl,Python"/>
+<meta name="author" content="Enmao Liu"/>
+<meta name="copyright" content="Enmao Liu@shanghai"/>
+<link rel="stylesheet" type="text/css" href="../../static/downloads/foundation.css"/>
+<link rel="stylesheet" type="text/css" href="../../static/downloads/pygmts_def.css"/>
+<link rel="stylesheet" type="text/css" href="../../static/downloads/app.css"/>
+<script src="../../static/downloads/modernizr.js"></script>
+</head>
+<body>
+<!--
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- test -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5197746177913810"
+     data-ad-slot="1965669484"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script -->
+<div class="row">
+ <!--a href="http://core.weloveservers.net/aff.php?aff=923" rel="nofollow"><img src="https://core.weloveservers.net/uploads/vps-970X90.jpg" width="970" height="90" border="0"></a-->
+</div>
+    <div class="row">
+       <!--div class="large-12 columns"-->
+         <div class="nav-bar right">
+           <ul class="button-group">
+             <li><a href="https://www.facebook.com/liuenmao" class="button">Facebook</a></li>
+             <li><a href="https://www.youtube.com/user/neutrino0717" class="button">Youtube</a></li>
+             <li><a href="https://twitter.com/neutrino0717" class="button">Twitter</a></li>
+             <li><a href="https://www.linkedin.com/pub/evan-liu/51/5a6/748" class="button">Linkedin</a></li>
+            </ul>
+          </div>
+          <h1>Coding <small>Bash vs. Perl vs. Python (by Evan Liu) </small></h1>
+          <hr/>
+        <!--/div-->
+      </div>
+
+      <div class="row">
+        <div class="large-11 columns" role="content">
+ 
+         <h3><a name="Array">Topics about  array  </a></h3>
+         <ul>
+
+         <li>
+         <a href="#Get the length of an array ">Get the length of an array </a> 
+         </li>
+
+         <li>
+         <a href="#Get the elements of an array">Get the elements of an array</a> 
+         </li>
+
+         <li>
+         <a href="#Iterate over an array">Iterate over an array</a> 
+         </li>
+
+         <li>
+         <a href="#Get the index of an element in an array">Get the index of an element in an array</a> 
+         </li>
+
+         <li>
+         <a href="#Append elements to array">Append elements to array</a> 
+         </li>
+
+         <li>
+         <a href="#Insert an element into array">Insert an element into array</a> 
+         </li>
+
+         <li>
+         <a href="#Remove elements by index">Remove elements by index</a> 
+         </li>
+
+         <li>
+         <a href="#Remove elements by value">Remove elements by value</a> 
+         </li>
+
+         <li>
+         <a href="#Replace an element">Replace an element</a> 
+         </li>
+
+         <li>
+         <a href="#Sort all the elements">Sort all the elements</a> 
+         </li>
+
+         <li>
+         <a href="#Reverse all the elements">Reverse all the elements</a> 
+         </li>
+
+         <li>
+         <a href="#Concatenate two arrays">Concatenate two arrays</a> 
+         </li>
+
+         <li>
+         <a href="#Concatenate all elements to a string with &#39;-&#39;">Concatenate all elements to a string with &#39;-&#39;</a> 
+         </li>
+
+         </ul>
+
+          <article>
+		  <h4><a name="Get the length of an array " href="#Array">Array: Get the length of an array  </a></h4>
+		  <pre class="xdesc"></pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.Create an array
+2.Print the array length
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>3</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create an array</span>
+</div></li><li><div class="line"><span class="nv">arr</span><span class="o">=(</span><span class="s2">&quot;hatter&quot;</span> <span class="s2">&quot;duchess&quot;</span> <span class="s2">&quot;alice&quot;</span><span class="o">)</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Print the array length</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="k">${#</span><span class="nv">arr</span><span class="p">[*]</span><span class="k">}</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="k">${#</span><span class="nv">arr</span><span class="p">[@]</span><span class="k">}</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create an array
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Print the array length
+</div></li><li><div class="line">3
+</div></li><li><div class="line">3
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#1.Create an array</span>
+</div></li><li><div class="line"><span class="nv">@arr</span><span class="o">=</span><span class="p">(</span><span class="s">&quot;hatter&quot;</span><span class="p">,</span><span class="s">&quot;duchess&quot;</span><span class="p">,</span><span class="s">&quot;alice&quot;</span><span class="p">);</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.Print the array length</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="mi">0</span><span class="o">+</span><span class="nv">@arr</span><span class="o">.</span><span class="s">&quot;\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="nb">scalar</span><span class="p">(</span><span class="nv">@arr</span><span class="p">)</span><span class="o">.</span><span class="s">&quot;\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="mi">1</span><span class="o">+</span><span class="nv">$#arr</span><span class="o">.</span><span class="s">&quot;\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create an array
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Print the array length
+</div></li><li><div class="line">3
+</div></li><li><div class="line">3
+</div></li><li><div class="line">3
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create an array</span>
+</div></li><li><div class="line"><span class="n">arr</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;hatter&quot;</span><span class="p">,</span><span class="s">&quot;duchess&quot;</span><span class="p">,</span><span class="s">&quot;alice&quot;</span><span class="p">];</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Print the array length</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">);</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create an array 
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Print the array length 
+</div></li><li><div class="line">3
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="Get the elements of an array" href="#Array">Array: Get the elements of an array </a></h4>
+		  <pre class="xdesc">In perl
+Double dots is called &#39;range operator&#39;,which is useful for writing &#39;foreach (1..4)&#39; loops and for doing slice operations on arrays
+for example:
+@foo = @foo[$#foo-4 .. $#foo];  # slice last 5 items</pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.Create an array
+2.Print all elements
+3.Print elements at index 0~2 respectively
+4.Print two consecutive elements start from index 0
+5.Print elements starting with index 2
+6.Print the last element
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>3</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create an array</span>
+</div></li><li><div class="line"><span class="nv">arr</span><span class="o">=({</span>1..4<span class="o">})</span>; <span class="c">#or</span>
+</div></li><li><div class="line"><span class="nv">arr</span><span class="o">=(</span>1 2 3 4<span class="o">)</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Print all elements</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="k">${</span><span class="nv">arr</span><span class="p">[@]</span><span class="k">}</span>  <span class="c">#or</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="k">${</span><span class="nv">arr</span><span class="p">[*]</span><span class="k">}</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#3.Print elements at index 0~2 respectively</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="k">${</span><span class="nv">arr</span><span class="p">[0]</span><span class="k">}</span> <span class="k">${</span><span class="nv">arr</span><span class="p">[1]</span><span class="k">}</span> <span class="k">${</span><span class="nv">arr</span><span class="p">[3]</span><span class="k">}</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#4.Print two consecutive elements start from index 0</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="k">${</span><span class="nv">arr</span><span class="p">[@]:</span><span class="nv">0</span><span class="p">:</span><span class="nv">2</span><span class="k">}</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#5.Print elements starting with index 2</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="k">${</span><span class="nv">arr</span><span class="p">[*]:</span><span class="nv">2</span><span class="k">}</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#6.Print the last element</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="k">${</span><span class="nv">arr</span><span class="p">[-1]</span><span class="k">}</span>   <span class="c">#or</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="k">${</span><span class="nv">arr</span><span class="p">[</span><span class="k">${#</span><span class="nv">arr</span><span class="p">[@]</span><span class="k">}</span><span class="p">-1]</span><span class="k">}</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create an array
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Print all elements
+</div></li><li><div class="line">1 2 3 4
+</div></li><li><div class="line">1 2 3 4
+</div></li><li><div class="line">
+</div></li><li><div class="line">#3.Print elements at index 0~2 respectively
+</div></li><li><div class="line">1 2 4
+</div></li><li><div class="line">
+</div></li><li><div class="line">#4.Print two consecutive elements start from index 0
+</div></li><li><div class="line">1 2
+</div></li><li><div class="line">
+</div></li><li><div class="line">#5.Print elements starting with index 2
+</div></li><li><div class="line">3 4
+</div></li><li><div class="line">
+</div></li><li><div class="line">#6.Print the last element
+</div></li><li><div class="line">4
+</div></li><li><div class="line">4
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#1.Create an array</span>
+</div></li><li><div class="line"><span class="nv">@arr</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span> <span class="o">..</span> <span class="mi">4</span><span class="p">);</span>  <span class="c1">#or</span>
+</div></li><li><div class="line"><span class="nv">@arr</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.Print all elements</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;@arr\n&quot;</span><span class="p">;</span>  <span class="c1">#or</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="nb">join</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">,</span><span class="nv">@arr</span><span class="p">)</span><span class="o">.</span><span class="s">&quot;\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#3.Print elements at index 0~2 respectively</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;$arr[0] $arr[1] $arr[3]\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#4.Print two consecutive elements start from index 0</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;@arr[0 .. 1]\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#5.Print elements starting with index 2</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;@arr[2 .. $#arr]\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#6.Print the last element</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;@arr[-1]\n&quot;</span><span class="p">;</span> <span class="c1">#or</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;@arr[$#arr]&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create an array
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Print all elements
+</div></li><li><div class="line">1 2 3 4
+</div></li><li><div class="line">1 2 3 4
+</div></li><li><div class="line">
+</div></li><li><div class="line">#3.Print elements at index 0~2 respectively
+</div></li><li><div class="line">1 2 4
+</div></li><li><div class="line">
+</div></li><li><div class="line">#4.Print two consecutive elements start from index 0
+</div></li><li><div class="line">1 2
+</div></li><li><div class="line">
+</div></li><li><div class="line">#5.Print elements starting with index 2
+</div></li><li><div class="line">3 4
+</div></li><li><div class="line">
+</div></li><li><div class="line">#6.Print the last element
+</div></li><li><div class="line">4
+</div></li><li><div class="line">4
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create an array</span>
+</div></li><li><div class="line"><span class="n">arr</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Print all elements</span>
+</div></li><li><div class="line"><span class="n">arr</span>    <span class="c">#or</span>
+</div></li><li><div class="line"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">arr</span><span class="p">:</span> <span class="k">print</span> <span class="n">i</span><span class="p">,</span>
+</div></li><li><div class="line"><span class="k">print</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#3.Print elements at index 0~2 respectively</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">arr</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#4.Print two consecutive elements start from index 0</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#5.Print elements starting with index 2</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">arr</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#6.Print the last element</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">arr</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create an array 
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Print all elements 
+</div></li><li><div class="line">1 2 3 4
+</div></li><li><div class="line">
+</div></li><li><div class="line">#3.Print elements at index 0~2 respectively 
+</div></li><li><div class="line">1 2 4
+</div></li><li><div class="line">
+</div></li><li><div class="line">#4.Print two consecutive elements start from index 0 
+</div></li><li><div class="line">[1, 2]
+</div></li><li><div class="line">
+</div></li><li><div class="line">#5.Print elements starting with index 2 
+</div></li><li><div class="line">[3, 4]
+</div></li><li><div class="line">
+</div></li><li><div class="line">#6.Print the last element 
+</div></li><li><div class="line">4
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="Iterate over an array" href="#Array">Array: Iterate over an array </a></h4>
+		  <pre class="xdesc">Python normally uses list and tuple as array  </pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.Create an array with three elements
+2.Iterate over the array
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>3</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create an array with three elements</span>
+</div></li><li><div class="line"><span class="nv">arr</span><span class="o">=(</span><span class="s2">&quot;hatter&quot;</span> <span class="s2">&quot;duchess&quot;</span> <span class="s2">&quot;alice&quot;</span><span class="o">)</span>
+</div></li><li><div class="line"><span class="nb">declare</span> -p arr
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Iterate over the array</span>
+</div></li><li><div class="line"><span class="c">#  use for loop</span>
+</div></li><li><div class="line"><span class="k">for </span>i in <span class="s2">&quot;${arr[@]}&quot;</span>; <span class="k">do </span><span class="nb">echo</span> -n <span class="s2">&quot;$i &quot;</span>; <span class="k">done</span>; <span class="nb">echo</span>
+</div></li><li><div class="line"><span class="c">#  use c style for loop</span>
+</div></li><li><div class="line"><span class="k">for</span> <span class="o">((</span><span class="nv">i</span><span class="o">=</span>0;i&lt;<span class="k">${#</span><span class="nv">arr</span><span class="p">[@]</span><span class="k">}</span>;i++<span class="o">))</span>; <span class="k">do </span><span class="nb">echo</span> -n <span class="s2">&quot;${arr[$i]} &quot;</span>; <span class="k">done</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create an array with three elements
+</div></li><li><div class="line">declare -a arr=&#39;([0]=&quot;hatter&quot; [1]=&quot;duchess&quot; [2]=&quot;alice&quot;)&#39;
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Iterate over the array
+</div></li><li><div class="line">#  use for loop
+</div></li><li><div class="line">hatter duchess alice 
+</div></li><li><div class="line">#  use c style for loop
+</div></li><li><div class="line">hatter duchess alice
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#1.Create an array with three elements</span>
+</div></li><li><div class="line"><span class="nv">@arr</span><span class="o">=</span><span class="p">(</span><span class="s">&quot;hatter&quot;</span><span class="p">,</span><span class="s">&quot;duchess&quot;</span><span class="p">,</span><span class="s">&quot;alice&quot;</span><span class="p">);</span>
+</div></li><li><div class="line"><span class="c1">#  or</span>
+</div></li><li><div class="line"><span class="nv">@arr</span><span class="o">=</span><span class="sx">qw(hatter duchess alice)</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.Iterate over the array</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;$_ &quot;</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">@arr</span><span class="p">);</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create an array with three elements
+</div></li><li><div class="line">#  or
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Iterate over the array
+</div></li><li><div class="line">hatter duchess alice
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create an array with three elements</span>
+</div></li><li><div class="line"><span class="n">arr</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;hatter&quot;</span><span class="p">,</span><span class="s">&quot;duchess&quot;</span><span class="p">,</span><span class="s">&quot;alice&quot;</span><span class="p">]</span>
+</div></li><li><div class="line"><span class="c">#  tuple is immutable,and faster than list</span>
+</div></li><li><div class="line"><span class="n">tpl</span><span class="o">=</span><span class="p">(</span><span class="s">&quot;hatter&quot;</span><span class="p">,</span><span class="s">&quot;duchess&quot;</span><span class="p">,</span><span class="s">&quot;alice&quot;</span><span class="p">)</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Iterate over the array</span>
+</div></li><li><div class="line"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">arr</span><span class="p">:</span> <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">),</span>
+</div></li><li><div class="line"><span class="k">print</span>
+</div></li><li><div class="line"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tpl</span><span class="p">:</span> <span class="k">print</span> <span class="n">i</span><span class="p">,</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create an array with three elements 
+</div></li><li><div class="line">#  tuple is immutable,and faster than list 
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Iterate over the array 
+</div></li><li><div class="line">hatter duchess alice
+</div></li><li><div class="line">hatter duchess alice
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="Get the index of an element in an array" href="#Array">Array: Get the index of an element in an array </a></h4>
+		  <pre class="xdesc"></pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.Create a array
+2.Get the index of the element with value &#39;duchess&#39;
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>3</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create a array</span>
+</div></li><li><div class="line"><span class="nv">arr</span><span class="o">=(</span><span class="s2">&quot;hatter&quot;</span> <span class="s2">&quot;duchess&quot;</span> <span class="s2">&quot;alice&quot;</span><span class="o">)</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Get the index of the element with value &#39;duchess&#39;</span>
+</div></li><li><div class="line"><span class="k">for</span> <span class="o">((</span><span class="nv">i</span><span class="o">=</span>0;i&lt;<span class="k">${#</span><span class="nv">arr</span><span class="p">[@]</span><span class="k">}</span>;i++<span class="o">))</span>;<span class="k">do</span> 
+</div></li><li><div class="line">  <span class="o">[[</span> <span class="k">${</span><span class="nv">arr</span><span class="p">[</span><span class="nv">$i</span><span class="p">]</span><span class="k">}</span> <span class="o">=</span> <span class="s1">&#39;duchess&#39;</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="nv">$i</span>
+</div></li><li><div class="line"><span class="k">done</span>
+</div></li><li><div class="line"><span class="c">#  or use associative array</span>
+</div></li><li><div class="line"><span class="nb">declare</span> -A ass; 
+</div></li><li><div class="line"><span class="nv">ass</span><span class="o">=([</span>hatter<span class="o">]=</span>0 <span class="o">[</span>duchess<span class="o">]=</span>1 <span class="o">[</span>alice<span class="o">]=</span>2<span class="o">)</span>; 
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="k">${</span><span class="nv">ass</span><span class="p">[duchess]</span><span class="k">}</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a array
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Get the index of the element with value &#39;duchess&#39;
+</div></li><li><div class="line">1
+</div></li><li><div class="line">#  or use associative array
+</div></li><li><div class="line">1
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#1.Create a array</span>
+</div></li><li><div class="line"><span class="nv">@arr</span><span class="o">=</span><span class="p">(</span><span class="s">&quot;hatter&quot;</span><span class="p">,</span><span class="s">&quot;duchess&quot;</span><span class="p">,</span><span class="s">&quot;alice&quot;</span><span class="p">);</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.Get the index of the element with value &#39;duchess&#39;</span>
+</div></li><li><div class="line"><span class="c1">#  use index hash</span>
+</div></li><li><div class="line"><span class="k">my</span> <span class="nv">%index</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="nv">@index</span><span class="p">{</span><span class="nv">@arr</span><span class="p">}</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="o">..</span><span class="nv">$#arr</span><span class="p">);</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="nv">$index</span><span class="p">{</span><span class="s">&quot;duchess&quot;</span><span class="p">}</span><span class="o">.</span><span class="s">&quot;\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="c1">#  or use List::MoreUtils</span>
+</div></li><li><div class="line"><span class="k">use</span> <span class="nn">List::</span><span class="n">MoreUtils</span> <span class="sx">qw(first_index)</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">first_index</span> <span class="p">{</span><span class="nv">$_</span> <span class="ow">eq</span> <span class="s">&#39;duchess&#39;</span><span class="p">}</span> <span class="nv">@arr</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a array
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Get the index of the element with value &#39;duchess&#39;
+</div></li><li><div class="line">#  use index hash
+</div></li><li><div class="line">1
+</div></li><li><div class="line">#  or use List::MoreUtils
+</div></li><li><div class="line">1
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create a array</span>
+</div></li><li><div class="line"><span class="n">arr</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;hatter&quot;</span><span class="p">,</span><span class="s">&quot;duchess&quot;</span><span class="p">,</span><span class="s">&quot;alice&quot;</span><span class="p">]</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Get the index of the element with value &#39;duchess&#39;</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">arr</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s">&#39;duchess&#39;</span><span class="p">)</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a array 
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Get the index of the element with value &#39;duchess&#39; 
+</div></li><li><div class="line">1
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="Append elements to array" href="#Array">Array: Append elements to array </a></h4>
+		  <pre class="xdesc"></pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.Create a array
+2.Append a element to array
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>3</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create a array</span>
+</div></li><li><div class="line"><span class="nv">arr</span><span class="o">=(</span><span class="s2">&quot;hatter&quot;</span> <span class="s2">&quot;duchess&quot;</span> <span class="s2">&quot;alice&quot;</span><span class="o">)</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Append a element to array</span>
+</div></li><li><div class="line"><span class="nv">arr</span><span class="o">=(</span><span class="k">${</span><span class="nv">arr</span><span class="p">[@]</span><span class="k">}</span> rabbit<span class="o">)</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="k">${</span><span class="nv">arr</span><span class="p">[@]</span><span class="k">}</span>
+</div></li><li><div class="line"><span class="c">#  or use</span>
+</div></li><li><div class="line">arr+<span class="o">=(</span><span class="s2">&quot;rabbit&quot;</span><span class="o">)</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="k">${</span><span class="nv">arr</span><span class="p">[@]</span><span class="k">}</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a array
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Append a element to array
+</div></li><li><div class="line">hatter duchess alice rabbit
+</div></li><li><div class="line">#  or use
+</div></li><li><div class="line">hatter duchess alice rabbit rabbit
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#1.Create a array</span>
+</div></li><li><div class="line"><span class="nv">@arr</span><span class="o">=</span><span class="p">(</span><span class="s">&quot;hatter&quot;</span><span class="p">,</span><span class="s">&quot;duchess&quot;</span><span class="p">,</span><span class="s">&quot;alice&quot;</span><span class="p">);</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.Append a element to array</span>
+</div></li><li><div class="line"><span class="nv">@arr</span><span class="o">=</span><span class="p">(</span><span class="nv">@arr</span><span class="p">,</span><span class="s">&quot;rabbit&quot;</span><span class="p">);</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;@arr\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="c1">#  or use push</span>
+</div></li><li><div class="line"><span class="nb">push</span><span class="p">(</span><span class="nv">@arr</span><span class="p">,</span><span class="s">&quot;rabbit&quot;</span><span class="p">);</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;@arr\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a array
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Append a element to array
+</div></li><li><div class="line">hatter duchess alice rabbit
+</div></li><li><div class="line">#  or use push
+</div></li><li><div class="line">hatter duchess alice rabbit rabbit
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create a array</span>
+</div></li><li><div class="line"><span class="n">arr</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;hatter&quot;</span><span class="p">,</span><span class="s">&quot;duchess&quot;</span><span class="p">,</span><span class="s">&quot;alice&quot;</span><span class="p">]</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Append a element to array</span>
+</div></li><li><div class="line"><span class="n">arr</span><span class="o">=</span><span class="n">arr</span><span class="o">+</span><span class="p">[</span><span class="s">&#39;rabbit&#39;</span><span class="p">]</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">arr</span>
+</div></li><li><div class="line"><span class="c">#  or use unction insert</span>
+</div></li><li><div class="line"><span class="n">arr</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">),</span><span class="s">&quot;rabbit&quot;</span><span class="p">)</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">arr</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a array 
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Append a element to array 
+</div></li><li><div class="line">[&#39;hatter&#39;, &#39;duchess&#39;, &#39;alice&#39;, &#39;rabbit&#39;]
+</div></li><li><div class="line">#  or use unction insert 
+</div></li><li><div class="line">[&#39;hatter&#39;, &#39;duchess&#39;, &#39;alice&#39;, &#39;rabbit&#39;, &#39;rabbit&#39;]
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="Insert an element into array" href="#Array">Array: Insert an element into array </a></h4>
+		  <pre class="xdesc"></pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.Create a array
+2.Insert a element to array
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>3</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="nv">pos</span><span class="o">=</span>1
+</div></li><li><div class="line"><span class="c">#1.Create a array</span>
+</div></li><li><div class="line"><span class="nv">arr</span><span class="o">=(</span><span class="s2">&quot;hatter&quot;</span> <span class="s2">&quot;duchess&quot;</span> <span class="s2">&quot;alice&quot;</span><span class="o">)</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Insert a element to array</span>
+</div></li><li><div class="line"><span class="nv">arr</span><span class="o">=(</span><span class="k">${</span><span class="nv">arr</span><span class="p">[@]:</span><span class="nv">0</span><span class="p">:</span><span class="nv">$pos</span><span class="k">}</span> <span class="s1">&#39;rabbit&#39;</span> <span class="k">${</span><span class="nv">arr</span><span class="p">[@]:</span><span class="nv">$pos</span><span class="k">}</span><span class="o">)</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="k">${</span><span class="nv">arr</span><span class="p">[@]</span><span class="k">}</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a array
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Insert a element to array
+</div></li><li><div class="line">hatter rabbit duchess alice
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="nv">$pos</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="c1">#1.Create a array</span>
+</div></li><li><div class="line"><span class="nv">@arr</span><span class="o">=</span><span class="p">(</span><span class="s">&quot;hatter&quot;</span><span class="p">,</span><span class="s">&quot;duchess&quot;</span><span class="p">,</span><span class="s">&quot;alice&quot;</span><span class="p">);</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.Insert a element to array</span>
+</div></li><li><div class="line"><span class="nb">splice</span> <span class="nv">@arr</span><span class="p">,</span><span class="nv">$pos</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="s">&quot;rabbit&quot;</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;@arr\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a array
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Insert a element to array
+</div></li><li><div class="line">hatter rabbit duchess alice
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="n">pos</span><span class="o">=</span><span class="mi">1</span>
+</div></li><li><div class="line"><span class="c">#1.Create a array</span>
+</div></li><li><div class="line"><span class="n">arr</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;hatter&quot;</span><span class="p">,</span><span class="s">&quot;duchess&quot;</span><span class="p">,</span><span class="s">&quot;alice&quot;</span><span class="p">]</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Insert a element to array</span>
+</div></li><li><div class="line"><span class="n">arr</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span><span class="s">&quot;rabbit&quot;</span><span class="p">)</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">arr</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a array 
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Insert a element to array 
+</div></li><li><div class="line">[&#39;hatter&#39;, &#39;rabbit&#39;, &#39;duchess&#39;, &#39;alice&#39;]
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="Remove elements by index" href="#Array">Array: Remove elements by index </a></h4>
+		  <pre class="xdesc"></pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.Create an array
+2.Remove the 2nd element
+3.Alternative ways to remove an element
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>3</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create an array</span>
+</div></li><li><div class="line"><span class="nv">arr</span><span class="o">=(</span><span class="s2">&quot;hatter&quot;</span> <span class="s2">&quot;duchess&quot;</span> <span class="s2">&quot;alice&quot;</span><span class="o">)</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Remove the 2nd element</span>
+</div></li><li><div class="line"><span class="c">#  assigning null to the 2nd element</span>
+</div></li><li><div class="line"><span class="nb">unset </span>arr<span class="o">[</span>1<span class="o">]</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="s2">&quot;\${arr[@]} --&gt;${arr[@]}&quot;</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="s2">&quot;\${arr[1]} --&gt;${arr[1]}&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#3.Alternative ways to remove an element</span>
+</div></li><li><div class="line"><span class="nv">arr</span><span class="o">=(</span><span class="s2">&quot;hatter&quot;</span> <span class="s2">&quot;duchess&quot;</span> <span class="s2">&quot;alice&quot;</span><span class="o">)</span>
+</div></li><li><div class="line"><span class="nv">pos</span><span class="o">=</span>1
+</div></li><li><div class="line"><span class="nv">arr</span><span class="o">=(</span><span class="k">${</span><span class="nv">arr</span><span class="p">[@]:</span><span class="nv">0</span><span class="p">:</span><span class="nv">$pos</span><span class="k">}</span> <span class="k">${</span><span class="nv">arr</span><span class="p">[@]:</span><span class="k">$((</span><span class="nv">$pos</span><span class="o">+</span><span class="m">1</span><span class="k">))}</span><span class="o">)</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="s2">&quot;\${arr[@]} --&gt;${arr[@]}&quot;</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="s2">&quot;\${arr[1]} --&gt;${arr[1]}&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create an array
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Remove the 2nd element
+</div></li><li><div class="line">#  assigning null to the 2nd element
+</div></li><li><div class="line">${arr[@]} --&gt;hatter alice
+</div></li><li><div class="line">${arr[1]} --&gt;
+</div></li><li><div class="line">
+</div></li><li><div class="line">#3.Alternative ways to remove an element
+</div></li><li><div class="line">${arr[@]} --&gt;hatter alice
+</div></li><li><div class="line">${arr[1]} --&gt;alice
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#1.Create an array</span>
+</div></li><li><div class="line"><span class="nv">@arr</span><span class="o">=</span><span class="p">(</span><span class="s">&quot;hatter&quot;</span><span class="p">,</span><span class="s">&quot;duchess&quot;</span><span class="p">,</span><span class="s">&quot;alice&quot;</span><span class="p">);</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.Remove the 2nd element</span>
+</div></li><li><div class="line"><span class="nb">delete</span> <span class="nv">$arr</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;\@arr --&gt;@arr\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;\$arr[1] --&gt;$arr[1]\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#3.Alternative ways to remove an element</span>
+</div></li><li><div class="line"><span class="nv">@arr</span><span class="o">=</span><span class="p">(</span><span class="s">&quot;hatter&quot;</span><span class="p">,</span><span class="s">&quot;duchess&quot;</span><span class="p">,</span><span class="s">&quot;alice&quot;</span><span class="p">);</span>
+</div></li><li><div class="line"><span class="c1">#  splice arr_name, pos, del_len, arr_insert</span>
+</div></li><li><div class="line"><span class="nb">splice</span> <span class="nv">@arr</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;\@arr --&gt;@arr\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;\$arr[1] --&gt;$arr[1]\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create an array
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Remove the 2nd element
+</div></li><li><div class="line">@arr --&gt;hatter  alice
+</div></li><li><div class="line">$arr[1] --&gt;
+</div></li><li><div class="line">
+</div></li><li><div class="line">#3.Alternative ways to remove an element
+</div></li><li><div class="line">#  splice arr_name, pos, del_len, arr_insert
+</div></li><li><div class="line">@arr --&gt;hatter alice
+</div></li><li><div class="line">$arr[1] --&gt;alice
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create an array</span>
+</div></li><li><div class="line"><span class="n">arr</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;hatter&quot;</span><span class="p">,</span><span class="s">&quot;duchess&quot;</span><span class="p">,</span><span class="s">&quot;alice&quot;</span><span class="p">]</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Remove the 2nd element</span>
+</div></li><li><div class="line"><span class="k">del</span> <span class="n">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;arr --&gt;&quot;</span><span class="p">,</span> <span class="n">arr</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;arr[1] --&gt;&quot;</span><span class="p">,</span> <span class="n">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#3.Alternative ways to remove an element</span>
+</div></li><li><div class="line"><span class="n">arr</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;hatter&quot;</span><span class="p">,</span><span class="s">&quot;duchess&quot;</span><span class="p">,</span><span class="s">&quot;alice&quot;</span><span class="p">]</span>
+</div></li><li><div class="line"><span class="c">#  from 1 to 2(not included) replaced </span>
+</div></li><li><div class="line"><span class="n">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="p">[]</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;arr --&gt;&quot;</span><span class="p">,</span> <span class="n">arr</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;arr[1] --&gt;&quot;</span><span class="p">,</span> <span class="n">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</div></li><li><div class="line"><span class="c">#  or use function pop </span>
+</div></li><li><div class="line"><span class="n">arr</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;hatter&quot;</span><span class="p">,</span><span class="s">&quot;duchess&quot;</span><span class="p">,</span><span class="s">&quot;alice&quot;</span><span class="p">]</span>
+</div></li><li><div class="line"><span class="n">arr</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;arr --&gt;&quot;</span><span class="p">,</span> <span class="n">arr</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;arr[1] --&gt;&quot;</span><span class="p">,</span> <span class="n">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create an array 
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Remove the 2nd element 
+</div></li><li><div class="line">arr --&gt; [&#39;hatter&#39;, &#39;alice&#39;]
+</div></li><li><div class="line">arr[1] --&gt; alice
+</div></li><li><div class="line">
+</div></li><li><div class="line">#3.Alternative ways to remove an element 
+</div></li><li><div class="line">#  from 1 to 2(not included) replaced  
+</div></li><li><div class="line">arr --&gt; [&#39;hatter&#39;, &#39;alice&#39;]
+</div></li><li><div class="line">arr[1] --&gt; alice
+</div></li><li><div class="line">#  or use function pop  
+</div></li><li><div class="line">arr --&gt; [&#39;hatter&#39;, &#39;alice&#39;]
+</div></li><li><div class="line">arr[1] --&gt; alice
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="Remove elements by value" href="#Array">Array: Remove elements by value </a></h4>
+		  <pre class="xdesc"></pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.Create a array
+2.Remove all elements with value of &quot;duchess&quot;
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>3</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create a array</span>
+</div></li><li><div class="line"><span class="nv">arr</span><span class="o">=(</span><span class="s2">&quot;hatter&quot;</span> <span class="s2">&quot;duchess&quot;</span> <span class="s2">&quot;duchess&quot;</span> <span class="s2">&quot;alice&quot;</span><span class="o">)</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Remove all elements with value of &quot;duchess&quot;</span>
+</div></li><li><div class="line"><span class="nv">arr</span><span class="o">=(</span><span class="k">${</span><span class="nv">arr</span><span class="p">[@]/duchess/</span><span class="k">}</span><span class="o">)</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="k">${</span><span class="nv">arr</span><span class="p">[@]</span><span class="k">}</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a array
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Remove all elements with value of duchess
+</div></li><li><div class="line">hatter alice
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="k">use</span> <span class="n">feature</span> <span class="s">&quot;:5.10&quot;</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="c1">#1.Create a array</span>
+</div></li><li><div class="line"><span class="nv">@arr</span><span class="o">=</span><span class="p">(</span><span class="s">&quot;hatter&quot;</span><span class="p">,</span><span class="s">&quot;duchess&quot;</span><span class="p">,</span><span class="s">&quot;duchess&quot;</span><span class="p">,</span><span class="s">&quot;alice&quot;</span><span class="p">);</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.Remove all elements with value of &quot;duchess&quot;</span>
+</div></li><li><div class="line"><span class="c1">#  use grep</span>
+</div></li><li><div class="line"><span class="nv">@arr2</span><span class="o">=</span><span class="nb">grep</span> <span class="p">{</span> <span class="nv">$_</span> <span class="ow">ne</span> <span class="s">&quot;duchess&quot;</span> <span class="p">}</span> <span class="nv">@arr</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="n">say</span> <span class="s">&quot;@arr2&quot;</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="nv">@arr3</span><span class="o">=</span><span class="nb">grep</span> <span class="o">!</span> <span class="sr">/duchess/</span><span class="p">,</span> <span class="nv">@arr</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="n">say</span> <span class="s">&quot;@arr3&quot;</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="c1">#  or use map</span>
+</div></li><li><div class="line"><span class="nv">@arr4</span><span class="o">=</span><span class="nb">map</span> <span class="p">{</span> <span class="nv">$_</span> <span class="ow">eq</span> <span class="s">&#39;duchess&#39;</span><span class="p">?():</span><span class="nv">$_</span><span class="p">}</span> <span class="nv">@arr</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="n">say</span> <span class="s">&quot;@arr4&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a array
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Remove all elements with value of &quot;duchess&quot;
+</div></li><li><div class="line">#  use grep
+</div></li><li><div class="line">hatter alice
+</div></li><li><div class="line">hatter alice
+</div></li><li><div class="line">#  or use map
+</div></li><li><div class="line">hatter alice
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create a array</span>
+</div></li><li><div class="line"><span class="n">arr</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;hatter&quot;</span><span class="p">,</span><span class="s">&quot;duchess&quot;</span><span class="p">,</span><span class="s">&quot;duchess&quot;</span><span class="p">,</span><span class="s">&quot;alice&quot;</span><span class="p">]</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Remove all elements with value of &quot;duchess&quot;</span>
+</div></li><li><div class="line"><span class="c">#  use remove function</span>
+</div></li><li><div class="line"><span class="k">while</span> <span class="s">&#39;duchess&#39;</span> <span class="ow">in</span> <span class="n">arr</span><span class="p">:</span> <span class="n">arr</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s">&#39;duchess&#39;</span><span class="p">)</span> 
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">arr</span>
+</div></li><li><div class="line"><span class="n">arr</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;hatter&quot;</span><span class="p">,</span><span class="s">&quot;duchess&quot;</span><span class="p">,</span><span class="s">&quot;duchess&quot;</span><span class="p">,</span><span class="s">&quot;alice&quot;</span><span class="p">]</span>
+</div></li><li><div class="line"><span class="c">#  or use list</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">arr</span> <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="s">&#39;duchess&#39;</span><span class="p">]</span>
+</div></li><li><div class="line"><span class="c">#  or use filter and lambda</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">!=</span> <span class="s">&quot;duchess&quot;</span><span class="p">,</span> <span class="n">arr</span><span class="p">)</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a array 
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Remove all elements with value of &quot;duchess&quot; 
+</div></li><li><div class="line">#  use remove function 
+</div></li><li><div class="line">[&#39;hatter&#39;, &#39;alice&#39;]
+</div></li><li><div class="line">#  or use list 
+</div></li><li><div class="line">[&#39;hatter&#39;, &#39;alice&#39;]
+</div></li><li><div class="line">#  or use filter and lambda 
+</div></li><li><div class="line">[&#39;hatter&#39;, &#39;alice&#39;]
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="Replace an element" href="#Array">Array: Replace an element </a></h4>
+		  <pre class="xdesc"></pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.Create a array
+2.Remove &quot;duchess&quot; with &quot;hare&quot; for all elements
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>3</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create a array</span>
+</div></li><li><div class="line"><span class="nv">arr</span><span class="o">=(</span><span class="s2">&quot;hatter&quot;</span> <span class="s2">&quot;duchess&quot;</span> <span class="s2">&quot;duchess&quot;</span> <span class="s2">&quot;alice&quot;</span><span class="o">)</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Remove &quot;duchess&quot; with &quot;hare&quot; for all elements</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="k">${</span><span class="nv">arr</span><span class="p">[@]/duchess/hare</span><span class="k">}</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a array
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Remove duchess with hare for all elements
+</div></li><li><div class="line">hatter hare hare alice
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="k">use</span> <span class="n">feature</span> <span class="s">&quot;:5.10&quot;</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="c1">#1.Create a array</span>
+</div></li><li><div class="line"><span class="nv">@arr1</span><span class="o">=</span><span class="nv">@arr2</span><span class="o">=</span><span class="nv">@arr3</span><span class="o">=</span><span class="p">(</span><span class="s">&quot;hatter&quot;</span><span class="p">,</span><span class="s">&quot;duchess&quot;</span><span class="p">,</span><span class="s">&quot;duchess&quot;</span><span class="p">,</span><span class="s">&quot;alice&quot;</span><span class="p">);</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.Remove &quot;duchess&quot; with &quot;hare&quot; for all elements</span>
+</div></li><li><div class="line"><span class="c1">#  use for loop</span>
+</div></li><li><div class="line"><span class="sr">s/duchess/hare/</span> <span class="k">for</span> <span class="nv">@arr1</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="n">say</span> <span class="s">&quot;@arr1&quot;</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="c1">#  or use map</span>
+</div></li><li><div class="line"><span class="nb">map</span> <span class="p">{</span><span class="sr">s/duchess/queen/g</span><span class="p">;}</span> <span class="nv">@arr2</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="n">say</span> <span class="s">&quot;@arr2&quot;</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="c1">#  or use map </span>
+</div></li><li><div class="line"><span class="nv">@arr3</span><span class="o">=</span><span class="nb">map</span> <span class="p">{</span> <span class="nv">$_</span> <span class="ow">eq</span> <span class="s">&#39;duchess&#39;</span> <span class="p">?</span> <span class="s">&#39;turtle&#39;</span><span class="p">:</span><span class="nv">$_</span><span class="p">}</span> <span class="nv">@arr3</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="n">say</span> <span class="s">&quot;@arr3&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a array
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Remove &quot;duchess&quot; with &quot;hare&quot; for all elements
+</div></li><li><div class="line">#  use for loop
+</div></li><li><div class="line">hatter hare hare alice
+</div></li><li><div class="line">#  or use map
+</div></li><li><div class="line">hatter queen queen alice
+</div></li><li><div class="line">#  or use map 
+</div></li><li><div class="line">hatter turtle turtle alice
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create a array</span>
+</div></li><li><div class="line"><span class="n">arr1</span><span class="o">=</span><span class="n">arr2</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;hatter&quot;</span><span class="p">,</span><span class="s">&quot;duchess&quot;</span><span class="p">,</span><span class="s">&quot;duchess&quot;</span><span class="p">,</span><span class="s">&quot;alice&quot;</span><span class="p">]</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Remove &quot;duchess&quot; with &quot;hare&quot; for all elements</span>
+</div></li><li><div class="line"><span class="c">#  use for loop and enumerate</span>
+</div></li><li><div class="line"><span class="k">for</span> <span class="n">n</span><span class="p">,</span><span class="n">i</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">arr1</span><span class="p">):</span>
+</div></li><li><div class="line">    <span class="k">if</span> <span class="n">i</span><span class="o">==</span><span class="s">&quot;duchess&quot;</span><span class="p">:</span>
+</div></li><li><div class="line">        <span class="n">arr1</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">=</span><span class="s">&quot;hare&quot;</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">arr1</span>
+</div></li><li><div class="line"><span class="c">#  or use</span>
+</div></li><li><div class="line"><span class="n">arr2</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;hare&quot;</span> <span class="k">if</span> <span class="n">i</span><span class="o">==</span><span class="s">&quot;duchess&quot;</span> <span class="k">else</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">arr2</span><span class="p">]</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">arr2</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a array 
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Remove &quot;duchess&quot; with &quot;hare&quot; for all elements 
+</div></li><li><div class="line">#  use for loop and enumerate 
+</div></li><li><div class="line">[&#39;hatter&#39;, &#39;hare&#39;, &#39;hare&#39;, &#39;alice&#39;]
+</div></li><li><div class="line">#  or use 
+</div></li><li><div class="line">[&#39;hatter&#39;, &#39;hare&#39;, &#39;hare&#39;, &#39;alice&#39;]
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="Sort all the elements" href="#Array">Array: Sort all the elements </a></h4>
+		  <pre class="xdesc"></pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.Create a array
+2.Sort all the elements
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>3</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create a array</span>
+</div></li><li><div class="line"><span class="nv">arr</span><span class="o">=(</span><span class="s2">&quot;hatter&quot;</span> <span class="s2">&quot;duchess&quot;</span> <span class="s2">&quot;alice&quot;</span><span class="o">)</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Sort all the elements</span>
+</div></li><li><div class="line"><span class="nv">IFS</span><span class="o">=</span><span class="s1">$&#39;\r\n&#39;</span> <span class="nv">arr</span><span class="o">=(</span><span class="sb">`</span><span class="k">for </span>i in <span class="s2">&quot;${arr[@]}&quot;</span>; <span class="k">do </span><span class="nb">echo</span>  <span class="s2">&quot;$i&quot;</span>; <span class="k">done</span> | sort<span class="sb">`</span><span class="o">)</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="k">${</span><span class="nv">arr</span><span class="p">[@]</span><span class="k">}</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a array
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Sort all the elements
+</div></li><li><div class="line">alice duchess hatter
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#1.Create a array</span>
+</div></li><li><div class="line"><span class="nv">@arr</span><span class="o">=</span><span class="p">(</span><span class="s">&quot;hatter&quot;</span><span class="p">,</span><span class="s">&quot;duchess&quot;</span><span class="p">,</span><span class="s">&quot;alice&quot;</span><span class="p">);</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.Sort all the elements</span>
+</div></li><li><div class="line"><span class="nv">@arr</span><span class="o">=</span><span class="nb">sort</span> <span class="nv">@arr</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;@arr&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a array
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Sort all the elements
+</div></li><li><div class="line">alice duchess hatter
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create a array</span>
+</div></li><li><div class="line"><span class="n">arr</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;hatter&quot;</span><span class="p">,</span><span class="s">&quot;duchess&quot;</span><span class="p">,</span><span class="s">&quot;alice&quot;</span><span class="p">]</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Sort all the elements</span>
+</div></li><li><div class="line"><span class="n">arr</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">arr</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a array 
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Sort all the elements 
+</div></li><li><div class="line">[&#39;alice&#39;, &#39;duchess&#39;, &#39;hatter&#39;]
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="Reverse all the elements" href="#Array">Array: Reverse all the elements </a></h4>
+		  <pre class="xdesc"></pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.Create a array
+2.Reverse all the elements
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>3</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create a array</span>
+</div></li><li><div class="line"><span class="nv">arr</span><span class="o">=(</span><span class="s2">&quot;hatter&quot;</span> <span class="s2">&quot;duchess&quot;</span> <span class="s2">&quot;alice&quot;</span><span class="o">)</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Reverse all the elements</span>
+</div></li><li><div class="line"><span class="nv">arr</span><span class="o">=(</span><span class="sb">`</span><span class="k">for</span> <span class="o">((</span><span class="nv">i</span><span class="o">=</span><span class="k">${#</span><span class="nv">arr</span><span class="p">[@]</span><span class="k">}</span>-1; i&gt;<span class="o">=</span>0; i--<span class="o">))</span>; <span class="k">do </span><span class="nb">echo</span> <span class="s2">&quot;${arr[$i]}&quot;</span>; <span class="k">done</span><span class="sb">`</span><span class="o">)</span>; 
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="k">${</span><span class="nv">arr</span><span class="p">[@]</span><span class="k">}</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a array
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Reverse all the elements
+</div></li><li><div class="line">alice duchess hatter
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#1.Create a array</span>
+</div></li><li><div class="line"><span class="nv">@arr</span><span class="o">=</span><span class="p">(</span><span class="s">&quot;hatter&quot;</span><span class="p">,</span><span class="s">&quot;duchess&quot;</span><span class="p">,</span><span class="s">&quot;alice&quot;</span><span class="p">);</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.Reverse all the elements</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="nb">join</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">,</span><span class="nb">reverse</span><span class="p">(</span><span class="nv">@arr</span><span class="p">));</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a array
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Reverse all the elements
+</div></li><li><div class="line">alice duchess hatter
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create a array</span>
+</div></li><li><div class="line"><span class="n">arr</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;hatter&quot;</span><span class="p">,</span><span class="s">&quot;duchess&quot;</span><span class="p">,</span><span class="s">&quot;alice&quot;</span><span class="p">]</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Reverse all the elements</span>
+</div></li><li><div class="line"><span class="n">arr</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">arr</span>
+</div></li><li><div class="line"><span class="c">#  or use slice functionality</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">arr</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a array 
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Reverse all the elements 
+</div></li><li><div class="line">[&#39;alice&#39;, &#39;duchess&#39;, &#39;hatter&#39;]
+</div></li><li><div class="line">#  or use slice functionality 
+</div></li><li><div class="line">[&#39;hatter&#39;, &#39;duchess&#39;, &#39;alice&#39;]
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="Concatenate two arrays" href="#Array">Array: Concatenate two arrays </a></h4>
+		  <pre class="xdesc"></pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.Create two arrays
+2.concatenate the two arrays
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>3</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create two arrays</span>
+</div></li><li><div class="line"><span class="nv">arr1</span><span class="o">=(</span><span class="s2">&quot;hatter&quot;</span> <span class="s2">&quot;duchess&quot;</span> <span class="s2">&quot;alice&quot;</span><span class="o">)</span>
+</div></li><li><div class="line"><span class="nv">arr2</span><span class="o">=(</span><span class="s2">&quot;rabbit&quot;</span> <span class="s2">&quot;hare&quot;</span><span class="o">)</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.concatenate the two arrays</span>
+</div></li><li><div class="line"><span class="nv">arr</span><span class="o">=(</span><span class="s2">&quot;${arr1[@]}&quot;</span> <span class="s2">&quot;${arr2[@]}&quot;</span><span class="o">)</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="k">${</span><span class="nv">arr</span><span class="p">[@]</span><span class="k">}</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create two arrays
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.concatenate the two arrays
+</div></li><li><div class="line">hatter duchess alice rabbit hare
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#1.Create two arrays</span>
+</div></li><li><div class="line"><span class="nv">@arr1</span><span class="o">=</span><span class="p">(</span><span class="s">&quot;hatter&quot;</span><span class="p">,</span><span class="s">&quot;duchess&quot;</span><span class="p">,</span><span class="s">&quot;alice&quot;</span><span class="p">);</span>
+</div></li><li><div class="line"><span class="nv">@arr2</span><span class="o">=</span><span class="sx">qw(rabbit hare)</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.concatenate the two arrays</span>
+</div></li><li><div class="line"><span class="nv">@arr</span> <span class="o">=</span> <span class="p">(</span><span class="nv">@arr1</span> <span class="p">,</span> <span class="nv">@arr2</span><span class="p">);</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;@arr&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create two arrays
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.concatenate the two arrays
+</div></li><li><div class="line">hatter duchess alice rabbit hare
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create two arrays</span>
+</div></li><li><div class="line"><span class="n">arr1</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;hatter&quot;</span><span class="p">,</span><span class="s">&quot;duchess&quot;</span><span class="p">,</span><span class="s">&quot;alice&quot;</span><span class="p">]</span>
+</div></li><li><div class="line"><span class="n">arr2</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;rabbit&quot;</span><span class="p">,</span><span class="s">&quot;hare&quot;</span><span class="p">]</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.concatenate the two arrays</span>
+</div></li><li><div class="line"><span class="n">arr</span> <span class="o">=</span> <span class="n">arr1</span> <span class="o">+</span> <span class="n">arr2</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">arr</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create two arrays 
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.concatenate the two arrays 
+</div></li><li><div class="line">[&#39;hatter&#39;, &#39;duchess&#39;, &#39;alice&#39;, &#39;rabbit&#39;, &#39;hare&#39;]
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="Concatenate all elements to a string with &#39;-&#39;" href="#Array">Array: Concatenate all elements to a string with &#39;-&#39; </a></h4>
+		  <pre class="xdesc"></pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.Create a array
+2.Concatenate all elements to a string with &#39;-&#39;
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>3</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create a array</span>
+</div></li><li><div class="line"><span class="nv">arr</span><span class="o">=(</span><span class="s2">&quot;hatter&quot;</span> <span class="s2">&quot;duchess&quot;</span> <span class="s2">&quot;alice&quot;</span><span class="o">)</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Concatenate all elements to a string with &#39;-&#39;</span>
+</div></li><li><div class="line"><span class="nv">IFS</span><span class="o">=</span><span class="s1">&#39;-&#39;</span> 
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="s2">&quot;${arr[*]}&quot;</span>
+</div></li><li><div class="line"><span class="nb">unset </span>IFS
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a array
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Concatenate all elements to a string with &#39;-&#39;
+</div></li><li><div class="line">hatter-duchess-alice
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#1.Create a array</span>
+</div></li><li><div class="line"><span class="nv">@arr</span><span class="o">=</span><span class="p">(</span><span class="s">&quot;hatter&quot;</span><span class="p">,</span><span class="s">&quot;duchess&quot;</span><span class="p">,</span><span class="s">&quot;alice&quot;</span><span class="p">);</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.Concatenate all elements to a string with &#39;-&#39;</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="nb">join</span><span class="p">(</span><span class="s">&#39;-&#39;</span><span class="p">,</span> <span class="nv">@arr</span><span class="p">);</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a array
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Concatenate all elements to a string with &#39;-&#39;
+</div></li><li><div class="line">hatter-duchess-alice
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Create a array</span>
+</div></li><li><div class="line"><span class="n">arr</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;hatter&quot;</span><span class="p">,</span><span class="s">&quot;duchess&quot;</span><span class="p">,</span><span class="s">&quot;alice&quot;</span><span class="p">]</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Concatenate all elements to a string with &#39;-&#39;</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&#39;-&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Create a array 
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Concatenate all elements to a string with &#39;-&#39; 
+</div></li><li><div class="line">hatter-duchess-alice
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+
+        </div>
+     
+        <aside class="large-1 columns">
+          <h5>Categories</h5>
+          
+          <ul class="side-nav">
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../1/index.html">Regex</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../2/index.html">String</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  class="selected"  ><a href="index.html">Array</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../4/index.html">Set</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../5/index.html">Map</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../6/index.html">Variables</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../7/index.html">Special variables</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../8/index.html">Function</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../9/index.html">Command line</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../10/index.html">Flow control</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../11/index.html">Input</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../12/index.html">Path</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../13/index.html">Logging</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../14/index.html">Threading</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../15/index.html">Html</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../16/index.html">Miscellaneous</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../17/index.html">Help</a></li>
+            
+          </ul>
+          
+     
+        </aside>
+         
+      </div>
+
+      <footer class="row">
+        <div class="large-12 columns">
+          <hr/>
+          <div class="row">
+            <div class="large-6 columns">
+              <p>© Evan Liu.   (liuenmao@hotmail.com)</p>
+            </div>
+            <div class="large-6 columns">
+            </div>
+          </div>
+        </div>
+      </footer>
+</body>    
+
+<!-- Mirrored from 118.193.213.195/bash_perl_python/3/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 16 May 2018 07:24:14 GMT -->
+</html>

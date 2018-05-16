@@ -1,0 +1,366 @@
+
+
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" data-useragent="Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)">
+
+<!-- Mirrored from 118.193.213.195/bash_perl_python/9/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 16 May 2018 07:24:14 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta name="google-site-verification" content="qms_3-ElBGujHuD2zwSZLcW8jmlJ7WG5W3JoK67ArzY" />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Command line in Bash, Perl, Python </title>
+<meta name="description" content="Bash, Perl and Python comparison."/>
+<meta name="keywords" content="Bash,Perl,Python"/>
+<meta name="author" content="Enmao Liu"/>
+<meta name="copyright" content="Enmao Liu@shanghai"/>
+<link rel="stylesheet" type="text/css" href="../../static/downloads/foundation.css"/>
+<link rel="stylesheet" type="text/css" href="../../static/downloads/pygmts_def.css"/>
+<link rel="stylesheet" type="text/css" href="../../static/downloads/app.css"/>
+<script src="../../static/downloads/modernizr.js"></script>
+</head>
+<body>
+<!--
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- test -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5197746177913810"
+     data-ad-slot="1965669484"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script -->
+<div class="row">
+ <!--a href="http://core.weloveservers.net/aff.php?aff=923" rel="nofollow"><img src="https://core.weloveservers.net/uploads/vps-970X90.jpg" width="970" height="90" border="0"></a-->
+</div>
+    <div class="row">
+       <!--div class="large-12 columns"-->
+         <div class="nav-bar right">
+           <ul class="button-group">
+             <li><a href="https://www.facebook.com/liuenmao" class="button">Facebook</a></li>
+             <li><a href="https://www.youtube.com/user/neutrino0717" class="button">Youtube</a></li>
+             <li><a href="https://twitter.com/neutrino0717" class="button">Twitter</a></li>
+             <li><a href="https://www.linkedin.com/pub/evan-liu/51/5a6/748" class="button">Linkedin</a></li>
+            </ul>
+          </div>
+          <h1>Coding <small>Bash vs. Perl vs. Python (by Evan Liu) </small></h1>
+          <hr/>
+        <!--/div-->
+      </div>
+
+      <div class="row">
+        <div class="large-11 columns" role="content">
+ 
+         <h3><a name="Command line">Topics about  command line  </a></h3>
+         <ul>
+
+         <li>
+         <a href="#variables from command line">variables from command line</a> 
+         </li>
+
+         <li>
+         <a href="#use getopt(s) to handle the command line">use getopt(s) to handle the command line</a> 
+         </li>
+
+         </ul>
+
+          <article>
+		  <h4><a name="variables from command line" href="#Command line">Command line: variables from command line </a></h4>
+		  <pre class="xdesc"></pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.1. print the array of the argments 
+2.2. print individual arguments
+3.3. loop over the arguments
+4.4. print the script name
+5.5. print the script path
+6.6. print the number of arguments
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>9</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line">cat&gt;/tmp/tst &lt;&lt;<span class="s2">&quot;EOF&quot;</span>
+</div></li><li><div class="line"><span class="c">#1.1. print the array of the argments </span>
+</div></li><li><div class="line">  <span class="nb">echo</span> <span class="s2">&quot;$@&quot;</span>
+</div></li><li><div class="line">  <span class="nb">echo</span> <span class="s2">&quot;$*&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.2. print individual arguments</span>
+</div></li><li><div class="line">  <span class="nb">echo</span> <span class="nv">$1</span> <span class="nv">$2</span> <span class="nv">$3</span>
+</div></li><li><div class="line">  <span class="nb">echo</span> <span class="s2">&quot;the last argument: ${!#}&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#3.3. loop over the arguments</span>
+</div></li><li><div class="line">  <span class="k">for </span>i in <span class="s2">&quot;$@&quot;</span>;<span class="k">do </span><span class="nb">echo</span> <span class="nv">$i</span>;<span class="k">done</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#4.4. print the script name</span>
+</div></li><li><div class="line">  <span class="nb">echo</span> <span class="nv">$0</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#5.5. print the script path</span>
+</div></li><li><div class="line">  <span class="nb">echo</span> <span class="sb">`</span>readlink -f <span class="nv">$0</span><span class="sb">`</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#6.6. print the number of arguments</span>
+</div></li><li><div class="line">  <span class="nb">echo</span> <span class="nv">$#</span>
+</div></li><li><div class="line">EOF
+</div></li><li><div class="line">bash /tmp/tst arg1 arg2 arg3
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">arg1 arg2 arg3
+</div></li><li><div class="line">arg1 arg2 arg3
+</div></li><li><div class="line">arg1 arg2 arg3
+</div></li><li><div class="line">the last argument: arg3
+</div></li><li><div class="line">arg1
+</div></li><li><div class="line">arg2
+</div></li><li><div class="line">arg3
+</div></li><li><div class="line">/tmp/tst
+</div></li><li><div class="line">/tmp/tst
+</div></li><li><div class="line">3
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#  or cat&gt;/tmp/tst&lt;&lt;&lt;&#39;print &quot;@ARGV\n&quot;&#39;; </span>
+</div></li><li><div class="line"><span class="n">cat</span><span class="o">&gt;</span><span class="sr">/tmp/</span><span class="n">tst</span><span class="s">&lt;&lt;&#39;EOF&#39;</span>
+</div></li><li><div class="line"><span class="s">print &quot;@ARGV\n&quot;;</span>
+</div></li><li><div class="line"><span class="s">print &quot;$ARGV[0] $ARGV[1] $ARGV[2]\n&quot;;</span>
+</div></li><li><div class="line"><span class="s">print &quot;$_\n&quot; foreach(@ARGV);</span>
+</div></li><li><div class="line"><span class="s">print &quot;$0\n&quot;;</span>
+</div></li><li><div class="line"><span class="s">print ((0+@ARGV),&quot;\n&quot;);</span>
+</div></li><li><div class="line"><span class="s">print scalar(@ARGV), &quot;\n&quot;;</span>
+</div></li><li><div class="line"><span class="s">EOF</span>
+</div></li><li><div class="line"><span class="n">perl</span> <span class="sr">/tmp/</span><span class="n">tst</span> <span class="n">arg1</span> <span class="n">arg2</span> <span class="n">arg3</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">arg1 arg2 arg3
+</div></li><li><div class="line">arg1 arg2 arg3
+</div></li><li><div class="line">arg1
+</div></li><li><div class="line">arg2
+</div></li><li><div class="line">arg3
+</div></li><li><div class="line">/tmp/tst
+</div></li><li><div class="line">3
+</div></li><li><div class="line">3
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#  or echo -e &quot;import sys\nprint str(sys.argv)&quot; &gt; /tmp/tst</span>
+</div></li><li><div class="line"><span class="n">cat</span> <span class="o">&gt;/</span><span class="n">tmp</span><span class="o">/</span><span class="n">tst</span><span class="o">&lt;&lt;</span><span class="s">&#39;EOF&#39;</span>
+</div></li><li><div class="line"><span class="kn">import</span> <span class="nn">sys</span>
+</div></li><li><div class="line"><span class="kn">import</span> <span class="nn">os</span>
+</div></li><li><div class="line"><span class="c">#1.1. print the array of the argments </span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="nb">str</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">);</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.2. print individual arguments</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#5.5. print the script path</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">__file__</span><span class="p">)</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</div></li><li><div class="line"><span class="n">EOF</span>
+</div></li><li><div class="line"><span class="n">python</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">tst</span> <span class="n">arg1</span> <span class="n">arg2</span> <span class="n">arg3</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">[&#39;/tmp/tst&#39;, &#39;arg1&#39;, &#39;arg2&#39;, &#39;arg3&#39;]
+</div></li><li><div class="line">arg1 arg2 arg3
+</div></li><li><div class="line">tst
+</div></li><li><div class="line">/tmp
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="use getopt(s) to handle the command line" href="#Command line">Command line: use getopt(s) to handle the command line </a></h4>
+		  <pre class="xdesc"></pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.1. ceate a script file to handle commandline with getopt(s)
+2.2. run the script with some arguments
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>9</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#  getopts</span>
+</div></li><li><div class="line">cat&gt;/tmp/tar.sh&lt;&lt;<span class="s2">&quot;EOF&quot;</span>
+</div></li><li><div class="line"><span class="nb">declare</span> -A myopts
+</div></li><li><div class="line">usage<span class="o">()</span> <span class="o">{</span> 
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="s2">&quot;Usage: $0 [-zxvf &lt;fname&gt;] [-C &lt;dir&gt;]&quot;</span> 1&gt;&amp;2
+</div></li><li><div class="line"><span class="nb">exit </span>1
+</div></li><li><div class="line"><span class="o">}</span>
+</div></li><li><div class="line"><span class="k">while </span><span class="nb">getopts</span> <span class="s2">&quot;xvzf:C:&quot;</span> opt <span class="s2">&quot;$@&quot;</span>; <span class="k">do</span>
+</div></li><li><div class="line"><span class="k">  case</span> <span class="s2">&quot;${opt}&quot;</span> in
+</div></li><li><div class="line">    z|x|v|C|f<span class="o">)</span> myopts<span class="o">[</span><span class="s2">&quot;${opt}&quot;</span><span class="o">]=</span><span class="k">${</span><span class="nv">OPTARG</span><span class="k">}</span> ;;
+</div></li><li><div class="line">    *<span class="o">)</span> usage ;;
+</div></li><li><div class="line">  <span class="k">esac</span>
+</div></li><li><div class="line"><span class="k">done</span>
+</div></li><li><div class="line"><span class="nb">shift</span> <span class="k">$((</span>OPTIND-1<span class="k">))</span>
+</div></li><li><div class="line"><span class="k">for </span>key in <span class="k">${</span><span class="p">!myopts[@]</span><span class="k">}</span>; 
+</div></li><li><div class="line">  <span class="k">do </span><span class="nb">echo</span> <span class="s2">&quot;$key =&gt; ${myopts[$key]}&quot;</span>; <span class="k">done</span>
+</div></li><li><div class="line">EOF
+</div></li><li><div class="line">bash /tmp/tar.sh -zxvf ~//tmp/tst.tar.gz -C /tmp
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">C =&gt; /tmp
+</div></li><li><div class="line">f =&gt; /home/neutrino0717//tmp/tst.tar.gz
+</div></li><li><div class="line">v =&gt; 
+</div></li><li><div class="line">x =&gt; 
+</div></li><li><div class="line">z =&gt;
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#  getopts</span>
+</div></li><li><div class="line"><span class="n">cat</span><span class="o">&gt;</span><span class="sr">/tmp/</span><span class="n">tar</span><span class="o">.</span><span class="n">pl</span><span class="s">&lt;&lt;&quot;EOF&quot;</span>
+</div></li><li><div class="line"><span class="s">use Data::Dumper;</span>
+</div></li><li><div class="line"><span class="s">use Getopt::Std;</span>
+</div></li><li><div class="line"><span class="s">#  read options</span>
+</div></li><li><div class="line"><span class="s">getopts(&#39;C:zxvf:&#39;, \%opts); </span>
+</div></li><li><div class="line"><span class="s">print &quot;the options are:\n&quot;;</span>
+</div></li><li><div class="line"><span class="s">print Dumper (\%opts);</span>
+</div></li><li><div class="line"><span class="s">EOF</span>
+</div></li><li><div class="line"><span class="n">perl</span> <span class="sr">/tmp/</span><span class="n">tar</span><span class="o">.</span><span class="n">pl</span> <span class="o">-</span><span class="n">zxvf</span> <span class="o">~</span><span class="sr">//</span><span class="n">tmp</span><span class="sr">/tst.tar.gz -C /</span><span class="n">tmp</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">the options are:
+</div></li><li><div class="line">$VAR1 = {
+</div></li><li><div class="line">          &#39;z&#39; =&gt; 1,
+</div></li><li><div class="line">          &#39;C&#39; =&gt; &#39;/tmp&#39;,
+</div></li><li><div class="line">          &#39;v&#39; =&gt; 1,
+</div></li><li><div class="line">          &#39;x&#39; =&gt; 1,
+</div></li><li><div class="line">          &#39;f&#39; =&gt; &#39;/home/neutrino0717//tmp/tst.tar.gz&#39;
+</div></li><li><div class="line">        };
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#  getopt</span>
+</div></li><li><div class="line"><span class="n">cat</span><span class="o">&gt;/</span><span class="n">tmp</span><span class="o">/</span><span class="n">tar</span><span class="o">.</span><span class="n">py</span><span class="o">&lt;&lt;</span><span class="s">&quot;EOF&quot;</span>
+</div></li><li><div class="line"><span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">getopt</span>
+</div></li><li><div class="line"><span class="n">argv</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+</div></li><li><div class="line"><span class="k">try</span><span class="p">:</span>
+</div></li><li><div class="line">  <span class="n">opts</span> <span class="o">=</span> <span class="n">getopt</span><span class="o">.</span><span class="n">getopt</span><span class="p">(</span><span class="n">argv</span><span class="p">,</span><span class="s">&quot;zxvf:C:&quot;</span><span class="p">)</span>
+</div></li><li><div class="line"><span class="k">except</span> <span class="n">getopt</span><span class="o">.</span><span class="n">GetoptError</span><span class="p">:</span>
+</div></li><li><div class="line">  <span class="k">print</span> <span class="s">&quot;Usage: &quot;</span><span class="o">+</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="s">&quot; [-zxvf &lt;fname&gt;] [-C &lt;dir&gt;]&quot;</span>
+</div></li><li><div class="line">  <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">opts</span>
+</div></li><li><div class="line"><span class="n">EOF</span>
+</div></li><li><div class="line"><span class="n">python</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">tar</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">zxvf</span> <span class="o">~/</span><span class="n">tmp</span><span class="o">/</span><span class="n">tst</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span> <span class="o">-</span><span class="n">C</span> <span class="o">/</span><span class="n">tmp</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">([(&#39;-z&#39;, &#39;&#39;), (&#39;-x&#39;, &#39;&#39;), (&#39;-v&#39;, &#39;&#39;), (&#39;-f&#39;, &#39;/home/neutrino0717/tmp/tst.tar.gz&#39;), (&#39;-C&#39;, &#39;/tmp&#39;)], [])
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+
+        </div>
+     
+        <aside class="large-1 columns">
+          <h5>Categories</h5>
+          
+          <ul class="side-nav">
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../1/index.html">Regex</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../2/index.html">String</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../3/index.html">Array</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../4/index.html">Set</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../5/index.html">Map</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../6/index.html">Variables</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../7/index.html">Special variables</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../8/index.html">Function</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  class="selected"  ><a href="index.html">Command line</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../10/index.html">Flow control</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../11/index.html">Input</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../12/index.html">Path</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../13/index.html">Logging</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../14/index.html">Threading</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../15/index.html">Html</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../16/index.html">Miscellaneous</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../17/index.html">Help</a></li>
+            
+          </ul>
+          
+     
+        </aside>
+         
+      </div>
+
+      <footer class="row">
+        <div class="large-12 columns">
+          <hr/>
+          <div class="row">
+            <div class="large-6 columns">
+              <p>© Evan Liu.   (liuenmao@hotmail.com)</p>
+            </div>
+            <div class="large-6 columns">
+            </div>
+          </div>
+        </div>
+      </footer>
+</body>    
+
+<!-- Mirrored from 118.193.213.195/bash_perl_python/9/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 16 May 2018 07:24:14 GMT -->
+</html>

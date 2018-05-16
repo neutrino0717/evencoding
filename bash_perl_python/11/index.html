@@ -1,0 +1,403 @@
+
+
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" data-useragent="Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)">
+
+<!-- Mirrored from 118.193.213.195/bash_perl_python/11/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 16 May 2018 07:24:14 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta name="google-site-verification" content="qms_3-ElBGujHuD2zwSZLcW8jmlJ7WG5W3JoK67ArzY" />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Input in Bash, Perl, Python </title>
+<meta name="description" content="Bash, Perl and Python comparison."/>
+<meta name="keywords" content="Bash,Perl,Python"/>
+<meta name="author" content="Enmao Liu"/>
+<meta name="copyright" content="Enmao Liu@shanghai"/>
+<link rel="stylesheet" type="text/css" href="../../static/downloads/foundation.css"/>
+<link rel="stylesheet" type="text/css" href="../../static/downloads/pygmts_def.css"/>
+<link rel="stylesheet" type="text/css" href="../../static/downloads/app.css"/>
+<script src="../../static/downloads/modernizr.js"></script>
+</head>
+<body>
+<!--
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- test -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5197746177913810"
+     data-ad-slot="1965669484"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script -->
+<div class="row">
+ <!--a href="http://core.weloveservers.net/aff.php?aff=923" rel="nofollow"><img src="https://core.weloveservers.net/uploads/vps-970X90.jpg" width="970" height="90" border="0"></a-->
+</div>
+    <div class="row">
+       <!--div class="large-12 columns"-->
+         <div class="nav-bar right">
+           <ul class="button-group">
+             <li><a href="https://www.facebook.com/liuenmao" class="button">Facebook</a></li>
+             <li><a href="https://www.youtube.com/user/neutrino0717" class="button">Youtube</a></li>
+             <li><a href="https://twitter.com/neutrino0717" class="button">Twitter</a></li>
+             <li><a href="https://www.linkedin.com/pub/evan-liu/51/5a6/748" class="button">Linkedin</a></li>
+            </ul>
+          </div>
+          <h1>Coding <small>Bash vs. Perl vs. Python (by Evan Liu) </small></h1>
+          <hr/>
+        <!--/div-->
+      </div>
+
+      <div class="row">
+        <div class="large-11 columns" role="content">
+ 
+         <h3><a name="Input">Topics about  input  </a></h3>
+         <ul>
+
+         <li>
+         <a href="#Read input from console">Read input from console</a> 
+         </li>
+
+         <li>
+         <a href="#Read input from file line by line">Read input from file line by line</a> 
+         </li>
+
+         <li>
+         <a href="#Read lines of a  file into array">Read lines of a  file into array</a> 
+         </li>
+
+         </ul>
+
+          <article>
+		  <h4><a name="Read input from console" href="#Input">Input: Read input from console </a></h4>
+		  <pre class="xdesc">To get input from console:
+In Bash, use &#39;read&#39; command, it&#39;s the only reliable way as far as I know.
+In Perl, use &#39;&lt;&gt;&#39; or &#39;&lt;STDIN&gt;&#39; to get console input.
+In python, you can use &#39;raw_input&#39; function.</pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.1. Read input from user with prompt &quot;Your name:&quot;
+2.2. Print a greeting message to console
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>11</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#  To really input from console, just remove the &#39;&lt;&lt;&lt;&quot;Evan Liu&quot;&#39;</span>
+</div></li><li><div class="line"><span class="k">if </span><span class="nb">read</span> -p <span class="s2">&quot;Your name:&quot;</span> x; <span class="k">then </span>
+</div></li><li><div class="line"><span class="k">  </span><span class="nb">echo</span> <span class="s2">&quot;Hello, $x.&quot;</span>
+</div></li><li><div class="line"><span class="k">fi</span> <span class="o">&lt;&lt;&lt;</span><span class="s2">&quot;Evan Liu&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#  To really input from console, just remove the &#39;&lt;&lt;&lt;Evan Liu&#39;
+</div></li><li><div class="line">Hello, Evan Liu.
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#&#39;$x=&lt;&gt;&#39; is the same as &#39;$x=&lt;STDIN&gt;&#39;</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;Your name:&quot;</span><span class="p">;</span> 
+</div></li><li><div class="line"><span class="k">if</span><span class="p">(</span><span class="nv">$x</span><span class="o">=&lt;&gt;</span><span class="p">){</span> 
+</div></li><li><div class="line">  <span class="k">print</span> <span class="s">&quot;Hello, $x&quot;</span><span class="p">;</span> 
+</div></li><li><div class="line"><span class="p">}</span>
+</div></li><li><div class="line"><span class="o">---------------</span><span class="n">output</span><span class="o">-----------------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">Your name: Evan Liu
+</div></li><li><div class="line">Hello, Evan Liu
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="n">x</span><span class="o">=</span><span class="nb">raw_input</span><span class="p">(</span><span class="s">&quot;Your name: &quot;</span><span class="p">)</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;Hello, &quot;</span> <span class="o">+</span> <span class="n">x</span>
+</div></li><li><div class="line"><span class="o">----------------</span><span class="n">output</span><span class="o">-------------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">Your name: Evan Liu
+</div></li><li><div class="line">Hello, Evan Liu
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="Read input from file line by line" href="#Input">Input: Read input from file line by line </a></h4>
+		  <pre class="xdesc">Here in Bash, I use one liners to make the codes concise.
+In Perl and Python, Glob function can get all the files that match the pattern, actually we don&#39;t need glob in this example,  just to show how to use it.</pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.1. Read from a file line by line, then print each line with an arrow in front.
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>11</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="k">while </span><span class="nb">read </span>l; <span class="k">do </span><span class="nb">echo</span> <span class="s2">&quot;--&gt;$l&quot;</span>;<span class="k">done</span> <span class="o">&lt;&lt;&lt;</span> <span class="s2">&quot;`cat /etc/lsb-release`&quot;</span>
+</div></li><li><div class="line"><span class="c">#  or</span>
+</div></li><li><div class="line"><span class="k">while </span><span class="nb">read </span>l; <span class="k">do </span><span class="nb">echo</span> <span class="s2">&quot;--&gt;$l&quot;</span>; <span class="k">done</span> &lt; <span class="s1">&#39;/etc/lsb-release&#39;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">--&gt;DISTRIB_ID=Ubuntu
+</div></li><li><div class="line">--&gt;DISTRIB_RELEASE=14.04
+</div></li><li><div class="line">--&gt;DISTRIB_CODENAME=trusty
+</div></li><li><div class="line">--&gt;DISTRIB_DESCRIPTION=&quot;Ubuntu 14.04.5 LTS&quot;
+</div></li><li><div class="line">#  or
+</div></li><li><div class="line">--&gt;DISTRIB_ID=Ubuntu
+</div></li><li><div class="line">--&gt;DISTRIB_RELEASE=14.04
+</div></li><li><div class="line">--&gt;DISTRIB_CODENAME=trusty
+</div></li><li><div class="line">--&gt;DISTRIB_DESCRIPTION=&quot;Ubuntu 14.04.5 LTS&quot;
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="nb">open</span> <span class="n">FH</span><span class="p">,</span><span class="s">&quot;&lt;&quot;</span><span class="p">,</span><span class="s">&quot;/etc/lsb-*&quot;</span><span class="p">;</span> 
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;--&gt; $_&quot;</span> <span class="k">while</span><span class="p">(</span><span class="sr">&lt;FH&gt;</span><span class="p">);</span>
+</div></li><li><div class="line"><span class="c1">#  or</span>
+</div></li><li><div class="line"><span class="nb">open</span><span class="p">(</span><span class="n">FH</span><span class="p">,</span> <span class="nb">glob</span><span class="p">(</span><span class="s">&quot;/etc/lsb-*&quot;</span><span class="p">));</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;--&gt; $_&quot;</span> <span class="k">while</span><span class="p">(</span><span class="sr">&lt;FH&gt;</span><span class="p">);</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#  or
+</div></li><li><div class="line">--&gt; DISTRIB_ID=Ubuntu
+</div></li><li><div class="line">--&gt; DISTRIB_RELEASE=14.04
+</div></li><li><div class="line">--&gt; DISTRIB_CODENAME=trusty
+</div></li><li><div class="line">--&gt; DISTRIB_DESCRIPTION=&quot;Ubuntu 14.04.5 LTS&quot;
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="kn">import</span> <span class="nn">glob</span>
+</div></li><li><div class="line"><span class="k">for</span> <span class="nb">file</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s">&quot;/etc/lsb-*&quot;</span><span class="p">):</span>
+</div></li><li><div class="line">    <span class="n">fob</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="nb">file</span><span class="p">,</span><span class="s">&#39;r&#39;</span><span class="p">)</span>
+</div></li><li><div class="line">    <span class="k">print</span> <span class="n">fob</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</div></li><li><div class="line">    <span class="n">fob</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">DISTRIB_ID=Ubuntu
+</div></li><li><div class="line">DISTRIB_RELEASE=14.04
+</div></li><li><div class="line">DISTRIB_CODENAME=trusty
+</div></li><li><div class="line">DISTRIB_DESCRIPTION=&quot;Ubuntu 14.04.5 LTS&quot;
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="Read lines of a  file into array" href="#Input">Input: Read lines of a  file into array </a></h4>
+		  <pre class="xdesc">#Bash
+IFS means internal field separator, its&#39; default value is &lt;space&gt;, &lt;tab&gt; and &lt;newline&gt;. For the file need to be separated by newline, we will set it to IFS=$&#39;\r\n&#39;.  Thew following are some other IFS examples:
+IFS=: elems=($PATH) #read $PATH into array
+IFS=. read -r i1 i2 i3 i4 &lt;&lt;&lt;&quot;192.168.7.17&quot;  #break IP address  into variables.
+
+#Perl
+&lt;&gt; is called diamond operator, which is  used when a program is expecting input.  the file content or Stdin are sent through &lt;&gt;
+
+#Python 
+Use the built in function open() , which returns the File Object. then call the readlines() member function to return the Array.</pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.1. Read the file into an array, with each line as an element.
+2.2. Print out all array elements
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>11</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.1. Read the file into an array, with each line as an element.</span>
+</div></li><li><div class="line"><span class="nv">IFS</span><span class="o">=</span><span class="s1">$&#39;\r\n&#39;</span>;
+</div></li><li><div class="line"><span class="c">#  arr=(`cat /etc/lsb-release`)</span>
+</div></li><li><div class="line"><span class="nv">arr</span><span class="o">=(</span><span class="sb">`</span>&lt; /etc/lsb-release<span class="sb">`</span><span class="o">)</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.2. Print out all array elements</span>
+</div></li><li><div class="line"><span class="k">for </span>t in <span class="s2">&quot;${arr[@]}&quot;</span>;<span class="k">do </span><span class="nb">echo</span> <span class="nv">$t</span>;<span class="k">done</span>
+</div></li><li><div class="line"><span class="nb">unset </span>IFS
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.1. Read the file into an array, with each line as an element.
+</div></li><li><div class="line">#  arr=(DISTRIB_ID=Ubuntu
+</div></li><li><div class="line">DISTRIB_RELEASE=14.04
+</div></li><li><div class="line">DISTRIB_CODENAME=trusty
+</div></li><li><div class="line">DISTRIB_DESCRIPTION=&quot;Ubuntu 14.04.5 LTS&quot;)
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.2. Print out all array elements
+</div></li><li><div class="line">DISTRIB_ID=Ubuntu
+</div></li><li><div class="line">DISTRIB_RELEASE=14.04
+</div></li><li><div class="line">DISTRIB_CODENAME=trusty
+</div></li><li><div class="line">DISTRIB_DESCRIPTION=&quot;Ubuntu 14.04.5 LTS&quot;
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#1.1. Read the file into an array, with each line as an element.</span>
+</div></li><li><div class="line"><span class="nb">open</span> <span class="p">(</span><span class="nv">$fh</span><span class="p">,</span> <span class="nb">glob</span><span class="p">(</span><span class="s">&quot;/etc/lsb-*&quot;</span><span class="p">));</span>
+</div></li><li><div class="line"><span class="nv">@lines</span> <span class="o">=</span> <span class="sr">&lt;$fh&gt;</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="nb">close</span> <span class="nv">$fh</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.2. Print out all array elements</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="nv">@lines</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="c1">#  or use one liner</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="k">do</span> <span class="p">{</span> <span class="nb">open</span> <span class="p">(</span><span class="nv">$fh</span><span class="p">,</span> <span class="nb">glob</span><span class="p">(</span><span class="s">&quot;/etc/lsb-*&quot;</span><span class="p">));</span> <span class="sr">&lt;$fh&gt;</span><span class="p">;};</span>
+</div></li><li><div class="line"><span class="c1">#  or use File::Slurp</span>
+</div></li><li><div class="line"><span class="c1">#  use File::Slurp;</span>
+</div></li><li><div class="line"><span class="c1"># @lines = read_file(glob(&#39;/etc/lsb-*&#39;));</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.1. Read the file into an array, with each line as an element.
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.2. Print out all array elements
+</div></li><li><div class="line">DISTRIB_ID=Ubuntu
+</div></li><li><div class="line">DISTRIB_RELEASE=14.04
+</div></li><li><div class="line">DISTRIB_CODENAME=trusty
+</div></li><li><div class="line">DISTRIB_DESCRIPTION=&quot;Ubuntu 14.04.5 LTS&quot;
+</div></li><li><div class="line">#  or use one liner
+</div></li><li><div class="line">DISTRIB_ID=Ubuntu
+</div></li><li><div class="line">DISTRIB_RELEASE=14.04
+</div></li><li><div class="line">DISTRIB_CODENAME=trusty
+</div></li><li><div class="line">DISTRIB_DESCRIPTION=&quot;Ubuntu 14.04.5 LTS&quot;
+</div></li><li><div class="line">#  or use File::Slurp
+</div></li><li><div class="line">#  use File::Slurp;
+</div></li><li><div class="line"># DISTRIB_ID=Ubuntu
+</div></li><li><div class="line"> DISTRIB_RELEASE=14.04
+</div></li><li><div class="line"> DISTRIB_CODENAME=trusty
+</div></li><li><div class="line"> DISTRIB_DESCRIPTION=&quot;Ubuntu 14.04.5 LTS&quot;
+</div></li><li><div class="line"> = read_file(glob(&#39;/etc/lsb-*&#39;));
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="kn">import</span> <span class="nn">glob</span>
+</div></li><li><div class="line"><span class="n">fob</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&quot;/etc/lsb-release&quot;</span><span class="p">,</span><span class="s">&#39;r&#39;</span><span class="p">)</span>
+</div></li><li><div class="line"><span class="n">arr</span> <span class="o">=</span> <span class="n">fob</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+</div></li><li><div class="line"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">arr</span><span class="p">:</span> <span class="k">print</span> <span class="n">i</span><span class="p">,</span>
+</div></li><li><div class="line"><span class="n">fob</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">DISTRIB_ID=Ubuntu
+</div></li><li><div class="line">DISTRIB_RELEASE=14.04
+</div></li><li><div class="line">DISTRIB_CODENAME=trusty
+</div></li><li><div class="line">DISTRIB_DESCRIPTION=&quot;Ubuntu 14.04.5 LTS&quot;
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+
+        </div>
+     
+        <aside class="large-1 columns">
+          <h5>Categories</h5>
+          
+          <ul class="side-nav">
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../1/index.html">Regex</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../2/index.html">String</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../3/index.html">Array</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../4/index.html">Set</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../5/index.html">Map</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../6/index.html">Variables</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../7/index.html">Special variables</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../8/index.html">Function</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../9/index.html">Command line</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../10/index.html">Flow control</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  class="selected"  ><a href="index.html">Input</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../12/index.html">Path</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../13/index.html">Logging</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../14/index.html">Threading</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../15/index.html">Html</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../16/index.html">Miscellaneous</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../17/index.html">Help</a></li>
+            
+          </ul>
+          
+     
+        </aside>
+         
+      </div>
+
+      <footer class="row">
+        <div class="large-12 columns">
+          <hr/>
+          <div class="row">
+            <div class="large-6 columns">
+              <p>© Evan Liu.   (liuenmao@hotmail.com)</p>
+            </div>
+            <div class="large-6 columns">
+            </div>
+          </div>
+        </div>
+      </footer>
+</body>    
+
+<!-- Mirrored from 118.193.213.195/bash_perl_python/11/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 16 May 2018 07:24:14 GMT -->
+</html>

@@ -1,0 +1,1118 @@
+
+
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" data-useragent="Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)">
+
+<!-- Mirrored from 118.193.213.195/bash_perl_python/1/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 16 May 2018 07:24:06 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<meta name="google-site-verification" content="qms_3-ElBGujHuD2zwSZLcW8jmlJ7WG5W3JoK67ArzY" />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Regex in Bash, Perl, Python </title>
+<meta name="description" content="Bash, Perl and Python comparison."/>
+<meta name="keywords" content="Bash,Perl,Python"/>
+<meta name="author" content="Enmao Liu"/>
+<meta name="copyright" content="Enmao Liu@shanghai"/>
+<link rel="stylesheet" type="text/css" href="../../static/downloads/foundation.css"/>
+<link rel="stylesheet" type="text/css" href="../../static/downloads/pygmts_def.css"/>
+<link rel="stylesheet" type="text/css" href="../../static/downloads/app.css"/>
+<script src="../../static/downloads/modernizr.js"></script>
+</head>
+<body>
+<!--
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- test -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5197746177913810"
+     data-ad-slot="1965669484"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script -->
+<div class="row">
+ <!--a href="http://core.weloveservers.net/aff.php?aff=923" rel="nofollow"><img src="https://core.weloveservers.net/uploads/vps-970X90.jpg" width="970" height="90" border="0"></a-->
+</div>
+    <div class="row">
+       <!--div class="large-12 columns"-->
+         <div class="nav-bar right">
+           <ul class="button-group">
+             <li><a href="https://www.facebook.com/liuenmao" class="button">Facebook</a></li>
+             <li><a href="https://www.youtube.com/user/neutrino0717" class="button">Youtube</a></li>
+             <li><a href="https://twitter.com/neutrino0717" class="button">Twitter</a></li>
+             <li><a href="https://www.linkedin.com/pub/evan-liu/51/5a6/748" class="button">Linkedin</a></li>
+            </ul>
+          </div>
+          <h1>Coding <small>Bash vs. Perl vs. Python (by Evan Liu) </small></h1>
+          <hr/>
+        <!--/div-->
+      </div>
+
+      <div class="row">
+        <div class="large-11 columns" role="content">
+ 
+<p>
+<div class="xdesc">
+This website shows how to accomplish the same tasks using different scripting languages. I did it while learning bash, perl and python in 2013. My facebook account: liuenmao@hotmail.com.<br>
+The website is based on Python and Django.
+</div>
+<p>
+ 
+         <h3><a name="Regex">Topics about  regex  </a></h3>
+         <ul>
+
+         <li>
+         <a href="#Greedy matching: *, +, ?">Greedy matching: *, +, ?</a> 
+         </li>
+
+         <li>
+         <a href="#Lazy matching: *?, +?, ??">Lazy matching: *?, +?, ??</a> 
+         </li>
+
+         <li>
+         <a href="#Substitution">Substitution</a> 
+         </li>
+
+         <li>
+         <a href="#Parentheses capture: ()">Parentheses capture: ()</a> 
+         </li>
+
+         <li>
+         <a href="#Parentheses capture with named group: (?P&lt;&gt;)">Parentheses capture with named group: (?P&lt;&gt;)</a> 
+         </li>
+
+         <li>
+         <a href="#Single line mode by mode modifier: (?s)">Single line mode by mode modifier: (?s)</a> 
+         </li>
+
+         <li>
+         <a href="#Multiline mode by Mode modifier: (?m)">Multiline mode by Mode modifier: (?m)</a> 
+         </li>
+
+         <li>
+         <a href="#Lookahead assertion: (?=...), (?!...)">Lookahead assertion: (?=...), (?!...)</a> 
+         </li>
+
+         <li>
+         <a href="#Lookbehind assertion: (?&lt;=...), (?&lt;!...)">Lookbehind assertion: (?&lt;=...), (?&lt;!...)</a> 
+         </li>
+
+         </ul>
+
+          <article>
+		  <h4><a name="Greedy matching: *, +, ?" href="#Regex">Regex: Greedy matching: *, +, ? </a></h4>
+		  <pre class="xdesc">In Bash, egrep,awk and sed can be used for regular expression matching, all of them support [[:digit:]], [[:space:]], \s, \t.
+However only egrep supports \d, like in perl
+
+In python, regular expression operations are handled by module re. below is a simple summary.
+re.split()  --&gt; splits to array with pattern as delimeter
+re.match()  --&gt; matchs the start of the string,and return match object
+re.search()  --&gt; matchs anywhere in the string, only finds the first occurrence,  return the match object
+re.findall()  --&gt; returns a list of all non-overlapping matches in the string
+</pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.Define a variable holding a multiline String
+2.OR condition example in regex
+3.AND condition example in regex
+4.NOT condition example in regex
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>1</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Define a variable holding a multiline String</span>
+</div></li><li><div class="line"><span class="nb">read</span> -r -d <span class="s1">&#39;&#39;</span> poem <span class="s">&lt;&lt;EOD</span>
+</div></li><li><div class="line"><span class="s">Lily-like, white as snow,</span>
+</div></li><li><div class="line"><span class="s">she hardly knew</span>
+</div></li><li><div class="line"><span class="s">she was a woman, so</span>
+</div></li><li><div class="line"><span class="s">sweetly she grew.</span>
+</div></li><li><div class="line"><span class="s">EOD</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.OR condition example in regex</span>
+</div></li><li><div class="line"><span class="c">#  use egrep, awk, sed respectively</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="s2">&quot;$poem&quot;</span> |egrep <span class="s1">&#39;^Lily|woman&#39;</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="s2">&quot;$poem&quot;</span> |awk <span class="s1">&#39;/^Lily|woman/&#39;</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="s2">&quot;$poem&quot;</span> |sed -n <span class="s1">&#39;/^Lily\|woman/p&#39;</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="s2">&quot;$poem&quot;</span> |sed -e <span class="s1">&#39;/^Lily/b&#39;</span> -e <span class="s1">&#39;/woman/b&#39;</span> -e d
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#3.AND condition example in regex</span>
+</div></li><li><div class="line"><span class="c">#  use egrep, awk, sed respectively</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="s2">&quot;$poem&quot;</span> |egrep <span class="s1">&#39;^she.*woman&#39;</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="s2">&quot;$poem&quot;</span> |awk <span class="s1">&#39;/^she.*woman/&#39;</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="s2">&quot;$poem&quot;</span> |awk <span class="s1">&#39;/^she/ &amp;&amp; /woman/&#39;</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="s2">&quot;$poem&quot;</span> |sed <span class="s1">&#39;/^she/!d; /woman/!d&#39;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#4.NOT condition example in regex</span>
+</div></li><li><div class="line"><span class="c">#  use egrep, awk, sed respectively</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="s2">&quot;$poem&quot;</span> |grep -v <span class="s1">&#39;she&#39;</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="s2">&quot;$poem&quot;</span> |awk <span class="s1">&#39;!/she/&#39;</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="s2">&quot;$poem&quot;</span> |sed -n <span class="s1">&#39;/she/!p&#39;</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="s2">&quot;$poem&quot;</span> |sed <span class="s1">&#39;/she/d&#39;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Define a variable holding a multiline String
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.OR condition example in regex
+</div></li><li><div class="line">#  use egrep, awk, sed respectively
+</div></li><li><div class="line">Lily-like, white as snow,
+</div></li><li><div class="line">she was a woman, so
+</div></li><li><div class="line">Lily-like, white as snow,
+</div></li><li><div class="line">she was a woman, so
+</div></li><li><div class="line">Lily-like, white as snow,
+</div></li><li><div class="line">she was a woman, so
+</div></li><li><div class="line">Lily-like, white as snow,
+</div></li><li><div class="line">she was a woman, so
+</div></li><li><div class="line">
+</div></li><li><div class="line">#3.AND condition example in regex
+</div></li><li><div class="line">#  use egrep, awk, sed respectively
+</div></li><li><div class="line">she was a woman, so
+</div></li><li><div class="line">she was a woman, so
+</div></li><li><div class="line">she was a woman, so
+</div></li><li><div class="line">she was a woman, so
+</div></li><li><div class="line">
+</div></li><li><div class="line">#4.NOT condition example in regex
+</div></li><li><div class="line">#  use egrep, awk, sed respectively
+</div></li><li><div class="line">Lily-like, white as snow,
+</div></li><li><div class="line">Lily-like, white as snow,
+</div></li><li><div class="line">Lily-like, white as snow,
+</div></li><li><div class="line">Lily-like, white as snow,
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#1.Define a variable holding a multiline String</span>
+</div></li><li><div class="line"><span class="k">my</span> <span class="nv">$poem</span> <span class="o">=</span> <span class="s">&lt;&lt;&quot;EOD&quot;;</span>
+</div></li><li><div class="line"><span class="s">Lily-like, white as snow,</span>
+</div></li><li><div class="line"><span class="s">she hardly knew</span>
+</div></li><li><div class="line"><span class="s">she was a woman, so</span>
+</div></li><li><div class="line"><span class="s">sweetly she grew.</span>
+</div></li><li><div class="line"><span class="s">EOD</span>
+</div></li><li><div class="line"><span class="k">my</span> <span class="nv">@poem</span>  <span class="o">=</span> <span class="nb">split</span><span class="p">(</span><span class="sr">/\n/</span><span class="p">,</span><span class="nv">$poem</span><span class="p">);</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.OR condition example in regex</span>
+</div></li><li><div class="line"><span class="nv">@result</span> <span class="o">=</span> <span class="nb">grep</span> <span class="p">{</span> <span class="nv">$_</span> <span class="o">=~</span><span class="sr"> /^Lily|woman/</span> <span class="p">}</span> <span class="nv">@poem</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;$_\n&quot;</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">@result</span><span class="p">);</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#3.AND condition example in regex</span>
+</div></li><li><div class="line"><span class="nv">@result</span> <span class="o">=</span> <span class="nb">grep</span> <span class="p">{</span> <span class="nv">$_</span> <span class="o">=~</span><span class="sr"> /^she.*woman/</span> <span class="p">}</span> <span class="nv">@poem</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;$_\n&quot;</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">@result</span><span class="p">);</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#4.NOT condition example in regex</span>
+</div></li><li><div class="line"><span class="nv">@result</span> <span class="o">=</span> <span class="nb">grep</span> <span class="p">{</span> <span class="o">!</span><span class="sr">/she/</span> <span class="p">}</span> <span class="nv">@poem</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;$_\n&quot;</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">@result</span><span class="p">);</span>
+</div></li><li><div class="line"><span class="nv">@result</span> <span class="o">=</span> <span class="nb">grep</span> <span class="p">(</span> <span class="o">!</span><span class="sr">/she/</span> <span class="p">,</span> <span class="nv">@poem</span> <span class="p">);</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;$_\n&quot;</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">@result</span><span class="p">);</span>
+</div></li><li><div class="line"><span class="k">foreach</span> <span class="p">(</span><span class="nv">@poem</span><span class="p">)</span> <span class="p">{</span> <span class="k">print</span> <span class="s">&quot;$_\n&quot;</span> <span class="k">unless</span> <span class="sr">/she/</span><span class="p">;}</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Define a variable holding a multiline String
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.OR condition example in regex
+</div></li><li><div class="line">Lily-like, white as snow,
+</div></li><li><div class="line">she was a woman, so
+</div></li><li><div class="line">
+</div></li><li><div class="line">#3.AND condition example in regex
+</div></li><li><div class="line">she was a woman, so
+</div></li><li><div class="line">
+</div></li><li><div class="line">#4.NOT condition example in regex
+</div></li><li><div class="line">Lily-like, white as snow,
+</div></li><li><div class="line">Lily-like, white as snow,
+</div></li><li><div class="line">Lily-like, white as snow,
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="kn">import</span> <span class="nn">re</span>
+</div></li><li><div class="line"><span class="c">#1.Define a variable holding a multiline String</span>
+</div></li><li><div class="line"><span class="n">poem</span><span class="o">=</span><span class="s">&#39;&#39;&#39;Lily-like, white as snow,</span>
+</div></li><li><div class="line"><span class="s">she hardly knew</span>
+</div></li><li><div class="line"><span class="s">she was a woman, so</span>
+</div></li><li><div class="line"><span class="s">sweetly she grew.&#39;&#39;&#39;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.OR condition example in regex</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s">r&#39;^Lily.*|.*woman.*&#39;</span><span class="p">,</span> <span class="n">poem</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">M</span><span class="p">)</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#3.AND condition example in regex</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s">r&#39;^she.*woman.*&#39;</span><span class="p">,</span> <span class="n">poem</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">M</span><span class="p">)</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#4.NOT condition example in regex</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">poem</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="s">&#39;she&#39;</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Define a variable holding a multiline String 
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.OR condition example in regex 
+</div></li><li><div class="line">[&#39;Lily-like, white as snow,&#39;, &#39;she was a woman, so&#39;]
+</div></li><li><div class="line">
+</div></li><li><div class="line">#3.AND condition example in regex 
+</div></li><li><div class="line">[&#39;she was a woman, so&#39;]
+</div></li><li><div class="line">
+</div></li><li><div class="line">#4.NOT condition example in regex 
+</div></li><li><div class="line">[&#39;Lily-like, white as snow,&#39;]
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="Lazy matching: *?, +?, ??" href="#Regex">Regex: Lazy matching: *?, +?, ?? </a></h4>
+		  <pre class="xdesc">As a general principle in regex, ?, * , + and {n,m} will match as much of the string as possible while still allowing the whole regexp to match.
+
+In bash, &#39;grep -P&#39;will make grep use perl syntax 
+
+In python
+The &#39;*&#39;, &#39;+&#39;, and &#39;?&#39; qualifiers are all greedy; they match as much text as possible
+The &#39;*?&#39;, &#39;+?&#39;, and &#39;??&#39; make it match, as few characters as possible, aka lazy mode or minimal mode.</pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.Define a variable for matching
+2.Perform a greedy match
+3.Perform a non-greedy match
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>1</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Define a variable for matching</span>
+</div></li><li><div class="line"><span class="nv">h</span><span class="o">=</span><span class="s2">&quot;&lt;html&gt;&lt;head&gt;Neutrino&lt;/head&gt;&lt;/html&gt;&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Perform a greedy match</span>
+</div></li><li><div class="line">egrep -o  <span class="s2">&quot;&lt;h.*&gt;&quot;</span> <span class="o">&lt;&lt;&lt;</span><span class="s2">&quot;$h&quot;</span>
+</div></li><li><div class="line"><span class="c">#  or use Perl syntax with &#39;-P&#39;</span>
+</div></li><li><div class="line">grep -Po  <span class="s2">&quot;&lt;h.*&gt;&quot;</span> <span class="o">&lt;&lt;&lt;</span><span class="s2">&quot;$h&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#3.Perform a non-greedy match</span>
+</div></li><li><div class="line">grep -Po  <span class="s2">&quot;&lt;h.*?&gt;&quot;</span> <span class="o">&lt;&lt;&lt;</span><span class="s2">&quot;$h&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Define a variable for matching
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Perform a greedy match
+</div></li><li><div class="line">&lt;html&gt;&lt;head&gt;Neutrino&lt;/head&gt;&lt;/html&gt;
+</div></li><li><div class="line">#  or use Perl syntax with &#39;-P&#39;
+</div></li><li><div class="line">&lt;html&gt;&lt;head&gt;Neutrino&lt;/head&gt;&lt;/html&gt;
+</div></li><li><div class="line">
+</div></li><li><div class="line">#3.Perform a non-greedy match
+</div></li><li><div class="line">&lt;html&gt;
+</div></li><li><div class="line">&lt;head&gt;
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#1.Define a variable for matching</span>
+</div></li><li><div class="line"><span class="nv">$h</span><span class="o">=</span><span class="s">&quot;&lt;html&gt;&lt;head&gt;Neutrino&lt;/head&gt;&lt;/html&gt;&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.Perform a greedy match</span>
+</div></li><li><div class="line"><span class="nv">$h</span><span class="o">=~</span><span class="sr">m/(&lt;h.*&gt;)/</span><span class="p">;</span> <span class="k">print</span> <span class="s">&quot;$1\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#3.Perform a non-greedy match</span>
+</div></li><li><div class="line"><span class="nv">$h</span><span class="o">=~</span><span class="sr">m/(&lt;h.*?&gt;)/</span><span class="p">;</span> <span class="k">print</span> <span class="s">&quot;$1\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Define a variable for matching
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Perform a greedy match
+</div></li><li><div class="line">&lt;html&gt;&lt;head&gt;Neutrino&lt;/head&gt;&lt;/html&gt;
+</div></li><li><div class="line">
+</div></li><li><div class="line">#3.Perform a non-greedy match
+</div></li><li><div class="line">&lt;html&gt;
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="kn">import</span> <span class="nn">re</span>
+</div></li><li><div class="line"><span class="c">#1.Define a variable for matching</span>
+</div></li><li><div class="line"><span class="n">h</span><span class="o">=</span><span class="s">&quot;&lt;html&gt;&lt;head&gt;Neutrino&lt;/head&gt;&lt;/html&gt;&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Perform a greedy match</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">r&#39;&lt;h.*&gt;&#39;</span><span class="p">,</span><span class="n">h</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#3.Perform a non-greedy match</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">r&#39;&lt;h.*?&gt;&#39;</span><span class="p">,</span><span class="n">h</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Define a variable for matching 
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Perform a greedy match 
+</div></li><li><div class="line">&lt;html&gt;&lt;head&gt;Neutrino&lt;/head&gt;&lt;/html&gt;
+</div></li><li><div class="line">
+</div></li><li><div class="line">#3.Perform a non-greedy match 
+</div></li><li><div class="line">&lt;html&gt;
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="Substitution" href="#Regex">Regex: Substitution </a></h4>
+		  <pre class="xdesc"></pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.Define a variable holding a multiline String
+2.replace &#39;she&#39; with &#39;She&#39;
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>1</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Define a variable holding a multiline String</span>
+</div></li><li><div class="line"><span class="nv">poem</span><span class="o">=</span><span class="k">$(</span>cat <span class="s">&lt;&lt;EOD</span>
+</div></li><li><div class="line"><span class="s">Lily-like, white as snow,</span>
+</div></li><li><div class="line"><span class="s">she hardly knew</span>
+</div></li><li><div class="line"><span class="s">she was a woman, so</span>
+</div></li><li><div class="line"><span class="s">sweetly she grew.</span>
+</div></li><li><div class="line"><span class="s">EOD</span>
+</div></li><li><div class="line"><span class="k">)</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.replace &#39;she&#39; with &#39;She&#39;</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="s2">&quot;$poem&quot;</span> |sed <span class="s1">&#39;s/^she/She/g&#39;</span>
+</div></li><li><div class="line"><span class="c">#  or</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="s2">&quot;${poem//she/She}&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Define a variable holding a multiline String
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.replace &#39;she&#39; with &#39;She&#39;
+</div></li><li><div class="line">Lily-like, white as snow,
+</div></li><li><div class="line">She hardly knew
+</div></li><li><div class="line">She was a woman, so
+</div></li><li><div class="line">sweetly she grew.
+</div></li><li><div class="line">#  or
+</div></li><li><div class="line">Lily-like, white as snow,
+</div></li><li><div class="line">She hardly knew
+</div></li><li><div class="line">She was a woman, so
+</div></li><li><div class="line">sweetly She grew.
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#1.Define a variable holding a multiline String</span>
+</div></li><li><div class="line"><span class="k">my</span> <span class="nv">$poem</span> <span class="o">=</span> <span class="s">&lt;&lt;&quot;EOD&quot;;</span>
+</div></li><li><div class="line"><span class="s">Lily-like, white as snow,</span>
+</div></li><li><div class="line"><span class="s">she hardly knew</span>
+</div></li><li><div class="line"><span class="s">she was a woman, so</span>
+</div></li><li><div class="line"><span class="s">sweetly she grew.</span>
+</div></li><li><div class="line"><span class="s">EOD</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.replace &#39;she&#39; with &#39;She&#39;</span>
+</div></li><li><div class="line"><span class="k">my</span> <span class="nv">@poem</span>  <span class="o">=</span> <span class="nb">split</span><span class="p">(</span><span class="sr">/\n/</span><span class="p">,</span><span class="nv">$poem</span><span class="p">);</span>
+</div></li><li><div class="line"><span class="k">foreach</span> <span class="p">(</span><span class="nv">@poem</span><span class="p">){</span>
+</div></li><li><div class="line"> <span class="sr">s/^she/She/</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="p">}</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;$_\n&quot;</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">@poem</span><span class="p">);</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Define a variable holding a multiline String
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.replace &#39;she&#39; with &#39;She&#39;
+</div></li><li><div class="line">Lily-like, white as snow,
+</div></li><li><div class="line">She hardly knew
+</div></li><li><div class="line">She was a woman, so
+</div></li><li><div class="line">sweetly she grew.
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Define a variable holding a multiline String</span>
+</div></li><li><div class="line"><span class="kn">import</span> <span class="nn">re</span>
+</div></li><li><div class="line"><span class="n">poem</span><span class="o">=</span><span class="s">&#39;&#39;&#39;Lily-like, white as snow,</span>
+</div></li><li><div class="line"><span class="s">she hardly knew</span>
+</div></li><li><div class="line"><span class="s">she was a woman, so</span>
+</div></li><li><div class="line"><span class="s">sweetly she grew.&#39;&#39;&#39;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.replace &#39;she&#39; with &#39;She&#39;</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">r&#39;^she&#39;</span><span class="p">,</span> <span class="s">r&#39;She&#39;</span><span class="p">,</span> <span class="n">poem</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">M</span><span class="p">)</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Define a variable holding a multiline String 
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.replace &#39;she&#39; with &#39;She&#39; 
+</div></li><li><div class="line">Lily-like, white as snow,
+</div></li><li><div class="line">She hardly knew
+</div></li><li><div class="line">She was a woman, so
+</div></li><li><div class="line">sweetly she grew.
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="Parentheses capture: ()" href="#Regex">Regex: Parentheses capture: () </a></h4>
+		  <pre class="xdesc">In Bash, command sed supports capture variables \1, \2, \3 by using parentheses
+In Perl, capture variables $1,$2, $3 are used to retrieve values in the parentheses
+In Python, one additional feature for capturing values are named group: the format for named regular expression group is &quot;(?P&lt;group_name&gt;regexp)&quot;, P means placeholder</pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.Define a string for capturing
+2.Capture values by parentheses
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>1</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Define a string for capturing</span>
+</div></li><li><div class="line"><span class="nv">line1</span><span class="o">=</span><span class="s2">&quot;Alpha Centauri-4.3650-1689&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Capture values by parentheses</span>
+</div></li><li><div class="line"><span class="c">#  use sed</span>
+</div></li><li><div class="line">sed -r <span class="s1">&#39;s/(.*)-(.*)-(.*)/star-&gt;\1 distance-&gt;\2 year-&gt;\3/&#39;</span> <span class="o">&lt;&lt;&lt;</span><span class="nv">$line1</span>
+</div></li><li><div class="line"><span class="c">#  or use awk</span>
+</div></li><li><div class="line">awk -F<span class="s1">&#39;-&#39;</span> <span class="s1">&#39;{print &quot;star-&gt;&quot;$1&quot; distance-&gt;&quot;$2&quot; year-&gt;&quot;$3 }&#39;</span> <span class="o">&lt;&lt;&lt;</span><span class="nv">$line1</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Define a string for capturing
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Capture values by parentheses
+</div></li><li><div class="line">#  use sed
+</div></li><li><div class="line">star-&gt;Alpha Centauri distance-&gt;4.3650 year-&gt;1689
+</div></li><li><div class="line">#  or use awk
+</div></li><li><div class="line">star-&gt;Alpha Centauri distance-&gt;4.3650 year-&gt;1689
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#1.Define a string for capturing</span>
+</div></li><li><div class="line"><span class="nv">$line1</span><span class="o">=</span><span class="s">&quot;Alpha Centauri-4.3650-1689&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.Capture values by parentheses</span>
+</div></li><li><div class="line"><span class="nv">$line1</span> <span class="o">=~</span><span class="sr"> /(.*)-(.*)-(.*)/</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;star-&gt;$1; distance-&gt;$2; year-&gt;$3\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="p">(</span><span class="nv">$star</span><span class="p">,</span> <span class="nv">$distance</span><span class="p">,</span> <span class="nv">$year</span><span class="p">)</span> <span class="o">=</span> <span class="nv">$line1</span> <span class="o">=~</span><span class="sr"> /(.*)-(.*)-(.*)/</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;start-&gt;$star; distance-&gt;$distance; year-&gt;$year&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Define a string for capturing
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Capture values by parentheses
+</div></li><li><div class="line">star-&gt;Alpha Centauri; distance-&gt;4.3650; year-&gt;1689
+</div></li><li><div class="line">start-&gt;Alpha Centauri; distance-&gt;4.3650; year-&gt;1689
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="kn">import</span> <span class="nn">re</span>
+</div></li><li><div class="line"><span class="c">#1.Define a string for capturing</span>
+</div></li><li><div class="line"><span class="n">line1</span><span class="o">=</span><span class="s">&quot;Alpha Centauri-4.3650-1689&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Capture values by parentheses</span>
+</div></li><li><div class="line"><span class="c">#  note: group(0) returns the entire match</span>
+</div></li><li><div class="line"><span class="n">match</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s">r&#39;(.*)-(.*)-(.*)&#39;</span><span class="p">,</span> <span class="n">line1</span><span class="p">)</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;start-&gt;</span><span class="si">%s</span><span class="s">; distance-&gt;</span><span class="si">%s</span><span class="s">; year-&gt;</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+</div></li><li><div class="line"><span class="c">#  or use re.findall</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s">r&#39;(.*)-(.*)-(.*)&#39;</span><span class="p">,</span> <span class="n">line1</span><span class="p">)</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s">r&#39;([^-]+?)(?=$|-)&#39;</span><span class="p">,</span> <span class="n">line1</span><span class="p">)</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Define a string for capturing 
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Capture values by parentheses 
+</div></li><li><div class="line">#  note: group(0) returns the entire match 
+</div></li><li><div class="line">start-&gt;Alpha Centauri; distance-&gt;4.3650; year-&gt;1689
+</div></li><li><div class="line">#  or use re.findall 
+</div></li><li><div class="line">[(&#39;Alpha Centauri&#39;, &#39;4.3650&#39;, &#39;1689&#39;)]
+</div></li><li><div class="line">[&#39;Alpha Centauri&#39;, &#39;4.3650&#39;, &#39;1689&#39;]
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="Parentheses capture with named group: (?P&lt;&gt;)" href="#Regex">Regex: Parentheses capture with named group: (?P&lt;&gt;) </a></h4>
+		  <pre class="xdesc">In Bash, if regex match operator =~ is used, the results of the match are saved to array ${BASH_REMATCH[@]}
+In Perl, the format for named capture is (?&lt;group_name&gt;regexp), then use the %+ hash to retrieve them.
+In Python, the format for named group is &quot;(?P&lt;group_name&gt;regexp)&quot;, P means placeholder</pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.Define a string for capturing
+2.Capture values by parentheses
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>1</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Define a string for capturing</span>
+</div></li><li><div class="line"><span class="nv">line1</span><span class="o">=</span><span class="s2">&quot;Alpha Centauri-4.3650-1689&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Capture values by parentheses</span>
+</div></li><li><div class="line"><span class="o">[[</span> <span class="s2">&quot;$line1&quot;</span> <span class="o">=</span>~ <span class="o">(</span>.*<span class="o">)</span>-<span class="o">(</span>.*<span class="o">)</span>-<span class="o">(</span>.*<span class="o">)</span> <span class="o">]]</span>
+</div></li><li><div class="line"><span class="nb">echo</span> <span class="s2">&quot;star-&gt;${BASH_REMATCH[1]}; distance-&gt;${BASH_REMATCH[2]}; year-&gt;${BASH_REMATCH[3]}&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Define a string for capturing
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Capture values by parentheses
+</div></li><li><div class="line">star-&gt;Alpha Centauri; distance-&gt;4.3650; year-&gt;1689
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#1.Define a string for capturing</span>
+</div></li><li><div class="line"><span class="nv">$line1</span><span class="o">=</span><span class="s">&quot;Alpha Centauri-4.3650-1689&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.Capture values by parentheses</span>
+</div></li><li><div class="line"><span class="nv">$line1</span> <span class="o">=~</span><span class="sr"> /(?&lt;star&gt;.*)-(?&lt;distance&gt;.*)-(?&lt;year&gt;.*)/</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;start-&gt;$+{star}; distance-&gt;$+{distance}; year-&gt;$+{year}&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Define a string for capturing
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Capture values by parentheses
+</div></li><li><div class="line">start-&gt;Alpha Centauri; distance-&gt;4.3650; year-&gt;1689
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="kn">import</span> <span class="nn">re</span>
+</div></li><li><div class="line"><span class="c">#1.Define a string for capturing</span>
+</div></li><li><div class="line"><span class="n">line1</span><span class="o">=</span><span class="s">&quot;Alpha Centauri-4.3650-1689&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Capture values by parentheses</span>
+</div></li><li><div class="line"><span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span> <span class="p">(</span><span class="s">&#39;(?P&lt;star&gt;.*)-(?P&lt;distance&gt;.*)-(?P&lt;year&gt;.*)&#39;</span><span class="p">,</span><span class="n">line1</span><span class="p">)</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;start-&gt;</span><span class="si">%s</span><span class="s">; distance-&gt;</span><span class="si">%s</span><span class="s">; year-&gt;</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s">&#39;star&#39;</span><span class="p">),</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s">&#39;distance&#39;</span><span class="p">),</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s">&#39;year&#39;</span><span class="p">))</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Define a string for capturing 
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Capture values by parentheses 
+</div></li><li><div class="line">start-&gt;Alpha Centauri; distance-&gt;4.3650; year-&gt;1689
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="Single line mode by mode modifier: (?s)" href="#Regex">Regex: Single line mode by mode modifier: (?s) </a></h4>
+		  <pre class="xdesc">(?s) or DOTALL mode
+makes . match all characters, including newline.
+makes ^ and $ match at the start and end of the string only.
+In Perl, use /s, or (?s)
+In Python, use re.DOTALL or re.S, or(?s)</pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.Define a multiline string
+2.Match all before substirng &#39;two&#39;by DOT MATCH ALL mode
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>1</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Define a multiline string</span>
+</div></li><li><div class="line"><span class="nb">read</span> -r -d <span class="s1">&#39;&#39;</span> mstr <span class="s">&lt;&lt;&#39;EOD&#39;;</span>
+</div></li><li><div class="line"><span class="s">one</span>
+</div></li><li><div class="line"><span class="s">two</span>
+</div></li><li><div class="line"><span class="s">three</span>
+</div></li><li><div class="line"><span class="s">EOD</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Match all before substirng &#39;two&#39;by DOT MATCH ALL mode</span>
+</div></li><li><div class="line"><span class="nv">m</span><span class="o">=</span><span class="s2">&quot;$(grep -Pzo &#39;(?s)^.*two&#39;&lt;&lt;&lt;&quot;</span><span class="nv">$mstr</span><span class="s2">&quot;)&quot;</span>
+</div></li><li><div class="line"><span class="nb">echo</span> -n <span class="s2">&quot;-&gt;$m&lt;-&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Define a multiline string
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Match all before substirng &#39;two&#39;by DOT MATCH ALL mode
+</div></li><li><div class="line">-&gt;one
+</div></li><li><div class="line">two&lt;-
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#1.Define a multiline string</span>
+</div></li><li><div class="line"><span class="nv">$mstr</span> <span class="o">=</span> <span class="s">&lt;&lt;&#39;EOD&#39;;</span>
+</div></li><li><div class="line"><span class="s">one</span>
+</div></li><li><div class="line"><span class="s">two</span>
+</div></li><li><div class="line"><span class="s">three</span>
+</div></li><li><div class="line"><span class="s">EOD</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.Match all before substirng &#39;two&#39;by DOT MATCH ALL mode</span>
+</div></li><li><div class="line"><span class="nv">$mstr</span> <span class="o">=~</span><span class="sr"> /^(.*two)/s</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;-&gt;$1&lt;-\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="c1">#  or</span>
+</div></li><li><div class="line"><span class="nv">$mstr</span> <span class="o">=~</span><span class="sr"> /(?s)^(.*two)/</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;-&gt;$1&lt;-\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Define a multiline string
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Match all before substirng &#39;two&#39;by DOT MATCH ALL mode
+</div></li><li><div class="line">-&gt;one
+</div></li><li><div class="line">two&lt;-
+</div></li><li><div class="line">#  or
+</div></li><li><div class="line">-&gt;one
+</div></li><li><div class="line">two&lt;-
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Define a multiline string</span>
+</div></li><li><div class="line"><span class="kn">import</span> <span class="nn">re</span>
+</div></li><li><div class="line"><span class="n">mstr</span><span class="o">=</span><span class="s">&#39;&#39;&#39;one</span>
+</div></li><li><div class="line"><span class="s">two</span>
+</div></li><li><div class="line"><span class="s">three&#39;&#39;&#39;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Match all before substirng &#39;two&#39;by DOT MATCH ALL mode</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s">r&#39;(?s)^(.*two)&#39;</span><span class="p">,</span> <span class="n">mstr</span><span class="p">)</span>
+</div></li><li><div class="line"><span class="c">#  or</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s">r&#39;^(.*two)&#39;</span><span class="p">,</span> <span class="n">mstr</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">S</span><span class="p">)</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Define a multiline string 
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Match all before substirng &#39;two&#39;by DOT MATCH ALL mode 
+</div></li><li><div class="line">[&#39;one\ntwo&#39;]
+</div></li><li><div class="line">#  or 
+</div></li><li><div class="line">[&#39;one\ntwo&#39;]
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="Multiline mode by Mode modifier: (?m)" href="#Regex">Regex: Multiline mode by Mode modifier: (?m) </a></h4>
+		  <pre class="xdesc">(?m) or MULTILINE mode make ^ and $ match at the start and end of each line in the string</pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.Define a multiline string
+2.Match all before substirng &#39;two&#39;by MULTILINE mode
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>1</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Define a multiline string</span>
+</div></li><li><div class="line"><span class="nb">read</span> -r -d <span class="s1">&#39;&#39;</span> mstr <span class="s">&lt;&lt;&#39;EOD&#39;;</span>
+</div></li><li><div class="line"><span class="s">one</span>
+</div></li><li><div class="line"><span class="s">two</span>
+</div></li><li><div class="line"><span class="s">three</span>
+</div></li><li><div class="line"><span class="s">EOD</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Match all before substirng &#39;two&#39;by MULTILINE mode</span>
+</div></li><li><div class="line"><span class="nv">m</span><span class="o">=</span><span class="s2">&quot;$(grep -Pzo &#39;(?m)^.*two&#39;&lt;&lt;&lt;&quot;</span><span class="nv">$mstr</span><span class="s2">&quot;)&quot;</span>
+</div></li><li><div class="line"><span class="nb">echo</span> -n <span class="s2">&quot;-&gt;$m&lt;-&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Define a multiline string
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Match all before substirng &#39;two&#39;by MULTILINE mode
+</div></li><li><div class="line">-&gt;two&lt;-
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#1.Define a multiline string</span>
+</div></li><li><div class="line"><span class="nv">$mstr</span> <span class="o">=</span> <span class="s">&lt;&lt;&#39;EOD&#39;;</span>
+</div></li><li><div class="line"><span class="s">one</span>
+</div></li><li><div class="line"><span class="s">two</span>
+</div></li><li><div class="line"><span class="s">three</span>
+</div></li><li><div class="line"><span class="s">EOD</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.Match all before substirng &#39;two&#39;by MULTILINE mode</span>
+</div></li><li><div class="line"><span class="nv">$mstr</span> <span class="o">=~</span><span class="sr"> /(?m)^(.*two)/</span><span class="p">;</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="s">&quot;-&gt;$1&lt;-\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Define a multiline string
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Match all before substirng &#39;two&#39;by MULTILINE mode
+</div></li><li><div class="line">-&gt;two&lt;-
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Define a multiline string</span>
+</div></li><li><div class="line"><span class="kn">import</span> <span class="nn">re</span>
+</div></li><li><div class="line"><span class="n">mstr</span><span class="o">=</span><span class="s">&#39;&#39;&#39;one</span>
+</div></li><li><div class="line"><span class="s">two</span>
+</div></li><li><div class="line"><span class="s">three&#39;&#39;&#39;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Match all before substirng &#39;two&#39;by MULTILINE mode</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s">r&#39;(?m)^(.*two)&#39;</span><span class="p">,</span> <span class="n">mstr</span><span class="p">)</span>
+</div></li><li><div class="line"><span class="c">#  or</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s">r&#39;^(.*two)&#39;</span><span class="p">,</span> <span class="n">mstr</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">M</span><span class="p">)</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Define a multiline string 
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Match all before substirng &#39;two&#39;by MULTILINE mode 
+</div></li><li><div class="line">[&#39;two&#39;]
+</div></li><li><div class="line">#  or 
+</div></li><li><div class="line">[&#39;two&#39;]
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="Lookahead assertion: (?=...), (?!...)" href="#Regex">Regex: Lookahead assertion: (?=...), (?!...) </a></h4>
+		  <pre class="xdesc"></pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.Define a string
+2.Positive lookahead assertion: find all dog colors
+3.Negative lookahead assertion: find all animal colors, that is not a dog
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>1</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Define a string</span>
+</div></li><li><div class="line"><span class="nv">str</span><span class="o">=</span><span class="s2">&quot;blackcat,yellowdog,whitecat,browndog,redrooster&quot;</span>;
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Positive lookahead assertion: find all dog colors</span>
+</div></li><li><div class="line">grep -Po <span class="s1">&#39;([a-z]+)(?=dog)&#39;</span> <span class="o">&lt;&lt;&lt;</span><span class="s2">&quot;$str&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#3.Negative lookahead assertion: find all animal colors, that is not a dog</span>
+</div></li><li><div class="line">grep -Po <span class="s1">&#39;(black|yellow|white|brown|red)(?!dog)&#39;</span> <span class="o">&lt;&lt;&lt;</span><span class="s2">&quot;$str&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Define a string
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Positive lookahead assertion: find all dog colors
+</div></li><li><div class="line">yellow
+</div></li><li><div class="line">brown
+</div></li><li><div class="line">
+</div></li><li><div class="line">#3.Negative lookahead assertion: find all animal colors, that is not a dog
+</div></li><li><div class="line">black
+</div></li><li><div class="line">white
+</div></li><li><div class="line">red
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#1.Define a string</span>
+</div></li><li><div class="line"><span class="nv">$str</span><span class="o">=</span><span class="s">&quot;blackcat,yellowdog,whitecat,browndog,redrooster&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.Positive lookahead assertion: find all dog colors</span>
+</div></li><li><div class="line"><span class="nv">@a</span><span class="o">=</span><span class="p">(</span><span class="nv">$str</span> <span class="o">=~</span> <span class="sr">m/([a-z]+)(?=dog)/g</span><span class="p">);</span> <span class="k">print</span> <span class="s">&quot;@a\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#3.Negative lookahead assertion: find all animal colors, that is not a dog</span>
+</div></li><li><div class="line"><span class="nv">@a</span><span class="o">=</span><span class="p">(</span><span class="nv">$str</span> <span class="o">=~</span> <span class="sr">m/(black|yellow|white|brown|red)(?!dog)/g</span><span class="p">);</span> <span class="k">print</span> <span class="s">&quot;@a&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Define a string
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Positive lookahead assertion: find all dog colors
+</div></li><li><div class="line">yellow brown
+</div></li><li><div class="line">
+</div></li><li><div class="line">#3.Negative lookahead assertion: find all animal colors, that is not a dog
+</div></li><li><div class="line">black white red
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Define a string</span>
+</div></li><li><div class="line"><span class="kn">import</span> <span class="nn">re</span>
+</div></li><li><div class="line"><span class="nb">str</span><span class="o">=</span><span class="s">&quot;blackcat,yellowdog,whitecat,browndog,redrooster&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Positive lookahead assertion: find all dog colors</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s">&#39;[a-z]+(?=dog)&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#3.Negative lookahead assertion: find all animal colors, that is not a dog</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s">&#39;(black|yellow|white|brown|red)(?!dog)&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Define a string 
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Positive lookahead assertion: find all dog colors 
+</div></li><li><div class="line">[&#39;yellow&#39;, &#39;brown&#39;]
+</div></li><li><div class="line">
+</div></li><li><div class="line">#3.Negative lookahead assertion: find all animal colors, that is not a dog 
+</div></li><li><div class="line">[&#39;black&#39;, &#39;white&#39;, &#39;red&#39;]
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+          <article>
+		  <h4><a name="Lookbehind assertion: (?&lt;=...), (?&lt;!...)" href="#Regex">Regex: Lookbehind assertion: (?&lt;=...), (?&lt;!...) </a></h4>
+		  <pre class="xdesc"></pre>
+		  
+		  <p>
+		  <pre class="xdesc">
+Tasks:
+1.Define a string
+2.Positive lookbehind assertion: find all animals that is white
+3.Negative lookbehind assertion: find all animals that is not white
+		  </pre>
+		       
+          <!--div class="row"-->
+          <div>
+            <!--<h1>1</h1> --> 
+             <table class="xtitle">
+		     <tr>
+                <th class="xtitle">Bash</th>
+                <th class="xtitle">Perl</th>
+                <th class="xtitle">Python</th>			   
+		     </tr>
+             
+              <tr>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Define a string</span>
+</div></li><li><div class="line"><span class="nv">str</span><span class="o">=</span><span class="s2">&quot;blackcat,yellowdog,whitecat,browndog,redrooster&quot;</span>;
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Positive lookbehind assertion: find all animals that is white</span>
+</div></li><li><div class="line">grep -Po <span class="s1">&#39;(?&lt;=white)([a-z]+)&#39;</span> <span class="o">&lt;&lt;&lt;</span><span class="s2">&quot;$str&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#3.Negative lookbehind assertion: find all animals that is not white</span>
+</div></li><li><div class="line">grep -Po <span class="s1">&#39;(?&lt;!white)(cat|dog|rooster)&#39;</span> <span class="o">&lt;&lt;&lt;</span><span class="s2">&quot;$str&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">
+</div></li><li><div class="line">-------output----------
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Define a string
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Positive lookbehind assertion: find all animals that is white
+</div></li><li><div class="line">cat
+</div></li><li><div class="line">
+</div></li><li><div class="line">#3.Negative lookbehind assertion: find all animals that is not white
+</div></li><li><div class="line">cat
+</div></li><li><div class="line">dog
+</div></li><li><div class="line">dog
+</div></li><li><div class="line">rooster
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c1">#1.Define a string</span>
+</div></li><li><div class="line"><span class="nv">$str</span><span class="o">=</span><span class="s">&quot;blackcat,yellowdog,whitecat,browndog,redrooster&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#2.Positive lookbehind assertion: find all animals that is white</span>
+</div></li><li><div class="line"><span class="nv">@a</span><span class="o">=</span><span class="p">(</span><span class="nv">$str</span> <span class="o">=~</span> <span class="sr">m/(?&lt;=white)([a-z]+)/g</span><span class="p">);</span> <span class="k">print</span> <span class="s">&quot;@a\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c1">#3.Negative lookbehind assertion: find all animals that is not white</span>
+</div></li><li><div class="line"><span class="nv">@a</span><span class="o">=</span><span class="p">(</span><span class="nv">$str</span> <span class="o">=~</span> <span class="sr">m/(?&lt;!white)(cat|dog|rooster)/g</span><span class="p">);</span> <span class="k">print</span> <span class="s">&quot;@a\n&quot;</span><span class="p">;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Define a string
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Positive lookbehind assertion: find all animals that is white
+</div></li><li><div class="line">cat
+</div></li><li><div class="line">
+</div></li><li><div class="line">#3.Negative lookbehind assertion: find all animals that is not white
+</div></li><li><div class="line">cat dog dog rooster
+</div></li></ol></pre></div>
+</td>
+                <td class="xcontent"><div class="highlight"><pre><ol><li><div class="line"><span class="c">#1.Define a string</span>
+</div></li><li><div class="line"><span class="kn">import</span> <span class="nn">re</span>
+</div></li><li><div class="line"><span class="nb">str</span><span class="o">=</span><span class="s">&quot;blackcat,yellowdog,whitecat,browndog,redrooster&quot;</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#2.Positive lookbehind assertion: find all animals that is white</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s">&#39;(?&lt;=white)[a-z]+&#39;</span><span class="p">,</span><span class="nb">str</span><span class="p">)</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="c">#3.Negative lookbehind assertion: find all animals that is not white</span>
+</div></li><li><div class="line"><span class="k">print</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s">&#39;(?&lt;!white)(cat|dog|rooster)&#39;</span><span class="p">,</span><span class="nb">str</span><span class="p">)</span>
+</div></li><li><div class="line">
+</div></li><li><div class="line"><span class="o">-------</span><span class="n">output</span><span class="o">----------</span>
+</div></li></ol></pre></div>
+<div class="highlight"><pre><ol><li><div class="line">#1.Define a string 
+</div></li><li><div class="line">
+</div></li><li><div class="line">#2.Positive lookbehind assertion: find all animals that is white 
+</div></li><li><div class="line">[&#39;cat&#39;]
+</div></li><li><div class="line">
+</div></li><li><div class="line">#3.Negative lookbehind assertion: find all animals that is not white 
+</div></li><li><div class="line">[&#39;cat&#39;, &#39;dog&#39;, &#39;dog&#39;, &#39;rooster&#39;]
+</div></li></ol></pre></div>
+</td>
+              </tr>
+             
+            </table> 
+          </div>
+          </article>
+		  <hr>
+        
+
+        </div>
+     
+        <aside class="large-1 columns">
+          <h5>Categories</h5>
+          
+          <ul class="side-nav">
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  class="selected"  ><a href="index.html">Regex</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../2/index.html">String</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../3/index.html">Array</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../4/index.html">Set</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../5/index.html">Map</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../6/index.html">Variables</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../7/index.html">Special variables</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../8/index.html">Function</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../9/index.html">Command line</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../10/index.html">Flow control</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../11/index.html">Input</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../12/index.html">Path</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../13/index.html">Logging</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../14/index.html">Threading</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../15/index.html">Html</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../16/index.html">Miscellaneous</a></li>
+            
+            <!--<li><a href="/bash_perl_python//"></a></li> -->
+            <li  ><a href="../17/index.html">Help</a></li>
+            
+          </ul>
+          
+     
+        </aside>
+         
+      </div>
+
+      <footer class="row">
+        <div class="large-12 columns">
+          <hr/>
+          <div class="row">
+            <div class="large-6 columns">
+              <p>© Evan Liu.   (liuenmao@hotmail.com)</p>
+            </div>
+            <div class="large-6 columns">
+            </div>
+          </div>
+        </div>
+      </footer>
+</body>    
+
+<!-- Mirrored from 118.193.213.195/bash_perl_python/1/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 16 May 2018 07:24:07 GMT -->
+</html>
